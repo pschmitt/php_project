@@ -1,10 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>JeNeSaisPasCuisiner.com</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" media="screen" title="JSPC_css" href="./css/default.css" />
 </head>
 	
 <body>
+<script src="js/jquery-1.6.4.min.js"></script>
+
 <?php
     set_include_path('includes'); // TODO: debug (unix only pathname ?)
     include("header.php");
