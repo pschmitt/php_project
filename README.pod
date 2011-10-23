@@ -1,13 +1,18 @@
 =head1 Programmation web - Projet PHP
+JeNeSaisPasCuisiner.com
 
 =head2 Lien utiles
+Lisez bien ce qui suit (#RTFM)
 
-=head3 Utiliser git
-
-=head3 Logiciels
+=head3 Howto git
 =over 4
 =item *
-L<http://www.syntevo.com/smartgit/index.html>
-=item *
 L<http://www.siteduzero.com/tutoriel-3-254198-gerez-vos-codes-source-avec-git.html>
+=item *
+L<http://www.syntevo.com/smartgit/index.html>
 =back
+
+=head2 Contact
+mailme !
+
+=cut
