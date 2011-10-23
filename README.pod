@@ -20,6 +20,12 @@ L<http://www.syntevo.com/smartgit/index.html>
 
 =back
 
+=head2 FAQ
+
+c'est quoi ce format ?
+
+L<http://woufeil.developpez.com/tutoriels/perl/pod/>
+
 =head2 Contact
 
 mailme !
