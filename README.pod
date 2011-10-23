@@ -1,5 +1,13 @@
 =head1 Programmation web - Projet PHP
 
-=head2 Lorem blabla
+=head2 Lien utiles
 
-blabla
+=head3 Utiliser git
+
+=head3 Logiciels
+=over 4
+=item *
+L<http://www.syntevo.com/smartgit/index.html>
+=item *
+L<http://www.siteduzero.com/tutoriel-3-254198-gerez-vos-codes-source-avec-git.html>
+=back
