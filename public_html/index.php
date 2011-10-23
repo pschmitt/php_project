@@ -6,6 +6,22 @@
 	
 <body>
 <?php
+    set_include_path('includes'); // TODO: debug (unix only pathname ?)
+    include("header.php");
+    include("menu.php");
+    
+    $OK = array("home" => "home.php",
+                "login" => "login.php",
+                "register" => "register.php",
+                "basket" => "basket.php",
+                "search" => "search.php");
+    # is the requested url correct ? No ? _> load home
+    if ((isset($_GET["p"])) && (isset($OK[$_GET["p"]])))
+                include($OK[$_GET["p"]]);
+            else
+                include("home.php");
+
+    include("footer.php");
 ?>
 
 </body>
