@@ -7,7 +7,6 @@
 </head>
 	
 <body>
-<script src="js/jquery-1.6.4.min.js"></script>
 
 <?php
     set_include_path('includes'); // TODO: debug (unix only pathname ?)
@@ -28,5 +27,6 @@
     include("footer.php");
 ?>
 
+<script src="js/jquery-1.6.4.js"></script>
 </body>
 </html>
