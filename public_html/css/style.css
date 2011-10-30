@@ -1,0 +1,327 @@
+/* Reset
+--------------------------------------------- */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, img, strong, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+#content address {
+	padding: 0 0 20px 0;
+}
+#content abbr, acronym {
+	border-bottom: .1em dotted;
+}
+#content pre, code, tt {
+	font-size: 1.1em;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote:before, blockquote:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* General Structure and Styles
+--------------------------------------------- */
+/*html, body {
+	height: 100%;
+}*/
+body {
+	background-color: #fff;
+	background-image: url('../images/texture-table-bleue.jpg');
+	background-repeat: repeat;
+	background-position: top left;
+	background-attachment: scroll;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	/* font-family: Arial, Helvetica, sans-serif; */
+	color: #777;
+}
+#page {
+	max-width: 1162px;
+	margin: 0 auto;
+	padding: 0;
+	background-color: #fff;
+	height: 100%;
+}
+footer {
+	clear: both;
+    margin: 0 auto;
+	padding: 20px;
+    position: relative;
+	background-color:#f0f0f0;
+	border-top: 3px solid #e0e0e0;
+	font-size: 0.8em;
+}
+
+/* Header
+--------------------------------------------- */
+header {
+	background-color:#000;
+	background-image: url('../images/texture-table-rouge-fonce.jpg');
+	background-repeat: repeat;
+	background-position: bottom left;
+	background-attachment: scroll;
+	height: 200px;
+	
+    position: relative;
+    width: 100%;
+}
+
+.logo {
+    height: 92px;
+    left: 198px;
+    position: absolute;
+    top: 38px; /* 54px */
+    width: 342px;
+}
+.logo a {
+    background: url("../images/logo.png") no-repeat scroll left top transparent;
+    display: block;
+    height: 92px;
+    text-indent: -9999px;
+    width: 342px;
+}
+
+#site-title {
+	height: 167px;
+}
+#site-title img {
+	margin: 54px;
+	max-width: 100%;
+}
+#login {
+	padding: 20px;
+	background-color: #000;
+	position: absolute;
+	right: 20px;
+}
+
+/* Navigations
+--------------------------------------------- */
+/* --- Main Nav --- */
+#mainnav {
+	height: 33px;
+	background-color: #ffcc33;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+#mainnav .menu {
+	margin-left: 198px;
+}
+#mainnav ul li {
+	background-color: #f09236; /* :hover : #f78443; */
+	float: left;
+	list-style: none;
+	position: relative;
+}
+#mainnav ul li a {
+	margin:0;
+	height: 33px;
+	padding:0px 14px;
+	display: block;
+	font: bold 12px/33px Arial,sans-serif;
+	color: #fff;
+	text-transform: uppercase;
+}
+#mainnav ul li a:hover {
+	background:#F0F0F0;
+	color: #999;
+	text-decoration: none;
+}
+#mainnav ul ul {
+	display: none;
+	float: left;
+	position: absolute;
+	top: 2,1em;
+	left: 0;
+	z-index: 99999;
+}
+#mainnav ul ul ul {
+	left: 100%;
+	top: 0;
+}
+#mainnav ul ul a {
+	/*background: #F9F9F9;*/
+	width: 11em;
+	text-transform: none;
+	margin:0;
+	height: 33px;
+	padding:0px 14px;
+	display: block;
+	font: bold 12px/33px Arial,sans-serif;
+}
+#mainnav li:hover > a,
+#mainnav ul ul :hover > a {
+	background: #F0F0F0;
+	color: #999;
+}
+#mainnav ul ul a:hover {
+	background: #F0F0F0;
+}
+#mainnav ul li:hover > ul {
+	display: block;
+}
+
+/* Links
+--------------------------------------------- */
+a {
+	color: #009BC2;
+	text-decoration: none;
+} 
+a:hover {
+	color: #777!important;
+	text-decoration: underline;
+}
+
+/* --- Sidebars --- */
+#centre {
+	background-color: #f0f0f0;
+}
+#navigation {
+    background: none repeat scroll 0 0 #181A12;
+}
+#navigation a {
+    color: #FF6533;
+}
+#navigation a:hover, #navigation a:focus {
+    background: none repeat scroll 0 0 #000000;
+}
+#principal {
+    background: none repeat scroll 0 0 #fff; /* #CBD888 */
+    color: #181A12;
+}
+#principal a {
+    color: #332510;
+}
+#principal a:hover, #principal a:focus {
+    color: #6E5122;
+}
+#principal strong {
+    color: #181A12;
+}
+#secondaire {
+    background: none repeat scroll 0 0 #181A12;
+}
+
+#navigation {
+    float: left;
+    width: 158px;
+}
+#navigation ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 20px 10px;
+}
+#navigation a {
+    display: block;
+    font-size: 0.9em;
+    height: 1%;
+    line-height: 1.5;
+    padding: 6px 10px;
+    text-decoration: none;
+}
+#principal {
+    margin-left: 198px;
+    margin-right: 238px;
+    padding: 10px 20px;
+	color: #444;
+}
+#principal > *:first-child {
+    margin-top: 10px;
+}
+#principal p, #principal li {
+    line-height: 1.5;
+}
+#secondaire {
+    float: right;
+    padding: 20px;
+    width: 198px;
+}
+/* --- Right sidebars --- */
+#navigation {
+    font-size: 14px;
+    padding: 20px;
+}
+#navigation a {
+    color: #F09236;
+}
+#navigation h3, #secondaire h3 {
+    color: #fff;
+    font-size: 20px;
+    padding: 0 0 10px;
+}
+#navigation ul {
+    list-style: none outside none;
+}
+#navigation ul li {
+    border-bottom: 1px dashed #444444;
+}
+#navigation ul li a {
+    background: url("../images/li_dot.png") no-repeat scroll 0 12px transparent;
+    color: #F09236;
+    display: block;
+    padding: 5px 0 5px 12px;
+    text-decoration: none;
+}
+#navigation ul li a:hover {
+    background: url("../images/li_dot_act.png") no-repeat scroll 0 12px transparent;
+    color: #FFFFFF;
+}
+#navigation ul li ul {
+    padding: 0 0 0 12px;
+}
+#navigation ul .side_last {
+    background: none repeat scroll 0 0 transparent;
+}
+
+/* --- Contenu principal --- */
+#principal .fil-ariane {
+	font-size: 0.8em;
+	margin-bottom: 1em;
+}
+#principal a {
+	color: #009BC2;
+}
+#principal img.alignleft {
+    display: block;
+    float: left;
+    margin: 0 20px 20px 0;
+}
+#principal h2 {
+    color: #ea8931;
+    font-size: 2em;
+    font-weight: normal;
+	margin-bottom: 0.5em;
+}
+#principal p {
+    line-height: 16px;
+    padding: 0 0 20px;
+}
