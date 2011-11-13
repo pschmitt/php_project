@@ -325,3 +325,12 @@ a:hover {
     line-height: 16px;
     padding: 0 0 20px;
 }
+
+/* Forms
+--------------------------------------------- */
+fieldset {
+    margin-bottom: 10px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}

@@ -1,6 +1,6 @@
 <h2>S'enregistrer</h2>
 
-<form id="registration" method="post" action="index.php">
+<form action="index.php?p=home" method="GET" id="registration">
     <p>
         <label for="name">Nom: </label>
         <input type="text" name="name" id="name" placeholder="Votre nom" />
@@ -11,11 +11,11 @@
     </p>
     <p>
         <label for="username">Pseudo: </label>
-        <input type="text" name="username" id="username" title="Pseudo" placeholder="Votre pseudo" required />
+        <input type="text" name="username" id="username" placeholder="Votre pseudo" required />
     </p>
     <p>
         <label for="password">Mot de passe: </label>
-        <input type="password" name="password" title="mot de passe" id="password" required />
+        <input type="password" name="password" id="password" required />
     </p>
     <p>
         <label for="gender">Vous êtes: </label>
@@ -58,21 +58,18 @@
         <input type="tel" name="tel_num" id="tel_num" placeholder="01 02 03 04 05" />
     </p>
     <p>
-        <input type="submit" value="Envoyer" class="submit" />
+        <input type="submit" value="envoyer" class="submit" />
     </p>
 </form>
-<div id="rep"></div>
-<script src="js/jquery.html5form-1.4-min.js"></script>
+
+<script src="../js/jquery.html5form-1.4-min.js"></script>
 <script>
      $(document).ready(function(){
+        
         $('#registration').html5form({
-            allBrowsers : true,
-            async : false,
-            colorOn: '#000',
-            colorOff: '#999',
-            //emptyMessage : 'Ce champ est obligatoire',
-            messages : 'fr',
-            responseDiv : '#rep'
+            action : 'http://www.laxlinux.net/',
+            method : 'GET',
+            emptyMessage : 'This is a required field'
         });
         
     });
