@@ -23,17 +23,17 @@
             include("search.inc");
         ?>
         <div id="principal">
-        <?php
-            $PAGES = array("login"    => "login.php",
-                           "register" => "register.php",
-                           "basket"   => "basket.php",
-                           "search"   => "search.php");
-            # is the requested url correct ? No ? _> load home
-            if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]])))
-                include($PAGES[$_GET["p"]]);
-            else
-                include("home.php");
-        ?>
+            <?php
+                $PAGES = array("login"    => "login.php",
+                               "register" => "register.php",
+                               "basket"   => "basket.php",
+                               "search"   => "search.php");
+                # is the requested url correct ? No ? _> load home
+                if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]])))
+                    include($PAGES[$_GET["p"]]);
+                else
+                    include("home.php");
+            ?>
         </div><!-- #principal -->
     </div><!-- #centre -->
     
