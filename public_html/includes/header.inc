@@ -10,6 +10,10 @@
                 <input type="text" name="password" id="password" />
             </label>
             <br />
+            <a href="">
+                Connexion
+            </a>
+            |
             <a href="<?php echo $_SERVER['PHP_SELF'].'?p=register'; ?>">
                 S'enregister
             </a>

@@ -62,6 +62,7 @@
     </p>
 </form>
 <div id="rep"></div>
+<!-- http://www.matiasmancini.com.ar/jquery-plugin-ajax-form-validation-html5.html -->
 <script src="js/jquery.html5form-1.4-min.js"></script>
 <script>
      $(document).ready(function(){
