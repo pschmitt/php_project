@@ -15,7 +15,7 @@
     if (!$db)
         mysqli_connect_error();
 
-    printf("Success...%s\n", mysqli_get_host_info($db));
+    printf("Success...%s<br />", mysqli_get_host_info($db));
     
     // set autocommit
     mysqli_autocommit($db, TRUE);
@@ -38,43 +38,35 @@
         printf("Error: %s\n", mysqli_error($db));
     printf("TABLE succesfully created.<br />");
 
+    // read data from file
     $file = "./data/Recettes.xml";
-
     $fp = fopen($file, "r");
-    if (!$fp) die("impossible d'ouvrir le fichier xml");
-
-    $i = 0;
-    while($line = fgets($fp)) {
-        //echo htmlentities($line)."<br />";
-        //xml_parse($xml_parser, $line, feof($fp)) or die("xml error !");
-        //if (xml_parse_into_struct($xml_parser, $line, $vals, $index) != 0)
-        //    echo "ok";
-        $line = utf8_encode($line);
-        $line = preg_replace('[\']', null, $line);
-        $sxml = simplexml_load_string($line);
-        $ar[$i] = $sxml;
-
-        $i++;
+    if (!$fp)
+        die("impossible d'ouvrir le fichier xml");
+    
+    function clean_line($str) {
+        // TODO: don't delete the '
+        // TODO: error handling
+        return utf8_encode(preg_replace('[\']', null, $str));
     }
 
-    echo "<hr/>";
-
-    $l = "\"pd\"'";
-    echo "--".$l."--<br/>";
-    $l = preg_replace('[\']', null, $l);
-    echo "--".$l."--";
-    //print_r($ar);    
-    echo "<hr/>";
-    echo $ar[1486]->TI;
+    $index = 0;
+    while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
+        $line = clean_line($line);
+        $data_array[$index] = simplexml_load_string($line);
+    }
+    fclose($fp);
     
+    // submit to DB
+    // TODO: add data (ingredients etc)
     $sql = "";
-    foreach($ar as $xxml) {
-        $sql .= "INSERT INTO $table VALUES ('NULL', '$xxml->TI');";
+    foreach($data_array as $recipe) {
+        $sql .= "INSERT INTO $table VALUES ('NULL', '$recipe->TI');";
     }
     if (!mysqli_multi_query($db, $sql))
-        echo "error".mysqli_error($db);
-    
-    fclose($fp);
+        printf("Error: %s\n",mysqli_error($db));
+    printf("Database succesfully filled\n");
+
     mysqli_close($db);
 ?>
 
