@@ -49,7 +49,7 @@
         // TODO: error handling
         return utf8_encode(preg_replace('[\']', null, $str));
     }
-
+    
     $index = 0;
     while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
         $line = clean_line($line);
@@ -57,10 +57,14 @@
     }
     fclose($fp);
     
+    unset ($index);
+    //print_r($data_array[1]);
+
     // submit to DB
     // TODO: add data (ingredients etc)
     $sql = "";
     foreach($data_array as $recipe) {
+        // TODO: id = NULL => id = index
         $sql .= "INSERT INTO $table VALUES ('NULL', '$recipe->TI');";
     }
     if (!mysqli_multi_query($db, $sql))
