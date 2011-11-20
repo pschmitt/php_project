@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html dir="ltr" lang="fr-FR">
 <head>
 <meta charset="UTF-8" />
@@ -13,22 +13,23 @@
 <body>
 <div id="page">
     <?php
-        set_include_path('includes'); // TODO: debug (unix only pathname ?)
-        include("header.inc");
+        set_include_path('includes'); // TODO: debug (unix only pathname?)
+        include("header.inc.php");
     ?>
 
     <div id="centre">
         <?php
-            include("navigation.inc");
-            include("search.inc");
+            include("navigation.inc.php");
+            include("search.inc.php");
         ?>
         <div id="principal">
             <?php
+				include("ariane.inc.php");
                 $PAGES = array("login"    => "login.php",
                                "register" => "register.php",
                                "basket"   => "basket.php",
                                "search"   => "search.php");
-                # is the requested url correct ? No ? _> load home
+                # is the requested url correct? No? _> load home
                 if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]])))
                     include($PAGES[$_GET["p"]]);
                 else
@@ -38,10 +39,9 @@
     </div><!-- #centre -->
     
     <?php
-        include("footer.inc");
+        include("footer.inc.php");
     ?>
 </div>
 <!-- end page -->
-
 </body>
 </html>

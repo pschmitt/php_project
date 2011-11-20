@@ -200,7 +200,7 @@
       1 => 'celeriac',
       2 => 'celery knob',
       3 => 'celery root',
-      4 => 'céleri-rave',
+      4 => 'cÃ©leri-rave',
       5 => 'germany celery',
       6 => 'knob celery',
       7 => 'soup celery',
@@ -406,7 +406,7 @@
       7 => 'ci gu',
       8 => 'goo',
       9 => 'jicama',
-      10 => 'jícama',
+      10 => 'jÃ­cama',
       11 => 'lo bok.',
       12 => 'mexican potato',
       13 => 'mexican yam bean',
@@ -755,7 +755,7 @@
       2 => 'igname',
       3 => 'mapuey',
       4 => 'name',
-      5 => 'namé',
+      5 => 'namÃ©',
       6 => 'nyami',
       7 => 'tropical yam',
       8 => 'true yam',
@@ -2134,7 +2134,7 @@
       3 => 'curly endive',
       4 => 'frise',
       5 => 'frisee',
-      6 => 'frisée',
+      6 => 'frisÃ©e',
     ),
   ),
   169 => 
@@ -4279,10 +4279,10 @@
   341 => 
   array (
     'N' => 5,
-    'T' => 'costeño amarillo chile',
+    'T' => 'costeÃ±o amarillo chile',
     'E' => 
     array (
-      0 => 'costeño amarillo chile',
+      0 => 'costeÃ±o amarillo chile',
     ),
   ),
   342 => 
@@ -4302,8 +4302,8 @@
     array (
       0 => 'habanero chile',
       1 => 'habanero pepper',
-      2 => 'habañero chile',
-      3 => 'habañero pepper',
+      2 => 'habaÃ±ero chile',
+      3 => 'habaÃ±ero pepper',
     ),
   ),
   344 => 
@@ -4420,13 +4420,13 @@
     'E' => 
     array (
       0 => 'chiltecpin',
-      1 => 'chiltecpín',
+      1 => 'chiltecpÃ­n',
       2 => 'chiltepin',
-      3 => 'chiltepín',
+      3 => 'chiltepÃ­n',
       4 => 'chiltpin',
-      5 => 'chiltpín',
+      5 => 'chiltpÃ­n',
       6 => 'tepin',
-      7 => 'tepín',
+      7 => 'tepÃ­n',
     ),
   ),
   356 => 
@@ -5368,7 +5368,7 @@
     'E' => 
     array (
       0 => 'nicoise olive',
-      1 => 'niçoise olive',
+      1 => 'niÃ§oise olive',
     ),
   ),
   438 => 
@@ -5490,7 +5490,7 @@
     'E' => 
     array (
       0 => 'cracked provencal',
-      1 => 'cracked provençal',
+      1 => 'cracked provenÃ§al',
     ),
   ),
   449 => 
@@ -6190,7 +6190,7 @@
     'T' => 'calabaza',
     'E' => 
     array (
-      0 => 'abóbora',
+      0 => 'abÃ³bora',
       1 => 'ahuyama',
       2 => 'calabaza',
       3 => 'crapaudback',
@@ -8534,7 +8534,7 @@
       1 => 'cajueiro',
       2 => 'cashew apple',
       3 => 'cashew fruit',
-      4 => 'marañon',
+      4 => 'maraÃ±on',
       5 => 'merey',
     ),
   ),
@@ -8997,7 +8997,7 @@
     'E' => 
     array (
       0 => 'tamarillo',
-      1 => 'tomate de árbol',
+      1 => 'tomate de Ã¡rbol',
       2 => 'tomato de arbol',
       3 => 'tree tomato',
     ),
@@ -10851,7 +10851,7 @@
     'T' => 'candied apricot',
     'E' => 
     array (
-      0 => 'abricot glacé',
+      0 => 'abricot glacÃ©',
       1 => 'candied apricot',
       2 => 'glace apricot',
       3 => 'glaced apricot',
@@ -10917,7 +10917,7 @@
     array (
       0 => 'candied fruit',
       1 => 'glace fruit',
-      2 => 'glacé fruit',
+      2 => 'glacÃ© fruit',
     ),
   ),
   922 => 
@@ -11013,7 +11013,7 @@
     array (
       0 => 'glace cherries',
       1 => 'glace cherry',
-      2 => 'glacé cherries',
+      2 => 'glacÃ© cherries',
     ),
   ),
   931 => 
@@ -11440,7 +11440,7 @@
     'E' => 
     array (
       0 => 'chantilly cream',
-      1 => 'crème chantilly',
+      1 => 'crÃ¨me chantilly',
     ),
   ),
   969 => 
@@ -11766,19 +11766,19 @@
   996 => 
   array (
     'N' => 5,
-    'T' => 'crema Salvadoreña',
+    'T' => 'crema SalvadoreÃ±a',
     'E' => 
     array (
-      0 => 'crema salvadoreña',
+      0 => 'crema salvadoreÃ±a',
     ),
   ),
   997 => 
   array (
     'N' => 5,
-    'T' => 'crème fraîche',
+    'T' => 'crÃ¨me fraÃ®che',
     'E' => 
     array (
-      0 => 'crème fraîche',
+      0 => 'crÃ¨me fraÃ®che',
     ),
   ),
   998 => 
@@ -12396,11 +12396,11 @@
   1049 => 
   array (
     'N' => 6,
-    'T' => 'Carré de l\'est',
+    'T' => 'CarrÃ© de l\'est',
     'E' => 
     array (
       0 => 'carre de l\'est',
-      1 => 'carré de l\'est',
+      1 => 'carrÃ© de l\'est',
     ),
   ),
   1050 => 
@@ -12478,9 +12478,9 @@
     array (
       0 => 'hand',
       1 => 'handkase',
-      2 => 'handkäse',
+      2 => 'handkÃ¤se',
       3 => 'harzer kase',
-      4 => 'harzer käse',
+      4 => 'harzer kÃ¤se',
     ),
   ),
   1058 => 
@@ -12504,11 +12504,11 @@
   1060 => 
   array (
     'N' => 6,
-    'T' => 'kochkäse',
+    'T' => 'kochkÃ¤se',
     'E' => 
     array (
       0 => 'kochkase',
-      1 => 'kochkäse',
+      1 => 'kochkÃ¤se',
     ),
   ),
   1061 => 
@@ -12568,11 +12568,11 @@
   1067 => 
   array (
     'N' => 6,
-    'T' => 'Pont-l\'Evêque',
+    'T' => 'Pont-l\'EvÃªque',
     'E' => 
     array (
       0 => 'pont l\'eveque',
-      1 => 'pont-l\'evêque',
+      1 => 'pont-l\'evÃªque',
     ),
   ),
   1068 => 
@@ -12642,16 +12642,16 @@
       0 => 'castle cheese',
       1 => 'schloss',
       2 => 'schlosskase',
-      3 => 'schlosskäse',
+      3 => 'schlosskÃ¤se',
     ),
   ),
   1074 => 
   array (
     'N' => 6,
-    'T' => 'Saint André cheese',
+    'T' => 'Saint AndrÃ© cheese',
     'E' => 
     array (
-      0 => 'saint andré cheese',
+      0 => 'saint andrÃ© cheese',
       1 => 'st. andre cheese',
     ),
   ),
@@ -12759,13 +12759,13 @@
   1081 => 
   array (
     'N' => 6,
-    'T' => 'bierkäse',
+    'T' => 'bierkÃ¤se',
     'E' => 
     array (
       0 => 'beer cheese',
       1 => 'beer kaese',
       2 => 'bierkaese',
-      3 => 'bierkäse',
+      3 => 'bierkÃ¤se',
       4 => 'weisslacker',
     ),
   ),
@@ -13059,7 +13059,7 @@
     array (
       0 => 'muenster',
       1 => 'munster',
-      2 => 'münster',
+      2 => 'mÃ¼nster',
     ),
   ),
   1111 => 
@@ -13547,7 +13547,7 @@
     'E' => 
     array (
       0 => 'aged chevre',
-      1 => 'chèvre',
+      1 => 'chÃ¨vre',
     ),
   ),
   1154 => 
@@ -13567,8 +13567,8 @@
     array (
       0 => 'comte',
       1 => 'comte gruyere',
-      2 => 'comté',
-      3 => 'gruyère du comté',
+      2 => 'comtÃ©',
+      3 => 'gruyÃ¨re du comtÃ©',
     ),
   ),
   1156 => 
@@ -13650,7 +13650,7 @@
     'E' => 
     array (
       0 => 'gamonedo',
-      1 => 'gamone£',
+      1 => 'gamoneÂ£',
       2 => 'queso gamonedo',
     ),
   ),
@@ -13730,7 +13730,7 @@
     'E' => 
     array (
       0 => 'gruyere',
-      1 => 'gruyère',
+      1 => 'gruyÃ¨re',
     ),
   ),
   1172 => 
@@ -13740,7 +13740,7 @@
     'E' => 
     array (
       0 => 'idiazabal cheese',
-      1 => 'idiazábal cheese',
+      1 => 'idiazÃ¡bal cheese',
       2 => 'queso vasco',
     ),
   ),
@@ -13822,11 +13822,11 @@
   1181 => 
   array (
     'N' => 6,
-    'T' => 'Mahón cheese',
+    'T' => 'MahÃ³n cheese',
     'E' => 
     array (
       0 => 'mahon cheese',
-      1 => 'mahón cheese',
+      1 => 'mahÃ³n cheese',
     ),
   ),
   1182 => 
@@ -13851,11 +13851,11 @@
   1184 => 
   array (
     'N' => 6,
-    'T' => 'Nøkkelost',
+    'T' => 'NÃ¸kkelost',
     'E' => 
     array (
       0 => 'nokkelost',
-      1 => 'nøkkelost',
+      1 => 'nÃ¸kkelost',
     ),
   ),
   1185 => 
@@ -13894,7 +13894,7 @@
     'E' => 
     array (
       0 => 'tete de moine',
-      1 => 'tête de moine',
+      1 => 'tÃªte de moine',
     ),
   ),
   1189 => 
@@ -14356,7 +14356,7 @@
       0 => 'picon',
       1 => 'picon cabrales',
       2 => 'picos de europa',
-      3 => 'picón',
+      3 => 'picÃ³n',
     ),
   ),
   1229 => 
@@ -14786,9 +14786,9 @@
     'E' => 
     array (
       0 => 'chevre frais',
-      1 => 'chèvre frais',
+      1 => 'chÃ¨vre frais',
       2 => 'fresh goat cheese',
-      3 => 'fromage de chèvre frais',
+      3 => 'fromage de chÃ¨vre frais',
     ),
   ),
   1266 => 
@@ -14933,7 +14933,7 @@
     'E' => 
     array (
       0 => 'requeson cheese',
-      1 => 'requesón',
+      1 => 'requesÃ³n',
     ),
   ),
   1280 => 
@@ -15020,11 +15020,11 @@
   1288 => 
   array (
     'N' => 6,
-    'T' => 'Rondelé',
+    'T' => 'RondelÃ©',
     'E' => 
     array (
       0 => 'rondele',
-      1 => 'rondelé',
+      1 => 'rondelÃ©',
     ),
   ),
   1289 => 
@@ -15092,10 +15092,10 @@
   1294 => 
   array (
     'N' => 7,
-    'T' => 'Gruyère',
+    'T' => 'GruyÃ¨re',
     'E' => 
     array (
-      0 => 'gruyère',
+      0 => 'gruyÃ¨re',
     ),
   ),
   1295 => 
@@ -15307,11 +15307,11 @@
   1312 => 
   array (
     'N' => 6,
-    'T' => 'double-crème cheese',
+    'T' => 'double-crÃ¨me cheese',
     'E' => 
     array (
       0 => 'double-cream cheese',
-      1 => 'double-crème cheese',
+      1 => 'double-crÃ¨me cheese',
     ),
   ),
   1313 => 
@@ -15418,11 +15418,11 @@
   1322 => 
   array (
     'N' => 6,
-    'T' => 'triple-crème cheese',
+    'T' => 'triple-crÃ¨me cheese',
     'E' => 
     array (
       0 => 'triple-cream cheese',
-      1 => 'triple-crème cheese',
+      1 => 'triple-crÃ¨me cheese',
     ),
   ),
   1323 => 
@@ -15811,7 +15811,7 @@
   1354 => 
   array (
     'N' => 5,
-    'T' => 'filé powder',
+    'T' => 'filÃ© powder',
     'E' => 
     array (
       0 => 'fil',
@@ -15819,12 +15819,12 @@
       2 => 'file',
       3 => 'file powder',
       4 => 'file\' powder',
-      5 => 'filé',
-      6 => 'filé powder',
+      5 => 'filÃ©',
+      6 => 'filÃ© powder',
       7 => 'ground sassafras leaf',
       8 => 'ground sassafras leaves',
       9 => 'gumbo file',
-      10 => 'gumbo filé',
+      10 => 'gumbo filÃ©',
       11 => 'sassafras leaf',
       12 => 'sassafras leaves',
     ),
@@ -16132,7 +16132,7 @@
     'E' => 
     array (
       0 => 'tia to',
-      1 => 'tia tô',
+      1 => 'tia tÃ´',
     ),
   ),
   1379 => 
@@ -16641,7 +16641,7 @@
     array (
       0 => 'papalo',
       1 => 'papaloquelite',
-      2 => 'pápalo',
+      2 => 'pÃ¡palo',
     ),
   ),
   1423 => 
@@ -17560,7 +17560,7 @@
     'E' => 
     array (
       0 => 'pimenton',
-      1 => 'pimentón',
+      1 => 'pimentÃ³n',
       2 => 'spanish paprika',
       3 => 'spanish pepper',
     ),
@@ -18371,7 +18371,7 @@
       0 => 'epice parisienne',
       1 => 'epices parisiennes',
       2 => 'quatre epices',
-      3 => 'quatre épices',
+      3 => 'quatre Ã©pices',
     ),
   ),
   1569 => 
@@ -20194,9 +20194,9 @@
       1 => 'chocolate-hazelnut paste',
       2 => 'chocolate-hazelnut spread',
       3 => 'gianduia paste',
-      4 => 'gianduia pâté',
+      4 => 'gianduia pÃ¢tÃ©',
       5 => 'gianduja paste',
-      6 => 'gianduja pâté',
+      6 => 'gianduja pÃ¢tÃ©',
       7 => 'pasta gianduja',
     ),
   ),
@@ -20520,7 +20520,7 @@
     array (
       0 => 'dragees',
       1 => 'dragge',
-      2 => 'dragées',
+      2 => 'dragÃ©es',
     ),
   ),
   1753 => 
@@ -22071,7 +22071,7 @@
       0 => 'jerez vinegar',
       1 => 'sherry vinegar',
       2 => 'sherry wine vinegar',
-      3 => 'vinagre de jeréz',
+      3 => 'vinagre de jerÃ©z',
       4 => 'vinagre de xeres',
       5 => 'xeres vinegar',
     ),
@@ -22414,7 +22414,7 @@
     'E' => 
     array (
       0 => 'aqua vitae',
-      1 => 'aqua vitæ',
+      1 => 'aqua vitÃ¦',
       2 => 'eaux de vie',
       3 => 'eaux-de-vie',
       4 => 'fruit brandies',
@@ -22499,10 +22499,10 @@
   1924 => 
   array (
     'N' => 7,
-    'T' => 'Barack Pálinka',
+    'T' => 'Barack PÃ¡linka',
     'E' => 
     array (
-      0 => 'barack pálinka',
+      0 => 'barack pÃ¡linka',
     ),
   ),
   1925 => 
@@ -22664,10 +22664,10 @@
   1939 => 
   array (
     'N' => 8,
-    'T' => 'pflümli',
+    'T' => 'pflÃ¼mli',
     'E' => 
     array (
-      0 => 'pflümli',
+      0 => 'pflÃ¼mli',
     ),
   ),
   1940 => 
@@ -22691,11 +22691,11 @@
   1942 => 
   array (
     'N' => 6,
-    'T' => 'cachaça',
+    'T' => 'cachaÃ§a',
     'E' => 
     array (
       0 => 'cachaca',
-      1 => 'cachaça',
+      1 => 'cachaÃ§a',
       2 => 'pinga',
     ),
   ),
@@ -22902,7 +22902,7 @@
     'E' => 
     array (
       0 => 'amber rum',
-      1 => 'añejo rum',
+      1 => 'aÃ±ejo rum',
       2 => 'brown rum',
       3 => 'gold rum',
     ),
@@ -22981,7 +22981,7 @@
     array (
       0 => 'pina colada',
       1 => 'pina colada drink mix',
-      2 => 'piña colada',
+      2 => 'piÃ±a colada',
     ),
   ),
   1968 => 
@@ -23021,19 +23021,19 @@
   1971 => 
   array (
     'N' => 6,
-    'T' => 'tequilas añejas',
+    'T' => 'tequilas aÃ±ejas',
     'E' => 
     array (
-      0 => 'tequilas añejas',
+      0 => 'tequilas aÃ±ejas',
     ),
   ),
   1972 => 
   array (
     'N' => 6,
-    'T' => 'José Cuervo',
+    'T' => 'JosÃ© Cuervo',
     'E' => 
     array (
-      0 => 'josé cuervo',
+      0 => 'josÃ© cuervo',
     ),
   ),
   1973 => 
@@ -23681,11 +23681,11 @@
   2030 => 
   array (
     'N' => 6,
-    'T' => 'Punt è Mes',
+    'T' => 'Punt Ã¨ Mes',
     'E' => 
     array (
       0 => 'punt e mes',
-      1 => 'punt è mes',
+      1 => 'punt Ã¨ mes',
     ),
   ),
   2031 => 
@@ -23700,10 +23700,10 @@
   2032 => 
   array (
     'N' => 6,
-    'T' => 'Jägermeister',
+    'T' => 'JÃ¤germeister',
     'E' => 
     array (
-      0 => 'jägermeister',
+      0 => 'jÃ¤germeister',
     ),
   ),
   2033 => 
@@ -23765,21 +23765,21 @@
   2038 => 
   array (
     'N' => 6,
-    'T' => 'crème de cacao',
+    'T' => 'crÃ¨me de cacao',
     'E' => 
     array (
       0 => 'creme de cacao',
-      1 => 'crème de cacao',
+      1 => 'crÃ¨me de cacao',
     ),
   ),
   2039 => 
   array (
     'N' => 6,
-    'T' => 'crème de chocolat',
+    'T' => 'crÃ¨me de chocolat',
     'E' => 
     array (
       0 => 'creme de chocolat',
-      1 => 'crème de chocolat',
+      1 => 'crÃ¨me de chocolat',
     ),
   ),
   2040 => 
@@ -23803,11 +23803,11 @@
   2042 => 
   array (
     'N' => 5,
-    'T' => 'crème liqueur',
+    'T' => 'crÃ¨me liqueur',
     'E' => 
     array (
-      0 => 'crème',
-      1 => 'crème liqueur',
+      0 => 'crÃ¨me',
+      1 => 'crÃ¨me liqueur',
     ),
     'S' => 
     array (
@@ -23829,131 +23829,131 @@
   2043 => 
   array (
     'N' => 6,
-    'T' => 'crème d\'abricot',
+    'T' => 'crÃ¨me d\'abricot',
     'E' => 
     array (
       0 => 'creme d\'abricot',
-      1 => 'crème d\'abricot',
+      1 => 'crÃ¨me d\'abricot',
     ),
   ),
   2044 => 
   array (
     'N' => 6,
-    'T' => 'crème d\'ananas',
+    'T' => 'crÃ¨me d\'ananas',
     'E' => 
     array (
       0 => 'creme d\'ananas',
-      1 => 'crème d\'ananas',
+      1 => 'crÃ¨me d\'ananas',
     ),
   ),
   2045 => 
   array (
     'N' => 6,
-    'T' => 'crème de banane',
+    'T' => 'crÃ¨me de banane',
     'E' => 
     array (
       0 => 'creme de banane',
-      1 => 'crème de banane',
+      1 => 'crÃ¨me de banane',
     ),
   ),
   2046 => 
   array (
     'N' => 6,
-    'T' => 'crème de cassis',
+    'T' => 'crÃ¨me de cassis',
     'E' => 
     array (
       0 => 'creme de cassis',
-      1 => 'crème de cassis',
+      1 => 'crÃ¨me de cassis',
     ),
   ),
   2047 => 
   array (
     'N' => 6,
-    'T' => 'crème de cerise',
+    'T' => 'crÃ¨me de cerise',
     'E' => 
     array (
       0 => 'creme de cerise',
-      1 => 'crème de cerise',
+      1 => 'crÃ¨me de cerise',
     ),
   ),
   2048 => 
   array (
     'N' => 6,
-    'T' => 'crème de fraise',
+    'T' => 'crÃ¨me de fraise',
     'E' => 
     array (
       0 => 'creme a la fraise des bois',
       1 => 'creme de fraise',
-      2 => 'crème de fraise',
-      3 => 'crème à la fraise des bois',
+      2 => 'crÃ¨me de fraise',
+      3 => 'crÃ¨me Ã  la fraise des bois',
     ),
   ),
   2049 => 
   array (
     'N' => 6,
-    'T' => 'crème de framboise',
+    'T' => 'crÃ¨me de framboise',
     'E' => 
     array (
       0 => 'creme de framboise',
-      1 => 'crème de framboise',
+      1 => 'crÃ¨me de framboise',
     ),
   ),
   2050 => 
   array (
     'N' => 6,
-    'T' => 'crème de griotte',
+    'T' => 'crÃ¨me de griotte',
     'E' => 
     array (
-      0 => 'crème de griotte',
+      0 => 'crÃ¨me de griotte',
     ),
   ),
   2051 => 
   array (
     'N' => 6,
-    'T' => 'crème de mandarine',
+    'T' => 'crÃ¨me de mandarine',
     'E' => 
     array (
       0 => 'creme de mandarine',
-      1 => 'crème de mandarine',
+      1 => 'crÃ¨me de mandarine',
     ),
   ),
   2052 => 
   array (
     'N' => 6,
-    'T' => 'crème de mûre',
+    'T' => 'crÃ¨me de mÃ»re',
     'E' => 
     array (
       0 => 'creme de mure',
-      1 => 'crème de mûre',
+      1 => 'crÃ¨me de mÃ»re',
     ),
   ),
   2053 => 
   array (
     'N' => 6,
-    'T' => 'crème de myrtille',
+    'T' => 'crÃ¨me de myrtille',
     'E' => 
     array (
-      0 => 'crème de myrtille',
+      0 => 'crÃ¨me de myrtille',
     ),
   ),
   2054 => 
   array (
     'N' => 6,
-    'T' => 'crème de pêche',
+    'T' => 'crÃ¨me de pÃªche',
     'E' => 
     array (
       0 => 'creme de peche',
-      1 => 'crème de pêche',
+      1 => 'crÃ¨me de pÃªche',
     ),
   ),
   2055 => 
   array (
     'N' => 6,
-    'T' => 'crème de prunelle',
+    'T' => 'crÃ¨me de prunelle',
     'E' => 
     array (
       0 => 'creme de prunelle',
-      1 => 'crème de prunelle',
+      1 => 'crÃ¨me de prunelle',
     ),
   ),
   2056 => 
@@ -24083,10 +24083,10 @@
   2065 => 
   array (
     'N' => 8,
-    'T' => 'Chéri Suisse',
+    'T' => 'ChÃ©ri Suisse',
     'E' => 
     array (
-      0 => 'chéri suisse',
+      0 => 'chÃ©ri suisse',
     ),
   ),
   2066 => 
@@ -24201,11 +24201,11 @@
   2076 => 
   array (
     'N' => 7,
-    'T' => 'Citrónge',
+    'T' => 'CitrÃ³nge',
     'E' => 
     array (
       0 => 'citronge',
-      1 => 'citrónge',
+      1 => 'citrÃ³nge',
     ),
   ),
   2077 => 
@@ -24266,10 +24266,10 @@
   2082 => 
   array (
     'N' => 8,
-    'T' => 'Mandarine Napoléon',
+    'T' => 'Mandarine NapolÃ©on',
     'E' => 
     array (
-      0 => 'mandarine napoléon',
+      0 => 'mandarine napolÃ©on',
     ),
   ),
   2083 => 
@@ -24318,11 +24318,11 @@
   2087 => 
   array (
     'N' => 8,
-    'T' => 'curaçao',
+    'T' => 'curaÃ§ao',
     'E' => 
     array (
       0 => 'curacao',
-      1 => 'curaçao',
+      1 => 'curaÃ§ao',
     ),
     'S' => 
     array (
@@ -24334,31 +24334,31 @@
   2088 => 
   array (
     'N' => 9,
-    'T' => 'red curaçao',
+    'T' => 'red curaÃ§ao',
     'E' => 
     array (
       0 => 'red curacao',
-      1 => 'red curaçao',
+      1 => 'red curaÃ§ao',
     ),
   ),
   2089 => 
   array (
     'N' => 9,
-    'T' => 'blue curaçao',
+    'T' => 'blue curaÃ§ao',
     'E' => 
     array (
       0 => 'blue curacao',
-      1 => 'blue curaçao',
+      1 => 'blue curaÃ§ao',
     ),
   ),
   2090 => 
   array (
     'N' => 9,
-    'T' => 'orange curaçao',
+    'T' => 'orange curaÃ§ao',
     'E' => 
     array (
       0 => 'orange curacao',
-      1 => 'orange curaçao',
+      1 => 'orange curaÃ§ao',
     ),
   ),
   2091 => 
@@ -24571,12 +24571,12 @@
   2110 => 
   array (
     'N' => 6,
-    'T' => 'Bénédictine',
+    'T' => 'BÃ©nÃ©dictine',
     'E' => 
     array (
       0 => 'benedictine',
-      1 => 'bénédictine',
-      2 => 'bénédictine d.o.m.',
+      1 => 'bÃ©nÃ©dictine',
+      2 => 'bÃ©nÃ©dictine d.o.m.',
     ),
   ),
   2111 => 
@@ -24586,7 +24586,7 @@
     'E' => 
     array (
       0 => 'chartreuse',
-      1 => 'liqueur des pères chartreux',
+      1 => 'liqueur des pÃ¨res chartreux',
     ),
     'S' => 
     array (
@@ -24615,11 +24615,11 @@
   2114 => 
   array (
     'N' => 6,
-    'T' => 'crème de cumin',
+    'T' => 'crÃ¨me de cumin',
     'E' => 
     array (
       0 => 'creme de cumin',
-      1 => 'crème de cumin',
+      1 => 'crÃ¨me de cumin',
     ),
   ),
   2115 => 
@@ -24680,11 +24680,11 @@
   2121 => 
   array (
     'N' => 6,
-    'T' => 'Jägermeister',
+    'T' => 'JÃ¤germeister',
     'E' => 
     array (
       0 => 'jagermeister',
-      1 => 'jägermeister',
+      1 => 'jÃ¤germeister',
     ),
   ),
   2122 => 
@@ -24798,30 +24798,30 @@
   2131 => 
   array (
     'N' => 7,
-    'T' => 'Kahl£a',
+    'T' => 'KahlÂ£a',
     'E' => 
     array (
       0 => 'kahlua',
-      1 => 'kahl£a',
+      1 => 'kahlÂ£a',
     ),
   ),
   2132 => 
   array (
     'N' => 7,
-    'T' => 'Tía Maria',
+    'T' => 'TÃ­a Maria',
     'E' => 
     array (
-      0 => 'tía maria',
+      0 => 'tÃ­a maria',
     ),
   ),
   2133 => 
   array (
     'N' => 6,
-    'T' => 'crème de café',
+    'T' => 'crÃ¨me de cafÃ©',
     'E' => 
     array (
       0 => 'creme de cafe',
-      1 => 'crème de café',
+      1 => 'crÃ¨me de cafÃ©',
     ),
   ),
   2134 => 
@@ -24841,23 +24841,23 @@
   2135 => 
   array (
     'N' => 7,
-    'T' => 'crème de rose',
+    'T' => 'crÃ¨me de rose',
     'E' => 
     array (
       0 => 'creme de rose',
       1 => 'creme de roses',
-      2 => 'crème de rose',
-      3 => 'crème de roses',
+      2 => 'crÃ¨me de rose',
+      3 => 'crÃ¨me de roses',
     ),
   ),
   2136 => 
   array (
     'N' => 7,
-    'T' => 'crème de violette',
+    'T' => 'crÃ¨me de violette',
     'E' => 
     array (
       0 => 'creme de violette',
-      1 => 'crème de violette',
+      1 => 'crÃ¨me de violette',
     ),
     'S' => 
     array (
@@ -24867,11 +24867,11 @@
   2137 => 
   array (
     'N' => 8,
-    'T' => 'Crème d\'Yvette',
+    'T' => 'CrÃ¨me d\'Yvette',
     'E' => 
     array (
       0 => 'creme d\'yvette',
-      1 => 'crème d\'yvette',
+      1 => 'crÃ¨me d\'yvette',
     ),
   ),
   2138 => 
@@ -24915,11 +24915,11 @@
   2141 => 
   array (
     'N' => 7,
-    'T' => 'crème de menthe',
+    'T' => 'crÃ¨me de menthe',
     'E' => 
     array (
       0 => 'creme de menthe',
-      1 => 'crème de menthe',
+      1 => 'crÃ¨me de menthe',
     ),
   ),
   2142 => 
@@ -25004,31 +25004,31 @@
   2149 => 
   array (
     'N' => 7,
-    'T' => 'Goldschläger',
+    'T' => 'GoldschlÃ¤ger',
     'E' => 
     array (
       0 => 'goldschlager',
-      1 => 'goldschläger',
+      1 => 'goldschlÃ¤ger',
     ),
   ),
   2150 => 
   array (
     'N' => 7,
-    'T' => 'kümmel',
+    'T' => 'kÃ¼mmel',
     'E' => 
     array (
       0 => 'kummel',
-      1 => 'kümmel',
+      1 => 'kÃ¼mmel',
     ),
   ),
   2151 => 
   array (
     'N' => 6,
-    'T' => 'Tía Maria',
+    'T' => 'TÃ­a Maria',
     'E' => 
     array (
       0 => 'tia maria',
-      1 => 'tía maria',
+      1 => 'tÃ­a maria',
     ),
   ),
   2152 => 
@@ -25050,11 +25050,11 @@
   2153 => 
   array (
     'N' => 7,
-    'T' => 'crème de vanille',
+    'T' => 'crÃ¨me de vanille',
     'E' => 
     array (
       0 => 'creme de vanille',
-      1 => 'crème de vanille',
+      1 => 'crÃ¨me de vanille',
     ),
   ),
   2154 => 
@@ -25106,33 +25106,33 @@
   2158 => 
   array (
     'N' => 6,
-    'T' => 'crème d\'amande',
+    'T' => 'crÃ¨me d\'amande',
     'E' => 
     array (
       0 => 'creme d\'amande',
-      1 => 'crème d\'amande',
+      1 => 'crÃ¨me d\'amande',
     ),
   ),
   2159 => 
   array (
     'N' => 6,
-    'T' => 'crème de noix',
+    'T' => 'crÃ¨me de noix',
     'E' => 
     array (
       0 => 'creme de noix',
-      1 => 'crème de noix',
+      1 => 'crÃ¨me de noix',
     ),
   ),
   2160 => 
   array (
     'N' => 6,
-    'T' => 'crème de noyaux',
+    'T' => 'crÃ¨me de noyaux',
     'E' => 
     array (
       0 => 'creme de noyau',
       1 => 'creme de noyaux',
-      2 => 'crème de noyau',
-      3 => 'crème de noyaux',
+      2 => 'crÃ¨me de noyau',
+      3 => 'crÃ¨me de noyaux',
     ),
   ),
   2161 => 
@@ -25315,19 +25315,19 @@
   2174 => 
   array (
     'N' => 7,
-    'T' => 'Médoc',
+    'T' => 'MÃ©doc',
     'E' => 
     array (
-      0 => 'médoc',
+      0 => 'mÃ©doc',
     ),
   ),
   2175 => 
   array (
     'N' => 7,
-    'T' => 'Haut-Médoc',
+    'T' => 'Haut-MÃ©doc',
     'E' => 
     array (
-      0 => 'haut-médoc',
+      0 => 'haut-mÃ©doc',
     ),
   ),
   2176 => 
@@ -25436,11 +25436,11 @@
   2187 => 
   array (
     'N' => 6,
-    'T' => 'Rhône wine',
+    'T' => 'RhÃ´ne wine',
     'E' => 
     array (
       0 => 'rhone wine',
-      1 => 'rhône wine',
+      1 => 'rhÃ´ne wine',
     ),
     'S' => 
     array (
@@ -25451,19 +25451,19 @@
   2188 => 
   array (
     'N' => 7,
-    'T' => 'Châteauneuf-du-Pape',
+    'T' => 'ChÃ¢teauneuf-du-Pape',
     'E' => 
     array (
-      0 => 'châteauneuf-du-pape',
+      0 => 'chÃ¢teauneuf-du-pape',
     ),
   ),
   2189 => 
   array (
     'N' => 7,
-    'T' => 'Côtes-du-Rhône',
+    'T' => 'CÃ´tes-du-RhÃ´ne',
     'E' => 
     array (
-      0 => 'côtes-du-rhône',
+      0 => 'cÃ´tes-du-rhÃ´ne',
     ),
   ),
   2190 => 
@@ -25617,11 +25617,11 @@
   2203 => 
   array (
     'N' => 6,
-    'T' => 'Gewürztraminer',
+    'T' => 'GewÃ¼rztraminer',
     'E' => 
     array (
       0 => 'gewurztraminer',
-      1 => 'gewürztraminer',
+      1 => 'gewÃ¼rztraminer',
       2 => 'traminer',
     ),
   ),
@@ -25666,22 +25666,22 @@
   2208 => 
   array (
     'N' => 6,
-    'T' => 'Pouilly-Fumé',
+    'T' => 'Pouilly-FumÃ©',
     'E' => 
     array (
       0 => 'fume de pouilly',
-      1 => 'fumé de pouilly',
+      1 => 'fumÃ© de pouilly',
       2 => 'pouilly-fume',
-      3 => 'pouilly-fumé',
+      3 => 'pouilly-fumÃ©',
     ),
   ),
   2209 => 
   array (
     'N' => 6,
-    'T' => 'Pouilly-Fuissé',
+    'T' => 'Pouilly-FuissÃ©',
     'E' => 
     array (
-      0 => 'pouilly-fuissé',
+      0 => 'pouilly-fuissÃ©',
     ),
   ),
   2210 => 
@@ -25743,18 +25743,18 @@
     'E' => 
     array (
       0 => 'blanc fume',
-      1 => 'blanc fumé',
+      1 => 'blanc fumÃ©',
       2 => 'sauvignon blanc',
     ),
   ),
   2216 => 
   array (
     'N' => 6,
-    'T' => 'Sémillon',
+    'T' => 'SÃ©millon',
     'E' => 
     array (
       0 => 'semillon',
-      1 => 'sémillon',
+      1 => 'sÃ©millon',
     ),
   ),
   2217 => 
@@ -25784,7 +25784,7 @@
       0 => 'blush wine',
       1 => 'pink wine',
       2 => 'rose wine',
-      3 => 'rosé wine',
+      3 => 'rosÃ© wine',
     ),
     'S' => 
     array (
@@ -25799,7 +25799,7 @@
     'T' => 'white Grenache',
     'E' => 
     array (
-      0 => 'grenache rosé',
+      0 => 'grenache rosÃ©',
       1 => 'white grenache',
     ),
   ),
@@ -25819,7 +25819,7 @@
     'E' => 
     array (
       0 => 'white zinfandel',
-      1 => 'zinfandel rosé',
+      1 => 'zinfandel rosÃ©',
     ),
   ),
   2223 => 
@@ -25854,10 +25854,10 @@
   2225 => 
   array (
     'N' => 7,
-    'T' => 'Dom Pérignon',
+    'T' => 'Dom PÃ©rignon',
     'E' => 
     array (
-      0 => 'dom pérignon',
+      0 => 'dom pÃ©rignon',
     ),
   ),
   2226 => 
@@ -26420,7 +26420,7 @@
       0 => 'rice wine',
       1 => 'sake',
       2 => 'saki',
-      3 => 'saké',
+      3 => 'sakÃ©',
     ),
   ),
   2276 => 
@@ -26735,7 +26735,7 @@
     'E' => 
     array (
       0 => 'elixer longae vitae',
-      1 => 'elixer longæ vitæ',
+      1 => 'elixer longÃ¦ vitÃ¦',
       2 => 'pommeranzen bitter',
     ),
   ),
@@ -27233,7 +27233,7 @@
     array (
       0 => 'cream honey',
       1 => 'creamed honey',
-      2 => 'crème honey',
+      2 => 'crÃ¨me honey',
       3 => 'spun honey',
       4 => 'whipped honey',
     ),
@@ -32243,7 +32243,7 @@
     'E' => 
     array (
       0 => 'mi chay',
-      1 => 'mì chay',
+      1 => 'mÃ¬ chay',
     ),
   ),
   2794 => 
@@ -32899,11 +32899,11 @@
   2843 => 
   array (
     'N' => 6,
-    'T' => 'cérnametélt',
+    'T' => 'cÃ©rnametÃ©lt',
     'E' => 
     array (
       0 => 'cernametelt',
-      1 => 'cérnametélt',
+      1 => 'cÃ©rnametÃ©lt',
     ),
   ),
   2844 => 
@@ -33001,7 +33001,7 @@
       0 => 'spaetzle',
       1 => 'spatzele',
       2 => 'spetzli',
-      3 => 'spätzle',
+      3 => 'spÃ¤tzle',
     ),
   ),
   2853 => 
@@ -33201,7 +33201,7 @@
       2 => 'pie crust',
       3 => 'pie crust dough',
       4 => 'pie pastry',
-      5 => 'pâte brisée',
+      5 => 'pÃ¢te brisÃ©e',
       6 => 'short pastry',
     ),
     'S' => 
@@ -33242,7 +33242,7 @@
       2 => 'pate feuilletee',
       3 => 'puff paste',
       4 => 'puff pastry',
-      5 => 'pâte feuilletée',
+      5 => 'pÃ¢te feuilletÃ©e',
     ),
   ),
   2872 => 
@@ -33375,11 +33375,11 @@
   2882 => 
   array (
     'N' => 4,
-    'T' => 'beurre manié',
+    'T' => 'beurre maniÃ©',
     'E' => 
     array (
       0 => 'beurre manie',
-      1 => 'beurre manié',
+      1 => 'beurre maniÃ©',
       2 => 'kneaded butter',
     ),
   ),
@@ -33819,7 +33819,7 @@
       1 => 'cornflour',
       2 => 'cornstarch',
       3 => 'cornstarch paste',
-      4 => 'crème de mais',
+      4 => 'crÃ¨me de mais',
       5 => 'maize cornflour',
     ),
   ),
@@ -34076,7 +34076,7 @@
     'E' => 
     array (
       0 => 'corn husk',
-      1 => 'hoja de maíz',
+      1 => 'hoja de maÃ­z',
     ),
   ),
   2939 => 
@@ -34526,13 +34526,13 @@
   2978 => 
   array (
     'N' => 5,
-    'T' => 'bâtarde',
+    'T' => 'bÃ¢tarde',
     'E' => 
     array (
       0 => 'batard',
       1 => 'batarde',
-      2 => 'bâtard',
-      3 => 'bâtarde',
+      2 => 'bÃ¢tard',
+      3 => 'bÃ¢tarde',
     ),
   ),
   2979 => 
@@ -35151,13 +35151,13 @@
   3036 => 
   array (
     'N' => 4,
-    'T' => 'génoise',
+    'T' => 'gÃ©noise',
     'E' => 
     array (
       0 => 'butter sponge cake',
       1 => 'french butter sponge cake',
       2 => 'genoise',
-      3 => 'génoise',
+      3 => 'gÃ©noise',
     ),
   ),
   3037 => 
@@ -36093,12 +36093,12 @@
   3120 => 
   array (
     'N' => 4,
-    'T' => 'h”n”',
+    'T' => 'hâ€nâ€',
     'E' => 
     array (
       0 => 'hono',
       1 => 'honokakor',
-      2 => 'h”n”',
+      2 => 'hâ€nâ€',
     ),
   ),
   3121 => 
@@ -36178,7 +36178,7 @@
     array (
       0 => 'piada',
       1 => 'piadina',
-      2 => 'pié',
+      2 => 'piÃ©',
     ),
   ),
   3129 => 
@@ -37655,7 +37655,7 @@
       8 => 'pinoli',
       9 => 'pinon nut',
       10 => 'pinyon',
-      11 => 'piñon',
+      11 => 'piÃ±on',
       12 => 'snoober',
     ),
   ),
@@ -37769,7 +37769,7 @@
     'E' => 
     array (
       0 => 'candied chestnuts',
-      1 => 'marrons glacés',
+      1 => 'marrons glacÃ©s',
     ),
   ),
   3261 => 
@@ -37788,18 +37788,18 @@
     'E' => 
     array (
       0 => 'chestnut cream',
-      1 => 'crème de marron',
+      1 => 'crÃ¨me de marron',
     ),
   ),
   3263 => 
   array (
     'N' => 4,
-    'T' => 'chestnut purée',
+    'T' => 'chestnut purÃ©e',
     'E' => 
     array (
       0 => 'chestnut puree',
-      1 => 'chestnut purée',
-      2 => 'purée de marron',
+      1 => 'chestnut purÃ©e',
+      2 => 'purÃ©e de marron',
     ),
   ),
   3264 => 
@@ -37891,7 +37891,7 @@
     'E' => 
     array (
       0 => 'praline paste',
-      1 => 'praliné',
+      1 => 'pralinÃ©',
     ),
   ),
   3273 => 
@@ -39413,10 +39413,10 @@
   3398 => 
   array (
     'N' => 6,
-    'T' => 'châteaubriand',
+    'T' => 'chÃ¢teaubriand',
     'E' => 
     array (
-      0 => 'châteaubriand',
+      0 => 'chÃ¢teaubriand',
     ),
   ),
   3399 => 
@@ -42502,7 +42502,7 @@
     array (
       0 => 'chaurico',
       1 => 'chourico',
-      2 => 'chouriço',
+      2 => 'chouriÃ§o',
     ),
   ),
   3658 => 
@@ -42562,11 +42562,11 @@
   3664 => 
   array (
     'N' => 5,
-    'T' => 'grützewurst',
+    'T' => 'grÃ¼tzewurst',
     'E' => 
     array (
       0 => 'grutzewurst',
-      1 => 'grützewurst',
+      1 => 'grÃ¼tzewurst',
     ),
   ),
   3665 => 
@@ -42648,7 +42648,7 @@
     'T' => 'kishke',
     'E' => 
     array (
-      0 => 'derúma',
+      0 => 'derÃºma',
       1 => 'kishka',
       2 => 'kishke',
       3 => 'kiska',
@@ -42708,7 +42708,7 @@
     'E' => 
     array (
       0 => 'linguica',
-      1 => 'linguiça',
+      1 => 'linguiÃ§a',
     ),
   ),
   3677 => 
@@ -42755,7 +42755,7 @@
     'E' => 
     array (
       0 => 'merguez sausage',
-      1 => 'mirkâs',
+      1 => 'mirkÃ¢s',
     ),
   ),
   3682 => 
@@ -42862,7 +42862,7 @@
     'E' => 
     array (
       0 => 'salpicao',
-      1 => 'salpicæo',
+      1 => 'salpicÃ¦o',
     ),
   ),
   3693 => 
@@ -42948,7 +42948,7 @@
     'E' => 
     array (
       0 => 'weisswurst',
-      1 => 'weiáwürste',
+      1 => 'weiÃ¡wÃ¼rste',
       2 => 'white sausage',
     ),
   ),
@@ -43164,11 +43164,11 @@
   3719 => 
   array (
     'N' => 5,
-    'T' => 'leberkäse',
+    'T' => 'leberkÃ¤se',
     'E' => 
     array (
       0 => 'leberkase',
-      1 => 'leberkäse',
+      1 => 'leberkÃ¤se',
     ),
   ),
   3720 => 
@@ -43213,13 +43213,13 @@
   3724 => 
   array (
     'N' => 5,
-    'T' => 'pâté',
+    'T' => 'pÃ¢tÃ©',
     'E' => 
     array (
       0 => 'liver paste',
       1 => 'pate',
-      2 => 'paté',
-      3 => 'pâté',
+      2 => 'patÃ©',
+      3 => 'pÃ¢tÃ©',
     ),
   ),
   3725 => 
@@ -43301,7 +43301,7 @@
     array (
       0 => 'sulz',
       1 => 'sulze',
-      2 => 'sülze',
+      2 => 'sÃ¼lze',
     ),
   ),
   3733 => 
@@ -44280,7 +44280,7 @@
     'E' => 
     array (
       0 => 'bunderfleisch',
-      1 => 'bündner fleisch',
+      1 => 'bÃ¼ndner fleisch',
     ),
   ),
   3821 => 
@@ -46258,7 +46258,7 @@
       1 => 'crawfish',
       2 => 'crayfish',
       3 => 'ecrevisse',
-      4 => 'écrevisse',
+      4 => 'Ã©crevisse',
     ),
   ),
   3997 => 
@@ -48433,7 +48433,7 @@
     'E' => 
     array (
       0 => 'dende oil',
-      1 => 'dendê oil',
+      1 => 'dendÃª oil',
       2 => 'palm oil',
     ),
   ),
@@ -50422,14 +50422,14 @@
   4354 => 
   array (
     'N' => 5,
-    'T' => 'pipián',
+    'T' => 'pipiÃ¡n',
     'E' => 
     array (
       0 => 'green pumpkin seed sauce',
       1 => 'pipian',
       2 => 'pipian paste',
-      3 => 'pipián',
-      4 => 'pipián paste',
+      3 => 'pipiÃ¡n',
+      4 => 'pipiÃ¡n paste',
       5 => 'pumpkin seed mol',
       6 => 'pumpkin seed sauce',
     ),
@@ -50441,7 +50441,7 @@
     'E' => 
     array (
       0 => 'recaito',
-      1 => 'recaíto',
+      1 => 'recaÃ­to',
     ),
   ),
   4356 => 

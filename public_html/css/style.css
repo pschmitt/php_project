@@ -178,6 +178,7 @@ header {
 	padding:0px 14px;
 	display: block;
 	font: bold 12px/33px Arial,sans-serif;
+	text-transform: capitalize; /* Pour que les noms d'ingrédients du thésaurus qui n'ont pas de majuscule en ait une. */
 }
 #mainnav li:hover > a,
 #mainnav ul ul :hover > a {
@@ -329,7 +330,7 @@ a:hover {
 
 /* Registration - form
 --------------------------------------------- */
-fieldset { /* TODO: applies on entire page ! */
+fieldset { /* TODO: applies on entire page! */
     margin-bottom: 10px;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
