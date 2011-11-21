@@ -55,9 +55,9 @@
         // TODO error handling
         //return utf8_encode(preg_replace('[\']', null, $str));
         return utf8_encode(preg_replace('[\']','\\\'' , $str));
-        //global $db;
-        //echo "db = ".$db."\n";
-        //return mysqli_real_escape_string($db, $str);
+        /*global $db;
+        echo "db = ".$db."\n";
+        return mysqli_real_escape_string($db, $str);*/
     }
 
     function submit($db, $sql) {
@@ -82,56 +82,10 @@
     }
 
     printf("Parsing XML data and inserting to DB\n");
-    function parse_file ($file, $db, $table) {
-        // read data from file
-        $fp = fopen($file, "r");
-        if (!$fp)
-            die("Couldn't open xml file\n");
-        $index = 0;
-        while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
-            printf("Processing line %s ...", $index);
-            line_to_db($line, $db, $table);
-            printf("done\n");
-            //$data_array[$index] = simplexml_load_string($line);
-        }
-        fclose($fp)
-            or die("Couldn't close file");
-    }
-    $file = "./data/Recettes.xml";
+     $file = "./data/Recettes.xml";
     parse_file($file, $db, $table);
-    //$data_array = parse_file();
-    /*
-        // TEST
-        print_r($data_array); 
-        unset ($index);
-    */
-    
-
-    /*foreach($data_array as $index => $recipe) {
-        printf("Processing line %s ...", $index); 
-        $ing = NULL;
-        // TODO: Error handling (multiple executions)
-        foreach($recipe->IN as $ingredient)
-            $ing .= $ingredient->ING.INGREDIENT_DELIMITER;
-        $sql = "INSERT INTO $table VALUES ('".$index."', '".$recipe->TI."', '".$recipe->PR."', '".$ing."')";
-        
-        submit($db, $sql);
-
-        printf("done\n");
-    }*/
-
-    /*
-    if (!mysqli_multi_query($db, $sql))
-        printf("Error: %s\n",mysqli_error($db));
-    printf("Database succesfully filled\n");
-    */
-
-    // test if already present
-    // $sql = "SELECT * FROM ".$table." WHERE id = 1";
-    
     // search
     // $sql = "SELECT `preparation` FROM ".$table." WHERE ingredients like '%orange%'";
-
 
     mysqli_close($db);
 ?>
