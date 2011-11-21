@@ -82,7 +82,7 @@
     }
 
     printf("Parsing XML data and inserting to DB\n");
-     $file = "./data/Recettes.xml";
+    $file = "./data/Recettes.xml";
     parse_file($file, $db, $table);
     // search
     // $sql = "SELECT `preparation` FROM ".$table." WHERE ingredients like '%orange%'";
