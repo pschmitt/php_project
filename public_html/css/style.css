@@ -115,7 +115,7 @@ header {
 	margin: 54px;
 	max-width: 100%;
 }
-#login {
+#login_form {
     text-align: right;
 	padding: 20px;
 	background-color: #000;
@@ -330,9 +330,14 @@ a:hover {
 
 /* Registration - form
 --------------------------------------------- */
-fieldset { /* TODO: applies on entire page! */
+#registration fieldset { /* TODO: applies on entire page! */
     margin-bottom: 10px;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;
+}
+
+#registration label {
+    width: 150px;
+    float: left;
 }

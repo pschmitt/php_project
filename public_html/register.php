@@ -1,6 +1,8 @@
 <h2>S'enregistrer</h2>
-
-<form id="registration" method="post" action="index.php">
+<?php
+    
+?>
+<form id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>">
     <p>
         <label for="name">Nom: </label>
         <input type="text" name="name" id="name" placeholder="Votre nom" />
@@ -15,7 +17,7 @@
     </p>
     <p>
         <label for="password">Mot de passe: </label>
-        <input type="password" name="password" title="mot de passe" id="password" required />
+        <input type="password" name="password" title="mot de passe" id="password" placeholder="••••" required />
     </p>
     <p>
         <label for="gender">Vous êtes: </label>
@@ -26,23 +28,19 @@
         </select>
     </p>
     <p>
-        <label for="email">Adresse email: </label>
-        <input type="text" name="email" id="email" placeholder="xxx@yyy.com" /> <!-- type="email" -->
-    </p>
-    <p>
         <label for="birth_year">Date de naissance: </label>
         <select name="birth_year" id="birth_year">
             <option value="default" selected="selected"></option>
             <?php
-                for ($d = 1901; $d < 2012; $d++) {
-                    echo "<option value=".$d.">\n\t".$d."\n</option>\n";
+                for ($year = 1901; $year < 2012; $year++) {
+                    echo "<option value=".$year.">\n\t".$year."\n</option>\n";
                 }
             ?>
         </select>
     </p>
     <!--p ? -->
     <fieldset>
-        <legend>Adresse: </legend>
+        <legend>Adresse</legend>
         <label for="street_address">Rue: </label>
         <input type="text" name="street_address" id="street_address" />
         <br />
@@ -56,6 +54,10 @@
     <p>
         <label for="tel_num">Numéro de téléphone: </label>
         <input type="tel" name="tel_num" id="tel_num" placeholder="01 02 03 04 05" />
+    </p>
+    <p>
+        <label for="email">Adresse email: </label>
+        <input type="text" name="email" id="email" placeholder="xxx@yyy.com" /> <!-- type="email" -->
     </p>
     <p>
         <input type="submit" value="Envoyer" class="submit" />
