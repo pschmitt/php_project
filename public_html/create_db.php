@@ -14,22 +14,22 @@
     define("INGREDIENT_DELIMITER", "--");
 
     // create database
-    if (!$db = mysqli_connect($db_host, $db_user, $db_password))
-        mysqli_connect_error();
-
+    $db = mysqli_connect($db_host, $db_user, $db_password)
+        or die("Connect error: ".mysqli_connect_error());
     printf("Success... %s\n", mysqli_get_host_info($db));
-
-    // set autocommit
-    mysqli_autocommit($db, TRUE);
 
     // create DB (cooking)
     $sql = "CREATE DATABASE IF NOT EXISTS ".$db_name;
-    if (!mysqli_query($db, $sql))
-        printf("Error: %s\n", mysqli_error($db));
-    printf("DB sucessfully created.\n");
+    mysqli_query($db, $sql)
+        or die("Error: ".mysqli_error($db));
     
     // set default DB name
     mysqli_select_db($db, $db_name);
+    // set autocommit
+    mysqli_autocommit($db, TRUE)
+        or die("Couldn't set autocommit");
+    printf("DB sucessfully created.\n");
+
 
     // create TABLE (recipes)
     // TODO id: unsigned int ; max_size for entries
@@ -39,23 +39,17 @@
          ingredients TEXT,
          preparation TEXT
     )";
-    if (!mysqli_query($db, $sql))
-        printf("Error: %s\n", mysqli_error($db));
+    mysqli_query($db, $sql)
+        or die ("Error: %s".mysqli_error($db));
     printf("TABLE succesfully created.\n");
 
     $sql = "SELECT * FROM ".$table;
-    if (mysqli_num_rows(mysqli_query($db, $sql)) != 0) {
-        printf('You just ran the script man ... What \'bout <a href="erase_db.php">truncating|erasing</a> first ?');
-        exit;
-    }
-    unset($sql);
 
-    // read data from file
-    $file = "./data/Recettes.xml";
-    $fp = fopen($file, "r");
-    if (!$fp)
-        die("impossible d'ouvrir le fichier xml");
-    
+    // haha, check that out:
+    !mysqli_num_rows(mysqli_query($db, $sql))
+        or die('You just ran the script man ... What \'bout <a href="erase_db.php">truncating|erasing</a> first ?');
+    unset($sql);
+        
     function clean_line($str) {
         // TODO don't delete the '
         // TODO error handling
@@ -69,26 +63,51 @@
     function submit($db, $sql) {
         if ((!isset($db, $sql)) || (!mysqli_query($db, $sql))) {
             printf("Error: %s\n", mysqli_error($db));
-            return 1;
-        } else
             return 0;
+        } else
+            return 1;
+    }
+   
+    function line_to_db($line, $db, $table) {
+        isset($line)
+            or die("No param. Exiting.\n");
+        $line = clean_line($line);
+        $sxml = simplexml_load_string($line);
+        $ing = NULL;
+        foreach($sxml->IN as $ingredient)
+            $ing .= $ingredient->ING.INGREDIENT_DELIMITER;
+        $sql = "INSERT INTO ".$table." VALUES ('NULL', '".$sxml->TI."', '".$sxml->PR."', '".$ing."')";
+        submit($db, $sql)
+            or die("Couldn't submit !\n");
     }
 
-    $index = 0;
-    while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
-        $line = clean_line($line);
-        $data_array[$index] = simplexml_load_string($line);
+    printf("Parsing XML data and inserting to DB\n");
+    function parse_file ($file, $db, $table) {
+        // read data from file
+        $fp = fopen($file, "r");
+        if (!$fp)
+            die("Couldn't open xml file\n");
+        $index = 0;
+        while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
+            printf("Processing line %s ...", $index);
+            line_to_db($line, $db, $table);
+            printf("done\n");
+            //$data_array[$index] = simplexml_load_string($line);
+        }
+        fclose($fp)
+            or die("Couldn't close file");
     }
-    fclose($fp);
-    
+    $file = "./data/Recettes.xml";
+    parse_file($file, $db, $table);
+    //$data_array = parse_file();
     /*
         // TEST
         print_r($data_array); 
         unset ($index);
     */
     
-    printf("Parsing XML data and inserting to DB");
-    foreach($data_array as $index => $recipe) {
+
+    /*foreach($data_array as $index => $recipe) {
         printf("Processing line %s ...", $index); 
         $ing = NULL;
         // TODO: Error handling (multiple executions)
@@ -99,7 +118,7 @@
         submit($db, $sql);
 
         printf("done\n");
-    }
+    }*/
 
     /*
     if (!mysqli_multi_query($db, $sql))
