@@ -12,8 +12,6 @@
     $file = "./data/Recettes.xml";
     require "$passwd_file";
     
-    
-
     define("INGREDIENT_DELIMITER", "--");
 
     // create database
@@ -27,7 +25,8 @@
         or die("Error: ".mysqli_error($db));
     
     // set default DB name
-    mysqli_select_db($db, $db_name);
+    mysqli_select_db($db, $db_name)
+        or die("Couldn't select default DB(".$db_name.")");
     // set autocommit
     mysqli_autocommit($db, TRUE)
         or die("Couldn't set autocommit");
