@@ -31,7 +31,7 @@
                                "basket"    => "basket.php",
                                "search"    => "search.php");
                 # is the requested url correct? No? _> load home
-                if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]])))
+                if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]]))) // p for page, t for thesaurus
                     include($PAGES[$_GET["p"]]);
                 else
                     include("home.php");
