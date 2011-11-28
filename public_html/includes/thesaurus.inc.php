@@ -2,6 +2,8 @@
 	/**
 	 * Code à inclure dans header.inc.php
 	 * Permet de transformer le thésaurus fourni en menu.
+	 * 
+	 * Author: Mathieu Morainville
 	 */
 	include("./data/Thesaurus.php"); // Problème connu : pour tester simplement la page avec thesaurus.inc.php le chemin doit être : ../data/Thesaurus.php
 	/*
