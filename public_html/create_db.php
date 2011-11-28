@@ -21,7 +21,7 @@
 
     // create DB (cooking)
     $sql = "CREATE DATABASE IF NOT EXISTS ".$db_name;
-    mysqli_query($db, $sql)
+    mysqli_query($db, $sql) 
         or die("Error: ".mysqli_error($db));
     
     // set default DB name
@@ -63,7 +63,7 @@
     }
 
     function submit($db, $sql) {
-        if ((!isset($db, $sql)) || (!mysqli_query($db, $sql))) {
+        if ((!isset($db, $sql)) || (!mysqli_query($db, $sql)))
             die("Error: %s\n". mysqli_error($db));
     }
     
