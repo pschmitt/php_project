@@ -25,13 +25,13 @@
         <div id="principal">
             <?php
 				include("ariane.inc.php");
-                $PAGES = array("login"     => "login.php",
-                               "register"  => "register.php",
-                               "registered" => "registered.php",
-                               "basket"    => "basket.php",
-                               "search"    => "search.php");
+                $PAGES = array("login"		=> "login.php",
+                               "register"	=> "register.php",
+                               "registered"	=> "registered.php",
+                               "basket"		=> "basket.php",
+                               "search"		=> "search.php");
                 # is the requested url correct? No? _> load home
-                if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]]))) // p for page, t for thesaurus
+                if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]])))
                     include($PAGES[$_GET["p"]]);
                 else
                     include("home.php");

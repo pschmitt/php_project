@@ -52,7 +52,7 @@
 			
 			<li><a href="<?php echo $_SERVER['PHP_SELF']; ?>">Ingrédients</a>
 				<?php
-					include("thesaurus.inc.php");
+					//include("thesaurus.inc.php");
 				?>
 			</li>
 			
