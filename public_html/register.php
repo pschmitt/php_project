@@ -12,11 +12,11 @@
         <input type="text" name="first_name" id="first_name" placeholder="Votre prénom" />
     </p>
     <p>
-        <label for="username">Pseudo: </label>
+        <label for="username">Pseudo *: </label>
         <input type="text" name="username" id="username" title="Pseudo" placeholder="Votre pseudo" required />
     </p>
     <p>
-        <label for="password">Mot de passe: </label>
+        <label for="password">Mot de passe *: </label>
         <input type="password" name="password" title="mot de passe" id="password" placeholder="••••" required />
     </p>
     <p>
@@ -59,6 +59,9 @@
         <label for="email">Adresse email: </label>
         <input type="text" name="email" id="email" placeholder="xxx@yyy.com" /> <!-- type="email" -->
     </p>
+	<p>
+		<h6>les données précedées de * sont obligatoires</h6>
+	</p>
     <p>
         <input type="submit" value="Envoyer" class="submit" />
     </p>

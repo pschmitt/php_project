@@ -1,5 +1,5 @@
 <header>
-    <form id="login_form" name="login_form" method="post" action="javascript:alert('success!');" >
+    <form id="login_form" name="login_form" method="post" action= > <!--"javascript:alert('success!');"--> 
     <img src="images/se-connecter.png" alt="Se connecter" />
         <p>
             <label>Login
@@ -10,7 +10,8 @@
                 <input type="password" name="password" id="password" required />
             </label>
             <br />
-            <a id="submit" href="#">
+            <!-- <a id="submit" href="#"> -->
+			<a id="submit" href="<?php echo $_SERVER['PHP_SELF'].'?p=login'; ?>">
                 Connexion
             </a>
             |

@@ -15,6 +15,7 @@
     <?php
         set_include_path('includes'); // TODO: debug (unix only pathname?)
         include("header.inc.php");
+		include ("CreationBdd.php"); // ajout par Frantz-- creation et initialisation de la BD (est ce au bon endroit???)
     ?>
 
     <div id="centre">

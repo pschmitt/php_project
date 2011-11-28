@@ -11,40 +11,79 @@
     $passwd_file = realpath('../.login/DB_credentials.php');
     $file = "./data/Recettes.xml";
     require "$passwd_file";
+	require_once "Fonctions.inc.php"; 
     
     define("INGREDIENT_DELIMITER", "--");
 
-    // create database
-    $db = mysqli_connect($db_host, $db_user, $db_password)
-        or die("Connect error: ".mysqli_connect_error());
-    printf("Success... %s\n", mysqli_get_host_info($db));
+ 
+	//connexion au serveur avec mot d'utilisateur et mot de passe
+	$connect = mysql_connect($db_host, $db_user, $db_password) or die("Erreur de connexion au serveur: ".mysql_error());
+	
+	//creation de la base de données cooking
+	$creationDataBase = "CREATE DATABASE  IF NOT EXISTS ".$db_name;
+	query($creationDataBase); 
+	
+	//connexion a la base de données cooking
+	mysql_select_db($db_name) or die("Impossible de sélectionner la base :". $db_name);
+	
+	//creation de la table recipe
+	$create_recipe = "CREATE TABLE IF NOT EXISTS recipe (
+	`titre` varchar(50) NOT NULL,
+	`preparation` text NOT NULL,
+	PRIMARY KEY (`titre`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
+	query($create_recipe);
+	
+	//creation de la table ingredient
+	$create_ingredient = "CREATE TABLE IF NOT EXISTS `ingredient` (
+	`nom` varchar(30) NOT NULL,
+	`qualifiant` varchar(30) NOT NULL,
+	`reste` varchar(20) NOT NULL,
+	`unite` varchar(20) DEFAULT NULL,
+	`quantite` int(11) DEFAULT NULL,
+	`parenthese` text,
+	PRIMARY KEY (`nom`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
+	query($create_ingredient);
+	
+	//creation de la table recipe_ingredient
+	$create_recipe_ingredient = "CREATE TABLE IF NOT EXISTS recipe_ingredient (
+	`titre` varchar(50) NOT NULL,
+	`nom` varchar(30) NOT NULL,
+	PRIMARY KEY (`titre`,`nom`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
+	query($create_recipe_ingredient);
+	
+	//creation de la table user
+	$create_user = "CREATE TABLE IF NOT EXISTS `user` (
+	`username` varchar(10) NOT NULL,
+	`password` varchar(10) NOT NULL,
+	`name` varchar(20) DEFAULT NULL,
+	`first_name` varchar(20) DEFAULT NULL,
+	`gender` varchar(10) DEFAULT NULL,
+	`birth_year` int(4) DEFAULT NULL,
+	`street_address` varchar(30) DEFAULT NULL,
+	`zip_code` int(6) DEFAULT NULL,
+	`city` varchar(30) DEFAULT NULL,
+	`tel_num` int(15) DEFAULT NULL,
+	`email` varchar(30) DEFAULT NULL,
+	PRIMARY KEY (`username`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
+	query($create_user);
+	
+	//creation de la table panier
+	$create_panier = "CREATE TABLE IF NOT EXISTS `panier` (
+	`username` varchar(10) NOT NULL,
+	`titre` varchar(50) NOT NULL,
+	PRIMARY KEY (`username`,`titre`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 
-    // create DB (cooking)
-    $sql = "CREATE DATABASE IF NOT EXISTS ".$db_name;
-    mysqli_query($db, $sql)
-        or die("Error: ".mysqli_error($db));
-    
-    // set default DB name
-    mysqli_select_db($db, $db_name)
-        or die("Couldn't select default DB(".$db_name.")");
-    // set autocommit
-    mysqli_autocommit($db, TRUE)
-        or die("Couldn't set autocommit");
-    printf("DB sucessfully created.\n");
-
-
-    // create TABLE (recipes)
-    // TODO id: unsigned int ; max_size for entries
-    $sql = "CREATE TABLE IF NOT EXISTS ".$table." (
-         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-         title VARCHAR(100),
-         ingredients TEXT,
-         preparation TEXT
-    )";
-    mysqli_query($db, $sql)
-        or die ("Error: %s".mysqli_error($db));
-    printf("TABLE succesfully created.\n");
-
+	query($create_panier);
+	
+	/*
+	inserer ici les requetes d'insertion dans les differentes tables à partir du fichier Recettes.txt
+	*/
+	/*
     $sql = "SELECT * FROM ".$table;
 
     // haha, check that out:
@@ -64,7 +103,7 @@
 
     function submit($db, $sql) {
         if ((!isset($db, $sql)) || (!mysqli_query($db, $sql))) {
-            die("Error: %s\n". mysqli_error($db));
+            die("Error: %s\n", mysqli_error($db));
     }
     
     //TODO INSERT INTO VALUES ("", "", ""), ("", "", "")
@@ -107,8 +146,9 @@
     
     // search
     // $sql = "SELECT `preparation` FROM ".$table." WHERE ingredients like '%orange%'";
+	*/
 
-    mysqli_close($db);
+    mysql_close($connect);
 ?>
 </pre>
 </body>
