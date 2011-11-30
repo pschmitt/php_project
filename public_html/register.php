@@ -1,7 +1,4 @@
 <h2>S'enregistrer</h2>
-<?php
-    
-?>
 <form id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>">
     <p>
         <label for="name">Nom: </label>

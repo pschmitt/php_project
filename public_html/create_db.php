@@ -7,7 +7,7 @@
 <body>
 <pre>
 <?php
-    // TODO Error handling (query or die ?)
+    // TODO create_user -> http://dev.mysql.com/doc/refman/5.0/en/create-user.html
     $passwd_file = realpath('../.login/DB_credentials.php');
     $file = "./data/Recettes.xml";
     require "$passwd_file";
@@ -56,7 +56,7 @@
         // TODO don't delete the '
         // TODO error handling
         //return utf8_encode(preg_replace('[\']', null, $str));
-        return utf8_encode(preg_replace('[\']','\\\'' , $str));
+        //return utf8_encode(preg_replace('[\']','\\\'' , $str));
         //global $db;
         //echo "db = ".$db."\n";
         return mysqli_real_escape_string($db, utf8_encode($str));
