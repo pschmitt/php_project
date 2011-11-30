@@ -1,5 +1,5 @@
 <header>
-    <form id="login_form" name="login_form" method="post" action= > <!--"javascript:alert('success!');"--> 
+    <form id="login_form" name="login_form" method="post" > <!-- action="javascript:alert('success!');"--> 
     <img src="images/se-connecter.png" alt="Se connecter" />
         <p>
             <label>Login
