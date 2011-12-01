@@ -14,19 +14,25 @@
     
     define("INGREDIENT_DELIMITER", "--");
 
+    function query($db, $sql) {
+        if ((!isset($db, $sql)) || (!mysqli_query($db, $sql)))
+            die("Error: ". mysqli_error($db));
+    }
+    
     // create database
     $db = mysqli_connect($db_host, $db_user, $db_password)
         or die("Connect error: ".mysqli_connect_error());
     printf("Success... %s\n", mysqli_get_host_info($db));
 
-    // create DB (cooking)
+    // create DB (JeNeSaisPasCuisiner)
     $sql = "CREATE DATABASE IF NOT EXISTS ".$db_name;
     mysqli_query($db, $sql) 
         or die("Error: ".mysqli_error($db));
-    
+
     // set default DB name
     mysqli_select_db($db, $db_name)
         or die("Couldn't select default DB(".$db_name.")");
+
     // set autocommit
     mysqli_autocommit($db, TRUE)
         or die("Couldn't set autocommit");
@@ -36,33 +42,99 @@
     // create TABLE (recipes)
     // TODO id: unsigned int ; max_size for entries
     $sql = "CREATE TABLE IF NOT EXISTS ".$table." (
-         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-         title VARCHAR(100),
-         ingredients TEXT,
-         preparation TEXT
-    )";
-    mysqli_query($db, $sql)
-        or die ("Error: %s".mysqli_error($db));
-    printf("TABLE succesfully created.\n");
+                id INT NOT NULL AUTO_INCREMENT,
+                title VARCHAR(100),
+                ingredients TEXT,
+                preparation TEXT,
+                PRIMARY KEY (id)
+            )";
+    query($db, $sql);
+    printf("TABLE %s succesfully created.\n", $table);
+   
+    // create TABLE (ingredients)
+    $sql = "CREATE TABLE IF NOT EXISTS Ingredients (
+                id INT NOT NULL AUTO_INCREMENT,
+                name VARCHAR(30) NOT NULL,
+                qualifiant varchar(30) NOT NULL,
+                reste varchar(20) NOT NULL,
+                unit varchar(20) DEFAULT NULL,
+                quantity int(11) DEFAULT NULL,
+                parenthese text,
+                PRIMARY KEY (id)
+            )";
+    query($db, $sql);
+    printf("TABLE ingredients succesfully created.\n");
+    
+    // create TABLE (link recipes<->ingredients)
+    // TODO Autoincrement ?
+    $sql = "CREATE TABLE IF NOT EXISTS Recipe_ln_Ingredients (
+                id_recipe INT NOT NULL,
+                id_ingredient INT NOT NULL,
+                PRIMARY KEY (id_recipe, id_ingredient)
+            )";
+    query($db, $sql);
+    printf("TABLE Recipes_ln_Ingredients succesfully created.\n");
+    
+    // create TABLE (users)
+    // TODO Username = unique
+    $sql = "CREATE TABLE IF NOT EXISTS Users (
+                id INT AUTO_INCREMENT,
+                username VARCHAR(10) NOT NULL,
+                password VARCHAR(10) NOT NULL,
+                name VARCHAR(20) DEFAULT NULL,
+                first_name VARCHAR(20) DEFAULT NULL,
+                gender VARCHAR(10) DEFAULT NULL,
+                birth_year INT DEFAULT NULL,
+                street_address VARCHAR(30) DEFAULT NULL,
+                zip_code INT(6) DEFAULT NULL,
+                city VARCHAR(30) DEFAULT NULL,
+                tel_num INT(15) DEFAULT NULL,
+                email VARCHAR(30) DEFAULT NULL,
+                PRIMARY KEY (id)
+            )";
+    query($db, $sql);
+    printf("TABLE Users succesfully created.\n");
+    
+    // create TABLE (baskets)
+    $sql = "CREATE TABLE IF NOT EXISTS Baskets (
+                id INT AUTO_INCREMENT,
+            	titre varchar(50) NOT NULL,
+            	PRIMARY KEY (id)
+            )";
+    query($db, $sql);
+    printf("TABLE Baskets succesfully created.\n");
+    
+    // create TABLE (link users<->baskets)
+    $sql = "CREATE TABLE IF NOT EXISTS Users_ln_Baskets (
+                id_user INT NOT NULL,
+            	id_basket INT NOT NULL,
+            	PRIMARY KEY (id_user, id_basket)
+            )";
+    query($db, $sql);
+    printf("TABLE Users_ln_Baskets succesfully created.\n");
 
-    $sql = "SELECT * FROM ".$table;
+    // create TABLE (link baskets<->recipes)
+    $sql = "CREATE TABLE IF NOT EXISTS Baskets_ln_Recipes (
+                id_basket INT NOT NULL,
+                id_recipes INT NOT NULL,
+                PRIMARY KEY (id_basket, id_recipes)
+            )";
+    query($db, $sql);
+    printf("TABLE Basket_ln_Recipes  succesfully created.\n");
 
     // haha, check that out:
+    $sql = "SELECT * FROM ".$table;
     !mysqli_num_rows(mysqli_query($db, $sql))
         or die('You just ran the script man ... What \'bout <a href="erase_db.php">truncating|erasing</a> first ?');
     unset($sql);
         
     function clean_line($str, $db) {
         // TODO error handling
+        // TODO use mysqli_real_escape_string
         return utf8_encode(preg_replace('[\']','\\\'' , $str));
         //return mysqli_real_escape_string($db, utf8_encode($str));
     }
 
-    function submit($db, $sql) {
-        if ((!isset($db, $sql)) || (!mysqli_query($db, $sql)))
-            die("Error: %s\n". mysqli_error($db));
-    }
-    
     //TODO INSERT INTO VALUES ("", "", ""), ("", "", "")
     function get_values($line, $db) {
         isset($line)
@@ -89,14 +161,14 @@
             // commit 50 by 50
             if ($index % 50 == 0) {
                 // submit and reset $sql
-                submit($db, substr($sql, 0, -1));
+                query($db, substr($sql, 0, -1));
                 $sql = "INSERT INTO ".$table." VALUES ";
             }
             $values = get_values($line, $db) ;
             $sql .= $values;
             printf("done\n");
         }
-        submit($db, substr($sql, 0, -1));
+        query($db, substr($sql, 0, -1));
         fclose($fp)
             or die("Couldn't close file");
     }
