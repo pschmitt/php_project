@@ -14,4 +14,8 @@
 		$db_user = "XXXX";
 		$db_password = "XXXX";
 	}
+    unset($server, $hostname);
+
+    // credentials array, useful for passing to functions
+    $credentials = array("db_host" => $db_host, "db_name" => $db_name, "db_user" => $db_user, "db_password" => $db_password, "table" => $table);
 ?>

@@ -53,13 +53,9 @@
     unset($sql);
         
     function clean_line($str, $db) {
-        // TODO don't delete the '
         // TODO error handling
-        //return utf8_encode(preg_replace('[\']', null, $str));
-        //return utf8_encode(preg_replace('[\']','\\\'' , $str));
-        //global $db;
-        //echo "db = ".$db."\n";
-        return mysqli_real_escape_string($db, utf8_encode($str));
+        return utf8_encode(preg_replace('[\']','\\\'' , $str));
+        //return mysqli_real_escape_string($db, utf8_encode($str));
     }
 
     function submit($db, $sql) {
@@ -81,28 +77,30 @@
     }
 
     printf("Parsing XML data and inserting to DB\n");
+    
     function parse_file ($file, $db, $table) {
         // read data from file
-        $fp = fopen($file, "r");
-        if (!$fp)
-            die("Couldn't open xml file\n");
+        $fp = fopen($file, "r")
+            or die("Couldn't open xml file\n");
         $sql = "INSERT INTO ".$table." VALUES ";
         $index = 0;
         while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
             printf("Processing line %s ...", $index);
-            if (!($index % 100)) {
+            // commit 50 by 50
+            if ($index % 50 == 0) {
                 // submit and reset $sql
-                submit($db, substr($sql, 0, -1)) or die();
+                submit($db, substr($sql, 0, -1));
                 $sql = "INSERT INTO ".$table." VALUES ";
             }
             $values = get_values($line, $db) ;
             $sql .= $values;
             printf("done\n");
         }
-        submit($db, substr($sql, 0, -1)) or die();
+        submit($db, substr($sql, 0, -1));
         fclose($fp)
             or die("Couldn't close file");
     }
+
     parse_file($file, $db, $table);
     
     // search

@@ -11,14 +11,15 @@
     $passwd_file = realpath('../.login/DB_credentials.php');
     $file = "./data/Recettes.xml";
     require "$passwd_file";
-	require_once "Fonctions.inc.php"; 
+	require_once "includes/Fonctions.inc.php"; 
     
     define("INGREDIENT_DELIMITER", "--");
 
  
 	//connexion au serveur avec mot d'utilisateur et mot de passe
 	$connect = mysql_connect($db_host, $db_user, $db_password) or die("Erreur de connexion au serveur: ".mysql_error());
-	
+    
+    $db_name = "Cooking_FRANTZ";
 	//creation de la base de données cooking
 	$creationDataBase = "CREATE DATABASE  IF NOT EXISTS ".$db_name;
 	query($creationDataBase); 
@@ -28,34 +29,38 @@
 	
 	//creation de la table recipe
 	$create_recipe = "CREATE TABLE IF NOT EXISTS recipe (
+    `id` INT AUTO_INCREMENT,
 	`titre` varchar(50) NOT NULL,
 	`preparation` text NOT NULL,
-	PRIMARY KEY (`titre`)
+	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 	query($create_recipe);
 	
 	//creation de la table ingredient
 	$create_ingredient = "CREATE TABLE IF NOT EXISTS `ingredient` (
+    `id` INT AUTO_INCREMENT,
 	`nom` varchar(30) NOT NULL,
 	`qualifiant` varchar(30) NOT NULL,
 	`reste` varchar(20) NOT NULL,
 	`unite` varchar(20) DEFAULT NULL,
 	`quantite` int(11) DEFAULT NULL,
 	`parenthese` text,
-	PRIMARY KEY (`nom`)
+	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 	query($create_ingredient);
 	
 	//creation de la table recipe_ingredient
-	$create_recipe_ingredient = "CREATE TABLE IF NOT EXISTS recipe_ingredient (
-	`titre` varchar(50) NOT NULL,
-	`nom` varchar(30) NOT NULL,
-	PRIMARY KEY (`titre`,`nom`)
+	// AUTO_INCREMENT ?
+    $create_recipe_ingredient = "CREATE TABLE IF NOT EXISTS recipe_ingredient (
+	`id_recipe` INT NOT NULL,
+	`id_ingredient` INT NOT NULL,
+	PRIMARY KEY (`id_recipe`,`id_ingredient`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 	query($create_recipe_ingredient);
 	
 	//creation de la table user
 	$create_user = "CREATE TABLE IF NOT EXISTS `user` (
+    `id` INT AUTO_INCREMENT,
 	`username` varchar(10) NOT NULL,
 	`password` varchar(10) NOT NULL,
 	`name` varchar(20) DEFAULT NULL,
@@ -67,7 +72,7 @@
 	`city` varchar(30) DEFAULT NULL,
 	`tel_num` int(15) DEFAULT NULL,
 	`email` varchar(30) DEFAULT NULL,
-	PRIMARY KEY (`username`)
+	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 	query($create_user);
 	
@@ -79,7 +84,8 @@
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 
 	query($create_panier);
-	
+
+
 	/*
 	inserer ici les requetes d'insertion dans les differentes tables à partir du fichier Recettes.txt
 	*/
