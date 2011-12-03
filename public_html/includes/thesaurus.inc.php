@@ -5,7 +5,7 @@
 	 * 
 	 * Author: Mathieu Morainville
 	 */
-	include("./data/Thesaurus.php"); // Problème connu : pour tester simplement la page avec thesaurus.inc.php le chemin doit être : ../data/Thesaurus.php
+	//include("./data/Thesaurus.php"); // Problème connu : pour tester simplement la page avec thesaurus.inc.php le chemin doit être : ../data/Thesaurus.php
 	/*
 	echo "<pre>\n";
 		print_r($Thesaurus);
@@ -47,6 +47,7 @@
 	
 	if ( isset($_GET["cat"]) ) { // cat for categories
 		if (isset($Thesaurus[$_GET["cat"]]['S'])) {
+			//$father[] = $Thesaurus[$_GET["cat"]]['T'];
 			find_son($Thesaurus[$_GET["cat"]], $Thesaurus);
 		}
 		else {

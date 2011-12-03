@@ -1,9 +1,29 @@
+<?php
+	session_start();
+
+	include("./data/Thesaurus.php");
+	
+	/**
+	 * get_title() permet d'avoir un titre dynamique dans la balise <title>.
+	 * Author: Mathieu
+	 */
+	function get_title() {
+		global $Thesaurus;
+		if (isset($_GET['p'])) {
+			echo ucwords($_GET['p']);
+		} else if (isset($_GET['cat'])) {
+			echo ucwords($Thesaurus[$_GET['cat']]['T']);
+		} else {
+			echo 'Home';
+		}
+	}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="fr-FR">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>JeNeSaisPasCuisiner.com | Accueil</title>
+<title>JeNeSaisPasCuisiner.com | <?php get_title(); ?></title>
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 <!--[if lt IE 9]>
 <script src="js/html5.js" type="text/javascript"></script>
