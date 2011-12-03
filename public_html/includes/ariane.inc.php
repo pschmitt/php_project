@@ -4,7 +4,9 @@
 			echo '<a href="'.$_SERVER['PHP_SELF'].'?p=home">Home</a> > <span>'.ucwords($_GET['p'])."</span>\n";
 		} else if (isset($_GET['cat'])) {
 			if (isset($Thesaurus[$_GET['cat']])) {
-				print_r($father);
+				//print_r($father);
+				echo $Thesaurus[$_GET['cat']]['T']; // Il faudrait pouvoir faire $Thesaurus[$_GET['cat']]['P']
+				// D'après l'énoncé, chaque ingrédient à un champ père, ce qui n'est pas le cas actuellement...
 			} else {
 				echo 'Pas de père';
 			}
