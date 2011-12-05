@@ -4,6 +4,8 @@ JeNeSaisPasCuisiner.com
 
 =head2 Lien utiles
 
+L<https://docs.google.com/document/d/1v_Kp8v4nXDSY1FR1ShEt-KJmGB1aNIwKFGr5SzAJYcc/edit?invite=CM3-pbAO>
+
 Lisez bien ce qui suit (#RTFM)
 
 =head3 Howto git
