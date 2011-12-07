@@ -1,3 +1,4 @@
 .login/*
+.login/DB_credentials.php
 test.php
 # DB_credentials.php

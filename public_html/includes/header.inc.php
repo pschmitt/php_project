@@ -11,7 +11,7 @@
             </label>
             <br />
             <!-- <a id="submit" href="#"> -->
-			<a id="submit" href="<?php echo $_SERVER['PHP_SELF'].'?p=login'; ?>">
+			<a id="submit" href="<?php echo $_SERVER['PHP_SELF']; ?>">
                 Connexion
             </a>
             |

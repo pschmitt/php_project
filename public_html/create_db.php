@@ -128,7 +128,7 @@
         or die('You just ran the script man ... What \'bout <a href="erase_db.php">truncating|erasing</a> first ?');
     unset($sql);
         
-    function clean_line($str, $db) {
+    function clean_line($str) {
         // TODO error handling
         // TODO use mysqli_real_escape_string
         return utf8_encode(preg_replace('[\']','\\\'' , $str));
@@ -137,15 +137,14 @@
 
     //TODO INSERT INTO VALUES ("", "", ""), ("", "", "")
     function get_values($line, $db) {
-        isset($line)
+        isset($line, $db)
             or die("No param. Exiting.\n");
-        $line = clean_line($line, $db);
+        $line = clean_line($line);
         $sxml = simplexml_load_string($line);
         $ing = NULL;
         foreach($sxml->IN as $ingredient)
             $ing .= $ingredient->ING.INGREDIENT_DELIMITER;
-        
-        return "('NULL', '".$sxml->TI."', '".$sxml->PR."', '".$ing."'),";
+        return "('NULL', '".mysqli_real_escape_string($db, $sxml->TI)."', '".$sxml->PR."', '".$ing."'),";
     }
 
     printf("Parsing XML data and inserting to DB\n");
