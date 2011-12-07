@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	include("./data/Thesaurus.php");
+	include("./data/Fathers.php"); // À remplacer par Thesaurus.php quand il aura les champs Pères
 	
 	/**
 	 * get_title() permet d'avoir un titre dynamique dans la balise <title>.
