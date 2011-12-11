@@ -7,10 +7,11 @@
                                                base de données 
                                           </a>
                                           avant de vouloir faire mumuse !');
-    require("./data/Thesaurus_updated.php");    
+    require("./data/Thesaurus_updated.php");   
+
 	/**
 	 * get_title() permet d'avoir un titre dynamique dans la balise <title>.
-	 * Author: Mathieu
+	 * Author: Mathieu Connard
 	 */
 	function get_title() {
 		global $Thesaurus;

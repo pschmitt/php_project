@@ -149,28 +149,60 @@
         query($db, $sql);
         printf("Done: TABLE %s succesfully created.\n", $tables["Baskets_ln_Recipes"]);
 
-        function clean_line($str) {
-            // TODO error handling
-            // TODO use mysqli_real_escape_string
-            return utf8_encode(preg_replace('[\']','\\\'' , $str));
-            //return mysqli_real_escape_string($db, utf8_encode($str));
+        // TODO pass by ref ?!
+        function get_recipe_query($sxml) {
+            $db = $GLOBALS['db'];
+            $tables = $GLOBALS['tables'];
+            
+            $sql = "INSERT INTO ".$tables["Recipes"].
+                   " VALUES ";
+            //$sxml = array_map('mysql_real_escape_string', array_values($sxml));
+            foreach($sxml as $recipe) {
+                $sql .= "('NULL','"
+                        .mysqli_real_escape_string($db, $recipe->TI).
+                        "','"
+                        .mysqli_real_escape_string($db, $recipe->PR).
+                        "'), ";
+            }
+            //echo $sql."\n\n";
+            return substr($sql, 0, -2);
+        }
+
+        function get_ingredient_query($sxml_in) {
+            $db = $GLOBALS['db'];
+            $tables = $GLOBALS['tables'];
+            $sql = "INSERT INTO ".$tables["Ingredients"].
+                   " VALUES ";
+            foreach ($sxml_in as $line) {
+                foreach($line->IN as $ing) {
+                    $sql .= "('NULL','" 
+                            .mysqli_real_escape_string($db, $ing->ING).
+                            "','"
+                            .mysqli_real_escape_string($db, $ing->QL).
+                            "','"
+                            .mysqli_real_escape_string($db, $ing->R).
+                            "','"
+                            .mysqli_real_escape_string($db, $ing->U).
+                            "','"
+                            .mysqli_real_escape_string($db, $ing->QT).
+                            "','"
+                            .mysqli_real_escape_string($db, $ing->ZP).
+                            "'), ";
+                }
+            }
+            return substr($sql, 0, -2);
         }
 
         //TODO INSERT INTO VALUES ("", "", ""), ("", "", "")
-        function get_query($sxml) {
+        function store($sxml) {
             isset($sxml)
                 or die("No param. Exiting.\n");
+            
             $db = $GLOBALS['db'];
-            $tables = $GLOBALS['tables'];
-            $sql = "INSERT INTO ".$tables["Recipes"].
-                " VALUES ('NULL','"
-                .mysqli_real_escape_string($db, $sxml->TI).
-                "','"
-                .mysqli_real_escape_string($db, $sxml->PR).
-                "'); ";
-            //        echo $sql."\n";
-            return $sql;
-            //return "('NULL', '".mysqli_real_escape_string($db, $sxml->TI)."', '".mysqli_real_escape_string($db,$sxml->PR)."'),";
+            query($db, get_recipe_query($sxml));
+
+            query($db, get_ingredient_query($sxml));
+            //return $sql;
         }
 
         printf("Parsing XML data and inserting to DB\n");
@@ -184,16 +216,16 @@
             while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
                 // commit 50 by 50
                 if ($index % 1500 == 0) {
-                    echo $index.":\t";
+                    //echo "\n".$index.":\t";
                     // submit and reset $sql
-                    mysqli_multi_query($db, $sql) or die(mysqli_error($db));
-                    echo $sql."\n";
-                    $sql = "";
+                    store($sxml);
+                    //mysqli_multi_query($db, $sql) or die (mysqli_error($db));
+                    //$sql = "";
+                    unset($sxml);
                 }
-                $sxml = simplexml_load_string(clean_line($line));
-                $sql .= get_query($sxml);
+                $sxml[] = simplexml_load_string(utf8_encode($line));
             }
-            mysqli_multi_query($db, $sql);
+            store($sxml);
             printf("Done: read %d lines !", $index);
             fclose($fp)
                 or die("Couldn't close file");
