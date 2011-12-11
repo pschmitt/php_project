@@ -5,8 +5,7 @@
 </head>
         
 <body>
-<pre>
-    <?php
+<pre><?php
         require_once("includes/functions/fathers.inc.php");
         require_once("includes/functions/mysqli.inc.php");
 
