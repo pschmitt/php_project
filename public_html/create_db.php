@@ -1,19 +1,18 @@
-
-    <html>
-    <head>
-        <title>JeNeSaisPasCuisiner.com</title>
+<html>
+<head>
+    <title>JeNeSaisPasCuisiner.com</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    </head>
+</head>
         
-    <body>
-    <pre>
-        <?php
+<body>
+<pre>
+    <?php
         require_once("includes/functions/fathers.inc.php");
 
         // TODO create_user -> http://dev.mysql.com/doc/refman/5.0/en/create-user.html
         $passwd_file = realpath('../.login/DB_credentials.php');
         $file = "./data/Recettes.xml";
-        require($passwd_file);
+        require_once($passwd_file);
 
         function query($db, $sql) {
             if ((!isset($db, $sql)) || (!mysqli_query($db, $sql)))
@@ -149,95 +148,82 @@
         query($db, $sql);
         printf("Done: TABLE %s succesfully created.\n", $tables["Baskets_ln_Recipes"]);
 
-        // TODO pass by ref ?!
-        function get_recipe_query($sxml) {
+        function store($sxml_array) {
             $db = $GLOBALS['db'];
             $tables = $GLOBALS['tables'];
             
-            $sql = "INSERT INTO ".$tables["Recipes"].
-                   " VALUES ";
-            //$sxml = array_map('mysql_real_escape_string', array_values($sxml));
-            foreach($sxml as $recipe) {
-                $sql .= "('NULL','"
-                        .mysqli_real_escape_string($db, $recipe->TI).
-                        "','"
-                        .mysqli_real_escape_string($db, $recipe->PR).
-                        "'), ";
-            }
-            //echo $sql."\n\n";
-            return substr($sql, 0, -2);
-        }
+            $recipe_sql = "INSERT INTO ".$tables["Recipes"]." VALUES ";
+            $ing_sql    = "INSERT INTO ".$tables["Ingredients"]." VALUES ";
+            $r2i_sql    = "INSERT INTO ".$tables["Recipes_ln_Ingredients"]." VALUES ";
 
-        function get_ingredient_query($sxml_in) {
-            $db = $GLOBALS['db'];
-            $tables = $GLOBALS['tables'];
-            $sql = "INSERT INTO ".$tables["Ingredients"].
-                   " VALUES ";
-            foreach ($sxml_in as $line) {
-                foreach($line->IN as $ing) {
-                    $sql .= "('NULL','" 
-                            .mysqli_real_escape_string($db, $ing->ING).
-                            "','"
-                            .mysqli_real_escape_string($db, $ing->QL).
-                            "','"
-                            .mysqli_real_escape_string($db, $ing->R).
-                            "','"
-                            .mysqli_real_escape_string($db, $ing->U).
-                            "','"
-                            .mysqli_real_escape_string($db, $ing->QT).
-                            "','"
-                            .mysqli_real_escape_string($db, $ing->ZP).
-                            "'), ";
+            $last_recipe_id =  mysqli_num_rows(mysqli_query($db, "SELECT * FROM ".$tables["Recipes"]));
+            $last_ing_id    =  mysqli_num_rows(mysqli_query($db, "SELECT * FROM ".$tables["Ingredients"]));
+            
+            foreach ($sxml_array as $recipe) {
+                $recipe_sql .= "('".++$last_recipe_id."','"
+                               .mysqli_real_escape_string($db, $recipe->TI).
+                               "','"
+                               .mysqli_real_escape_string($db, $recipe->PR).
+                               "'), ";
+                foreach($recipe->IN as $ing) {
+                    $ing_sql .= "('".++$last_ing_id."','" 
+                                .mysqli_real_escape_string($db, $ing->ING).
+                                "','"
+                                .mysqli_real_escape_string($db, $ing->QL).
+                                "','"
+                                .mysqli_real_escape_string($db, $ing->R).
+                                "','"
+                                .mysqli_real_escape_string($db, $ing->U).
+                                "','"
+                                .mysqli_real_escape_string($db, $ing->QT).
+                                "','"
+                                .mysqli_real_escape_string($db, $ing->ZP).
+                                "'), ";
+                    $r2i_sql .= "('".$last_recipe_id."','".$last_ing_id."'), ";
                 }
             }
-            return substr($sql, 0, -2);
+
+            // remove trailing ", "
+            $recipe_sql = substr($recipe_sql, 0, -2);
+            $ing_sql    = substr($ing_sql   , 0, -2);
+            $r2i_sql    = substr($r2i_sql   , 0, -2);
+
+            // exec queries
+            query($db, $recipe_sql);
+            query($db, $ing_sql);
+            query($db, $r2i_sql);
         }
 
-        //TODO INSERT INTO VALUES ("", "", ""), ("", "", "")
-        function store($sxml) {
-            isset($sxml)
-                or die("No param. Exiting.\n");
-            
-            $db = $GLOBALS['db'];
-            query($db, get_recipe_query($sxml));
+        printf("Parsing XML data and inserting to DB...\n");
 
-            query($db, get_ingredient_query($sxml));
-            //return $sql;
-        }
-
-        printf("Parsing XML data and inserting to DB\n");
-
-        function parse_file ($file, $db, $tables) {
+        function parse_file ($file) {
             // read data from file
             $fp = fopen($file, "r")
                 or die("Couldn't open xml file\n");
-            $sql = "";
             $index = 0;
             while (($line = fgets($fp)) && ($index = $index + 1)) { // $i++ ?!
-                // commit 50 by 50
-                if ($index % 1500 == 0) {
-                    //echo "\n".$index.":\t";
-                    // submit and reset $sql
+                // commit 100 by 100
+                if ($index % 100 == 0) {
                     store($sxml);
-                    //mysqli_multi_query($db, $sql) or die (mysqli_error($db));
-                    //$sql = "";
                     unset($sxml);
                 }
                 $sxml[] = simplexml_load_string(utf8_encode($line));
             }
             store($sxml);
-            printf("Done: read %d lines !", $index);
+            printf("Done: read %d lines: ", $index);
             fclose($fp)
                 or die("Couldn't close file");
         }
 
-        parse_file($file, $db, $tables);
-
-        // search
-        // $sql = "SELECT `preparation` FROM ".$table." WHERE ingredients like '%orange%'";
+        parse_file($file);
+        
+        $recipes     = mysqli_num_rows(mysqli_query($db, "SELECT * FROM ".$tables["Recipes"]));
+        $ingredients = mysqli_num_rows(mysqli_query($db, "SELECT * FROM ".$tables["Ingredients"]));
+        
+        printf("%d recipes and %s ingredients were added to DB !\n", $recipes, $ingredients);
 
         mysqli_close($db);
         ?>
-    </pre>
+</pre>
 </body>
 </html>
