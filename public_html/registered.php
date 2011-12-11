@@ -2,53 +2,50 @@
 
 <?php
 	$passwd_file = realpath('../.login/DB_credentials.php');
-    require "$passwd_file";
-	require_once "Fonctions.inc.php"; 
-    function create_db() {
-        
-    }
+    require_once($passwd_file);
+    require_once("functions/mysqli.inc.php");
 
-    function submit() {
-        
-    }
-    
     if (isset($_POST['username'], $_POST['password'])) {
-        printf("Bienvenur sur JeNeSaisPasCuisiner.com, ".$_POST['username'].".\n<br/>\n
+        printf("Bienvenue sur JeNeSaisPasCuisiner.com, ".$_POST['username'].".\n<br/>\n
                 You can now save your favorite recipes.
                ");
-		//enregistrer les données saisies.
-		
-		$connect = mysql_connect($db_host, $db_user, $db_password) or die("Erreur de connexion au serveur: ".mysql_error());
-		mysql_select_db($db_name) or die("Impossible de sélectionner la base :". $db_name);
-		//verifier si le login est deja present dans la base si oui inviter l'user à changer de login sinon insérer
-		$query = "SELECT username FROM user WHERE (username='".$_POST['username']."')";
-		$result = query($query);
-		if(mysql_num_rows($result) == 0){
-			//login pas encore présent donc l'inserer
-			$insert = "INSERT INTO user (";
-			$valeur = "VALUES (";
-			foreach($_POST as $cle=>$value){
-				if(isset($_POST[$cle]) && !empty($_POST[$cle])){
-					$insert .= $cle.", ";
-					$valeur .="'";
-					$valeur .= $value."'".", ";
-				}
+        
+		// enregistrement des données saisies.
+		$db = mysqli_connect($db_host, $db_user, $db_password, $db_name)
+            or die("Erreur de connexion au serveur: ".mysql_error());
+
+        $columns = get_col_names($db, $tables['Users']);
+
+        // vérifier si le login est deja present dans la base. Si oui, inviter l'user à changer de login. Sinon: insérer.
+		$sql = "SELECT username FROM ".$tables['Users']." WHERE (username='".$_POST['username']."')";
+		$result = query($db, $sql);
+
+		if (mysqli_num_rows($result) == 0) {
+            mysqli_free_result($result);
+			// login pas encore présent donc insertion
+			$sql = "INSERT INTO ".$tables['Users']." (";
+            $values = " VALUES (";
+			foreach($_POST as $column => $value) {
+				if (!empty($value) && in_array($column, $columns) && strcmp($value, "default") != 0) {
+    			    $sql .= $column.", ";
+                    if (strcmp($column, "password") == 0)
+                        $values .= "MD5('".mysqli_real_escape_string($db, $value)."'), ";
+                    else
+                        $values .= "'".mysqli_real_escape_string($db, $value)."', ";
+                }
 			}
-			$insert = substr($insert, 0, strlen($insert) - 2);
-			$valeur = substr($valeur, 0, strlen($valeur) - 2);
-			$insert .= ")";
-			$valeur .= ")";
-		
-			query($insert);
-			mysql_close($connect);
+            // remove trailing chars
+            $values = substr($values, 0, -2);
+			$sql = substr($sql, 0, - 2).")".$values.")";
+		    
+			query($db, $sql);
+			mysqli_close($db);
 			
-		}
-		else{
+		}		
+		else {
 			//ce login est deja present, veuillez changer de login
-			echo "ce login est deja present, veuillez changer de login";
+			echo "Ce login est deja present, veuillez en choisir un autre.";
 		}
-		
-			
      } else {
         printf("<p>\n\tWoops, quelque chose n'a pas fonctionné\n<br />\n<br />\n");
         printf("\t<a href=\"".$_SERVER['PHP_SELF']."?p=home\">Retourner à l'accueil</a>\n<br />\n");
