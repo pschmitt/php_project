@@ -4,7 +4,7 @@
     $thesaurus_file = "./data/Thesaurus_updated.php";
     file_exists($thesaurus_file) or die ('N\'allez pas trop vite : créez d\'abord une
                                           <a href="./create_db.php">base de données</a> !');
-    require("./data/Thesaurus_updated.php");
+    require_once("./data/Thesaurus_updated.php");
 
 	/**
 	 * get_title() permet d'avoir un titre dynamique dans la balise <title>.
