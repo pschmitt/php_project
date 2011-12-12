@@ -1,5 +1,5 @@
 <h2>S'enregistrer</h2>
-<form id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>">
+<form id="registration" method="get" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>">
     <p>
         <label for="name">Nom: </label>
         <input type="text" name="name" id="name" placeholder="Votre nom" />
@@ -11,7 +11,7 @@
     <p>
         <label for="username">Pseudo *: </label>
         <input type="text" name="username" id="username" title="Pseudo" placeholder="Votre pseudo" required />
-        <span id="availability_status">Checj</span>
+        <span id="availability_status"></span>
     </p>
     <p>
         <label for="password">Mot de passe *: </label>
@@ -69,7 +69,7 @@
 <script src="js/jquery.html5form-1.4-min.js"></script>
 <script>
      $(document).ready(function(){
-        $('#registration').html5form({
+        /*$('#registration').html5form({
             allBrowsers : true,
             async : false,
             colorOn: '#000',
@@ -77,8 +77,8 @@
             //emptyMessage : 'Ce champ est obligatoire',
             messages : 'fr',
             responseDiv : '#rep'
-        });
-        /*$("#username").change(function() { //if theres a change in the username textbox
+        });*/
+        $("#username").change(function() { //if theres a change in the username textbox
             var username = $("#username").val();//Get the value in the username textbox
             if (username.length > 3) { //if the lenght greater than 3 characters
                 $("#availability_status").html('Checking availability...');
@@ -86,11 +86,11 @@
 
                 $.ajax({  //Make the Ajax Request
                     type: "POST",
-                    url: "check.php",  //file name
+                    url: "includes/functions/check_username_availability.php",  //file name
                     data: "username="+ username,  //data
                     success: function(server_response) {
                         $("#availability_status").ajaxComplete(function(event, request){
-                            if (server_response == '0') {//if ajax_check_username.php return value "0"
+                            if (server_response == '0') { //if ajax_check_username.php return value "0"
                                 $("#availability_status").html('Available');
                                 //add this image to the span with id "availability_status"
                             } else if (server_response == '1') { //if it returns "1"
@@ -101,10 +101,9 @@
                 });
             } else {
                 $("#availability_status").html('Username too short');
-                //if in case the username is less than or equal 3 characters only
             }
             return false;
-        });*/
+        });
      });
 </script>
 

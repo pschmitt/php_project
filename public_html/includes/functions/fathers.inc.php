@@ -21,7 +21,7 @@
     fwrite($fp, $str);
     fwrite($fp, var_export($Thesaurus, true));
     unset($Thesaurus);
-    $str = "?>\n";
+    $str = "\n?>\n";
     fwrite($fp, $str);
     fclose($fp);
 ?>

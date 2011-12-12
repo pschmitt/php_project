@@ -81,15 +81,15 @@
 
         // create TABLE (ingredients)
         $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Ingredients"]." (
-            id INT NOT NULL AUTO_INCREMENT,
-            name VARCHAR(30) NOT NULL,
-            qualifiant varchar(30) NOT NULL,
-            reste varchar(20) NOT NULL,
-            unit varchar(20) DEFAULT NULL,
-            quantity int(11) DEFAULT NULL,
-            parenthese text,
-            PRIMARY KEY (id)
-        )";
+                id INT NOT NULL AUTO_INCREMENT,
+                name VARCHAR(30) NOT NULL,
+                qualifiant varchar(30) NOT NULL,
+                reste varchar(20) NOT NULL,
+                unit varchar(20) DEFAULT NULL,
+                quantity int(11) DEFAULT NULL,
+                parenthese text,
+                PRIMARY KEY (id)
+                )";
         query($db, $sql);
         printf("Done: TABLE %s succesfully created.\n", $tables["Ingredients"]);
 
@@ -160,7 +160,6 @@
 
             $last_recipe_id =  mysqli_num_rows(mysqli_query($db, "SELECT * FROM ".$tables["Recipes"]));
             $last_ing_id    =  mysqli_num_rows(mysqli_query($db, "SELECT * FROM ".$tables["Ingredients"]));
-            
             foreach ($sxml_array as $recipe) {
                 $recipe_sql .= "('".++$last_recipe_id."','"
                                .mysqli_real_escape_string($db, $recipe->TI).
@@ -212,6 +211,7 @@
                 $sxml[] = simplexml_load_string(utf8_encode($line));
             }
             store($sxml);
+            unset($sxml);
             printf("Done: read %d lines: ", $index);
             fclose($fp)
                 or die("Couldn't close file");
