@@ -74,7 +74,7 @@
             async : false,
             colorOn: '#000',
             colorOff: '#888',
-            //emptyMessage : 'Ce champ est obligatoire',
+            emptyMessage : 'Ce champ est obligatoire',
             messages : 'fr',
             responseDiv : '#rep'
         });
@@ -90,11 +90,12 @@
                     data: "username="+ username,  //data
                     success: function(server_response) {
                         $("#availability_status").ajaxComplete(function(event, request){
-                            if (server_response == '0') { //if ajax_check_username.php return value "0"
+                            if (server_response == '0') { 
                                 $("#availability_status").html('Available');
-                                //add this image to the span with id "availability_status"
+                                $("#username").css('background-color', '#90EE90');
                             } else if (server_response == '1') { //if it returns "1"
                                 $("#availability_status").html('Not Available');
+                                $("#username").css('background-color', '#FF4500');
                             }
                         });
                     }

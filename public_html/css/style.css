@@ -348,6 +348,10 @@ a:hover {
     float: left;
 }
 
+#registration .available {
+    background-color = "blue";
+}
+
 /* search form
 --------------------------------------------- */
 #search_form fieldset { /* TODO: applies on entire page! */

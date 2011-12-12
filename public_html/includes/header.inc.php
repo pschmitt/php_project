@@ -3,7 +3,7 @@
     <img src="images/se-connecter.png" alt="Se connecter" />
         <p>
             <label>Login
-                <input type="text" name="username" id="username" value="<?php echo isset($_POST['username']) ? $_POST['username']."OK" : null ?>" required />
+                <input type="text" name="login" id="login" value="<?php echo isset($_POST['login']) ? $_POST['login']."OK" : null ?>" required />
             </label>
             <br />
             <label>Mot de passe
@@ -11,7 +11,7 @@
             </label>
             <br />
             <!-- <a id="submit" href="#"> -->
-			<a id="submit" href="<?php echo $_SERVER['PHP_SELF']; ?>">
+			<a id="submit" href="">
                 Connexion
             </a>
             |
@@ -21,7 +21,7 @@
         </p>
     </form>
     <script>
-        $('#login_form').submit(function() {
+        /*$('#login_form').submit(function() {
             var return_value = false;
             if ($('#username').val() == "") {
                 $('#username').css({ backgroundColor: 'khaki' });
@@ -32,9 +32,9 @@
                 return false;
             }
             return true;
-        });
+        });*/
         $('#submit').click(function() {
-            $('#login_form').submit();
+            $(this).parents('form:first').submit();
         });
     </script>
     
