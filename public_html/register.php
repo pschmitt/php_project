@@ -69,7 +69,7 @@
 <script src="js/jquery.html5form-1.4-min.js"></script>
 <script>
      $(document).ready(function(){
-        /*$('#registration').html5form({
+        $('#registration').html5form({
             allBrowsers : true,
             async : false,
             colorOn: '#000',
@@ -77,7 +77,7 @@
             //emptyMessage : 'Ce champ est obligatoire',
             messages : 'fr',
             responseDiv : '#rep'
-        });*/
+        });
         $("#username").change(function() { //if theres a change in the username textbox
             var username = $("#username").val();//Get the value in the username textbox
             if (username.length > 3) { //if the lenght greater than 3 characters
