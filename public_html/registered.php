@@ -1,8 +1,6 @@
 <h2>Enregistrement</h2>
 
 <?php
-	$passwd_file = realpath('../.login/DB_credentials.php');
-    require_once($passwd_file);
     require_once("functions/mysqli.inc.php");
 
     if (isset($_POST['username'], $_POST['password'])) {

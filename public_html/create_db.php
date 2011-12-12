@@ -10,9 +10,7 @@
         require_once("includes/functions/mysqli.inc.php");
 
         // TODO create_user -> http://dev.mysql.com/doc/refman/5.0/en/create-user.html
-        $passwd_file = realpath('../.login/DB_credentials.php');
         $file = "./data/Recettes.xml";
-        require_once($passwd_file);
 
         // create database
         $db = mysqli_connect($db_host, $db_user, $db_password)

@@ -359,3 +359,10 @@ a:hover {
     display: block;
 }
 
+#result_title {
+   color: #ea8931;
+   font-size: 1.3em;
+   font-weight: normal;
+   margin-bottom: 0.5em; 
+   margin-top: 2em;
+}

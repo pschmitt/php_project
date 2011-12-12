@@ -1,9 +1,10 @@
 <?php
     function db_con() {
-        if (!isset($GLOBALS['db_host'])) {
-            die("Error !");
-        }
-        return mysqli_connect($db_host, $db_user, $db_password, $db_name) or die (mysqli_connect_error());
+        isset($GLOBALS['credentials']) or die("Error !");
+        
+        $cred = $GLOBALS['credentials'];
+        $db = mysqli_connect($cred["db_host"], $cred["db_user"], $cred["db_password"], $cred["db_name"]) or die (mysqli_connect_error());
+        return $db;
     }
 
     function query($db, $sql) {
