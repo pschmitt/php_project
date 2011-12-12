@@ -1,4 +1,7 @@
 <?php
+    $passwd_file = realpath('../.login/DB_credentials.php');
+    require_once($passwd_file);
+    
     function db_con() {
         isset($GLOBALS['credentials']) or die("Error !");
         

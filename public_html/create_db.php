@@ -6,10 +6,11 @@
         
 <body>
 <pre><?php
-        require_once("includes/functions/fathers.inc.php");
         require_once("includes/functions/mysqli.inc.php");
+        require_once("includes/functions/fathers.inc.php");
 
         // TODO create_user -> http://dev.mysql.com/doc/refman/5.0/en/create-user.html
+
         $file = "./data/Recettes.xml";
 
         // create database
