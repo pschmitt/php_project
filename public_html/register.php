@@ -11,6 +11,7 @@
     <p>
         <label for="username">Pseudo *: </label>
         <input type="text" name="username" id="username" title="Pseudo" placeholder="Votre pseudo" required />
+        <span id="availability_status">Checj</span>
     </p>
     <p>
         <label for="password">Mot de passe *: </label>
@@ -72,12 +73,38 @@
             allBrowsers : true,
             async : false,
             colorOn: '#000',
-            colorOff: '#999',
+            colorOff: '#888',
             //emptyMessage : 'Ce champ est obligatoire',
             messages : 'fr',
             responseDiv : '#rep'
         });
-        
-    });
+        /*$("#username").change(function() { //if theres a change in the username textbox
+            var username = $("#username").val();//Get the value in the username textbox
+            if (username.length > 3) { //if the lenght greater than 3 characters
+                $("#availability_status").html('Checking availability...');
+                //Add a loading image in the span id="availability_status"
+
+                $.ajax({  //Make the Ajax Request
+                    type: "POST",
+                    url: "check.php",  //file name
+                    data: "username="+ username,  //data
+                    success: function(server_response) {
+                        $("#availability_status").ajaxComplete(function(event, request){
+                            if (server_response == '0') {//if ajax_check_username.php return value "0"
+                                $("#availability_status").html('Available');
+                                //add this image to the span with id "availability_status"
+                            } else if (server_response == '1') { //if it returns "1"
+                                $("#availability_status").html('Not Available');
+                            }
+                        });
+                    }
+                });
+            } else {
+                $("#availability_status").html('Username too short');
+                //if in case the username is less than or equal 3 characters only
+            }
+            return false;
+        });*/
+     });
 </script>
 

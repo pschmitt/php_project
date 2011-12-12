@@ -5,19 +5,14 @@
 </head>
         
 <body>
-<pre>
-    <?php
+<pre><?php
         require_once("includes/functions/fathers.inc.php");
+        require_once("includes/functions/mysqli.inc.php");
 
         // TODO create_user -> http://dev.mysql.com/doc/refman/5.0/en/create-user.html
         $passwd_file = realpath('../.login/DB_credentials.php');
         $file = "./data/Recettes.xml";
         require_once($passwd_file);
-
-        function query($db, $sql) {
-            if ((!isset($db, $sql)) || (!mysqli_query($db, $sql)))
-                die("Error: ". mysqli_error($db));
-        }
 
         // create database
         $db = mysqli_connect($db_host, $db_user, $db_password)
@@ -42,17 +37,24 @@
         if (isset($_GET['d'])) {
             switch($_GET['d']) {
                 case "truncate":
-                    $sql = "TRUNCATE TABLE ".$tables["Recipes"];
-                    $msg = "Truncated (".$tables["Recipes"].")";
+                    $sql = "";
+                    $msg = "Truncated (";
+                    foreach ($tables as $table => $index) {
+                        $sql .= "TRUNCATE TABLE ".$table."; ";
+                        $msg .= $table.", ";
+                    }
+                    $sql = substr($sql, 0, -2);
+                    $msg = substr($msg, 0, -2).")";
+                    mysqli_multi_query($db, $sql) or die ("Error: ".mysqli_error($db));
                     break;
                 case "delete":
                     $sql = "DROP DATABASE ".$db_name;
                     $msg = "Deleted (".$db_name.")";
+                    query($db, $sql);
                     break;
                 default:
                     die("Unknown parameter value.\n");
             }
-            query($db, $sql);
             printf("Done: %s\n", $msg);
             exit;
         }
@@ -106,7 +108,7 @@
         $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Users"]." (
                 id INT AUTO_INCREMENT,
                 username VARCHAR(10) NOT NULL,
-                password VARCHAR(10) NOT NULL,
+                password VARCHAR(32) NOT NULL,
                 name VARCHAR(20) DEFAULT NULL,
                 first_name VARCHAR(20) DEFAULT NULL,
                 gender VARCHAR(10) DEFAULT NULL,
