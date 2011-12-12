@@ -2,12 +2,9 @@
 	session_start();
 	//include("./data/Fathers.php"); // À remplacer par Thesaurus.php quand il aura les champs Pères
     $thesaurus_file = "./data/Thesaurus_updated.php";
-    file_exists($thesaurus_file) or die ('N\'allez pas trop vite: créez une
-                                          <a href="./create_db.php">
-                                               base de données 
-                                          </a>
-                                          avant de vouloir faire mumuse !');
-    require("./data/Thesaurus_updated.php");   
+    file_exists($thesaurus_file) or die ('N\'allez pas trop vite : créez d\'abord une
+                                          <a href="./create_db.php">base de données</a> !');
+    require("./data/Thesaurus_updated.php");
 
 	/**
 	 * get_title() permet d'avoir un titre dynamique dans la balise <title>.
