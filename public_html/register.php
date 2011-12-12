@@ -1,5 +1,5 @@
 <h2>S'enregistrer</h2>
-<form id="registration" method="get" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>">
+<form id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>">
     <p>
         <label for="name">Nom: </label>
         <input type="text" name="name" id="name" placeholder="Votre nom" />

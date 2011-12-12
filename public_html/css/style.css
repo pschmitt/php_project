@@ -347,3 +347,15 @@ a:hover {
     width: 150px;
     float: left;
 }
+
+/* search form
+--------------------------------------------- */
+#search_form fieldset { /* TODO: applies on entire page! */
+}
+
+#search_form label {
+    width: 250px;
+    float: left;
+    display: block;
+}
+

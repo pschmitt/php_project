@@ -5,7 +5,7 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT STRAIGHT_JOIN title
+        return "SELECT title
                 FROM ".$tables["Recipes"]." AS R, "
                       .$tables["Recipes_ln_Ingredients"]." AS ln, "
                       .$tables["Ingredients"]." AS i

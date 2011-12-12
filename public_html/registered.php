@@ -7,8 +7,7 @@
 
     if (isset($_POST['username'], $_POST['password'])) {
         printf("Bienvenue sur JeNeSaisPasCuisiner.com, ".$_POST['username'].".\n<br/>\n
-                You can now save your favorite recipes.
-               ");
+                Vous pouvez dorénavant utiliser votre panier.\n");
         
 		// enregistrement des données saisies.
 		$db = mysqli_connect($db_host, $db_user, $db_password, $db_name)
@@ -43,7 +42,6 @@
 			
 		}		
 		else {
-			//ce login est deja present, veuillez changer de login
 			echo "Ce login est deja present, veuillez en choisir un autre.";
 		}
      } else {
