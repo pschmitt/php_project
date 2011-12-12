@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * Code à inclure dans header.inc.php
+	 * Code à inclure dans navigation.inc.php
 	 * Permet de transformer le thésaurus fourni en menu.
 	 * 
 	 * Author: Mathieu Morainville
@@ -37,7 +37,7 @@
 		if (isset($ingredient_type['S'])) {
 			echo "\n<ul>\n";
 			foreach($ingredient_type['S'] as $sons => $son) {
-				echo "\t<li><a href=".$_SERVER['PHP_SELF']."?cat=".$son.">".$array[$son]['T']."</a>";
+				echo "\t<li><a href=".$_SERVER['PHP_SELF']."?p=recipes&cat=".$son.">".$array[$son]['T']."</a>";
 				//find_son($array[$son], $array);
 				echo "</li>\n";
 			}

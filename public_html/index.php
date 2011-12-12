@@ -53,7 +53,8 @@
                                "register"	=> "register.php",
                                "registered"	=> "registered.php",
                                "basket"		=> "basket.php",
-                               "search"		=> "search.php");
+                               "search"		=> "search.php",
+							   "recipes"	=> "recipes.php");
                 # is the requested url correct? No? _> load home
                 if ((isset($_GET["p"])) && (isset($PAGES[$_GET["p"]])))
                     include($PAGES[$_GET["p"]]);

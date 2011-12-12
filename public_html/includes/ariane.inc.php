@@ -35,7 +35,7 @@
 				$father_array = array_reverse($father_array);
 				foreach($father_array as $IdFather => $father) {
 					if ( $IdFather != 0 && $IdFather != 1 ) {
-						echo "<a href=".$_SERVER['PHP_SELF']."?cat=".$IdFather.">".ucwords($father)."</a> > ";
+						echo "<a href=/index.php?p=recipes&cat=".$IdFather.">".ucwords($father)."</a> > ";
 					}
 				}
 				
