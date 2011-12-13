@@ -1,26 +1,51 @@
 <?php
 if (isset($_GET['recipe_id'])) {
-	// Si un id de recette est défini, on affiche le titre, les ingrédients et la préparation
-	// correspondant à l'id de cette recette.
+	// Si un id de recette est dÃ©fini, on affiche le titre, les ingrÃ©dients et la prÃ©paration
+	// correspondant Ã  l'id de cette recette.
 	
 	// TODO
 } else if (isset($_GET['cat'])) {
-	// Sinon, si une catégorie est définie, cela signifie qu'on a cliqué dans le menu et on affiche
-	// donc le titre de toutes les recettes contenant au moins un des ingrédients.
+	// Sinon, si une catÃ©gorie est dÃ©finie, cela signifie qu'on a cliquÃ© dans le menu et on affiche
+	// donc le titre de toutes les recettes contenant au moins un des ingrÃ©dients.
+	
+	require_once("includes/functions/mysqli.inc.php");
+	$db = db_con();
 	
 	if (isset($Thesaurus[$_GET['cat']])) {
-		//print_r($father);
-		echo '<a href="'.$_SERVER['PHP_SELF'].'?p=home">Home</a> > ';
+		// Construction de la requÃªte SQL
+		$ing_list = ''; // Liste d'ingrÃ©dients
 		
-		find_father($Thesaurus[$_GET['cat']], $Thesaurus);
-		$father_array = array_reverse($father_array);
-		foreach($father_array as $IdFather => $father) {
-			if ( $IdFather != 0 && $IdFather != 1 ) {
-				echo "<a href=".$_SERVER['PHP_SELF']."?cat=".$IdFather.">".ucwords($father)."</a> > ";
+		function make_ing_list($ingredient_type, $array) {
+			global $db;
+			global $ing_list;
+			
+			if (isset($ingredient_type['S'])) {
+				foreach($ingredient_type['S'] as $sons => $son) {
+					foreach($array[$son]['E'] as $synonyms => $synonym) {
+						$ing_list .= "'".mysqli_real_escape_string($db, $synonym)."', ";
+					}
+					//echo $array[$son]['T'].", ";
+					make_ing_list($array[$son], $array);
+				}
 			}
 		}
 		
-		echo ucwords($Thesaurus[$_GET['cat']]['T']);
+		make_ing_list($Thesaurus[$_GET['cat']-1], $Thesaurus);
+		
+		$ing_list = substr($ing_list, 0, -2); // On enlÃ¨ve la virgule et l'espace aprÃ¨s le dernier ingrÃ©dient
+		//echo $ing_list;
+		
+		$sql = "SELECT DISTINCT title
+				FROM Recipes AS R, Recipes_ln_Ingredients AS ln, Ingredients AS i
+				WHERE R.id=ln.id_recipe AND ln.id_ingredient=i.id AND i.name IN (".$ing_list.")";
+		
+		echo $sql;
+		
+		$result = mysqli_query ($db, $sql) or die (mysqli_error($db));
+		
+		while ($row = mysqli_fetch_assoc($result)) {
+			//print_r($row);
+		}
 	}
 }
 ?>
