@@ -56,13 +56,15 @@ if (isset($_GET['recipe_id'])) {
 		
 		$result = mysqli_query ($db, $sql) or die (mysqli_error($db));
 		
-		echo "<h1>Recettes</h1>";
+		echo "<h2>Recipes with: ".strtolower($Thesaurus[$_GET['cat']]['T'])."</h2>";
 		
+		echo "<dl>\n";
 		while ($row = mysqli_fetch_assoc($result)) {
-			echo "<br /><br /><strong>Titre de la recette</strong><br />\n";
-			print_r($row);
-			//echo $row['title'];
+			//print_r($row);
+			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
+			echo "<dd><strong>Matching ingredients</strong>: ".$row['name']."</dd><br />\n\n";
 		}
+		echo "</dl>\n";
 	}
 }
 ?>
