@@ -24,7 +24,7 @@
 			}
 		}
 		
-		if (isset($_GET['p']) && $_GET['p'] != 'home') {
+		if (isset($_GET['p']) && $_GET['p'] != 'home' && $_GET['p'] != 'recipes') {
 			echo '<a href="'.$_SERVER['PHP_SELF'].'?p=home">Home</a> > <span>'.ucwords($_GET['p'])."</span>\n";
 		} else if (isset($_GET['cat'])) {
 			if (isset($Thesaurus[$_GET['cat']])) {
@@ -35,7 +35,7 @@
 				$father_array = array_reverse($father_array);
 				foreach($father_array as $IdFather => $father) {
 					if ( $IdFather != 0 && $IdFather != 1 ) {
-						echo "<a href=/index.php?p=recipes&cat=".$IdFather.">".ucwords($father)."</a> > ";
+						echo "<a href=\"index.php?p=recipes&cat=".$IdFather."\">".ucwords($father)."</a> > ";
 					}
 				}
 				

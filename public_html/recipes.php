@@ -34,6 +34,12 @@ if (isset($_GET['recipe_id'])) {
 					//echo $array[$son]['T'].", ";
 					make_ing_list($array[$son], $array);
 				}
+			} else {
+				foreach($ingredient_type['E'] as $synonyms => $synonym) {
+					$str = mysqli_real_escape_string($db, $synonym);
+					if (!in_array($str, $ing_list))
+						$ing_list[] = $str;
+				}
 			}
 		}
 		
@@ -46,14 +52,16 @@ if (isset($_GET['recipe_id'])) {
 				FROM Recipes AS R, Recipes_ln_Ingredients AS ln, Ingredients AS i
 				WHERE R.id=ln.id_recipe AND ln.id_ingredient=i.id AND i.name IN ('".$ing_list."')";
 		
-		echo $sql;
+		//echo $sql;
 		
 		$result = mysqli_query ($db, $sql) or die (mysqli_error($db));
 		
+		echo "<h1>Recettes</h1>";
+		
 		while ($row = mysqli_fetch_assoc($result)) {
 			echo "<br /><br /><strong>Titre de la recette</strong><br />\n";
-			//print_r($row)
-			echo $row['title'];;
+			print_r($row);
+			//echo $row['title'];
 		}
 	}
 }
