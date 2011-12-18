@@ -10,8 +10,7 @@
                 <input type="password" name="passwd" id="passwd" required />
             </label>
             <br />
-            <!-- <a id="submit" href="#"> -->
-			<a id="submit" onclick="$(this).parents('form:first').submit();">
+			<a id="submit" onclick="$(this).parents('form:first').submit();" href="#">
                 Connexion
             </a>
             |
@@ -20,6 +19,13 @@
             </a>
         </p>
     </form>
+    <script>
+        // Permet de soumettre le formulaire en appuyant sur la touche Entrée
+        $("#login_form input").keypress(function(e) {
+            if (e.keyCode == 13)
+                $(this).closest("form").submit();
+        });
+    </script>
     
     <div class="logo">
         <h1>
