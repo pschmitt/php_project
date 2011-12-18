@@ -1,5 +1,5 @@
 <header>
-    <form id="login_form" name="login_form" method="post" > <!-- action="javascript:alert('success!');"--> 
+    <form id="login_form" name="login_form" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=login" ?>"> <!-- action="javascript:alert('success!');"--> 
     <img src="images/se-connecter.png" alt="Se connecter" />
         <p>
             <label>Login
@@ -11,7 +11,7 @@
             </label>
             <br />
             <!-- <a id="submit" href="#"> -->
-			<a id="submit" href="">
+			<a id="submit" onclick="$(this).parents('form:first').submit();">
                 Connexion
             </a>
             |
@@ -20,23 +20,6 @@
             </a>
         </p>
     </form>
-    <script>
-        /*$('#login_form').submit(function() {
-            var return_value = false;
-            if ($('#username').val() == "") {
-                $('#username').css({ backgroundColor: 'khaki' });
-                return false;
-            }
-            if  ($('#password').val() == "") {
-                $('#password').css({ backgroundColor: 'khaki' });
-                return false;
-            }
-            return true;
-        });*/
-        $('#submit').click(function() {
-            $(this).parents('form:first').submit();
-        });
-    </script>
     
     <div class="logo">
         <h1>
