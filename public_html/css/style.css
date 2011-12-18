@@ -348,6 +348,11 @@ a:hover {
     float: left;
 }
 
+.available {
+    background: '#90EE90';
+    color: 'red';
+}
+
 /* search form
 --------------------------------------------- */
 #search_form fieldset { /* TODO: applies on entire page! */

@@ -1,7 +1,6 @@
 <?php
-	$hostname	= "Math-Portable"; // MAY BE CHANGED TO SUIT YOUR HOSTNAME
+	$hostname	= strtolower(php_uname('n'));
 	$server		= $_SERVER['SERVER_NAME'];
-	$table		= "Recipes";
 
 	if (($server === "localhost") || ($server === "127.0.0.1") || ($server === $hostname)){
 		$db_host = "localhost";
@@ -14,12 +13,16 @@
 		$db_user = "XXXX";
 		$db_password = "XXXX";
 	}
+    
+    if ($hostname === "laxlinux-cl") {
+        $db_name = "JeNeSaisPasCuisiner";
+		$db_user = "silly";
+		$db_password = "none";
+    }
+
 	unset($server, $hostname);
 	
-	// credentials array, useful for passing to functions
 
-    $credentials = array("db_host" => $db_host, "db_name" => $db_name, "db_user" => $db_user, "db_password" => $db_password, "table" => $table);
-	
 	$tables = array("Baskets" => "Baskets",
                     "Baskets_ln_Recipes" => "Baskets_ln_Recipes",
                     "Ingredients" => "Ingredients",
@@ -27,4 +30,7 @@
                     "Recipes_ln_Ingredients" => "Recipes_ln_Ingredients",
                     "Users" => "Users",
                     "Users_ln_Baskets" => "Users_ln_Baskets");
+    
+	// credentials array, useful for passing to functions
+    $credentials = array("db_host" => $db_host, "db_name" => $db_name, "db_user" => $db_user, "db_password" => $db_password, "tables" => $tables);
 ?>

@@ -74,11 +74,13 @@
             async : false,
             colorOn: '#000',
             colorOff: '#888',
-            emptyMessage : 'Ce champ est obligatoire',
+            //emptyMessage : 'Ce champ est obligatoire',
             messages : 'fr',
             responseDiv : '#rep'
         });
-        $("#username").change(function() { //if theres a change in the username textbox
+        var default_color = $("#username").css('background-color');
+        $("#username").keyup(function() { //if theres a change in the username textbox
+            $("#username").css('background-color', default_color);
             var username = $("#username").val();//Get the value in the username textbox
             if (username.length > 3) { //if the lenght greater than 3 characters
                 $("#availability_status").html('Checking availability...');
