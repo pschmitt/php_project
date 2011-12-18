@@ -107,7 +107,7 @@
         $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Users"]." (
                 id INT AUTO_INCREMENT,
                 username VARCHAR(10) NOT NULL,
-                password VARCHAR(32) NOT NULL,
+                password VARCHAR(40) NOT NULL,
                 name VARCHAR(20) DEFAULT NULL,
                 first_name VARCHAR(20) DEFAULT NULL,
                 gender VARCHAR(10) DEFAULT NULL,

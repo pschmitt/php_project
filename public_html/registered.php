@@ -8,8 +8,7 @@
                 Vous pouvez dorénavant utiliser votre panier.\n");
         
 		// enregistrement des données saisies.
-		$db = mysqli_connect($db_host, $db_user, $db_password, $db_name)
-            or die("Erreur de connexion au serveur: ".mysql_error());
+		$db = db_con();
 
         $columns = get_col_names($db, $tables['Users']);
 
@@ -26,7 +25,7 @@
 				if (!empty($value) && in_array($column, $columns) && strcmp($value, "default") != 0) {
     			    $sql .= $column.", ";
                     if (strcmp($column, "password") == 0)
-                        $values .= "MD5('".mysqli_real_escape_string($db, $value)."'), ";
+                        $values .= "SHA1('".mysqli_real_escape_string($db, $value)."'), ";
                     else
                         $values .= "'".mysqli_real_escape_string($db, $value)."', ";
                 }

@@ -17,7 +17,7 @@
         $res = query($db, $sql);
         $user = mysqli_fetch_assoc($res);
         mysqli_free_result($res);
-        if ($user['password'] === md5($pass)) {
+        if ($user['password'] === sha1($pass)) {
             printf("Welcome, %s !", $username);
             // TODO start/resume session  
         } else
