@@ -62,16 +62,10 @@ if (isset($_GET['recipe_id'])) {
 		
 		make_ing_list($Thesaurus[$_GET['cat']], $Thesaurus);
 		$ing_list = implode("', '", $ing_list);
-		//$ing_list = substr($ing_list, 0, -2); // On enlève la virgule et l'espace après le dernier ingrédient
-		//echo $ing_list;
 		
-		$sql = "SELECT DISTINCT *
-				FROM Recipes AS R, Recipes_ln_Ingredients AS ln, Ingredients AS i
-				WHERE R.id=ln.id_recipe AND ln.id_ingredient=i.id AND i.name IN ('".$ing_list."')";
+		$sql = recipes_by_ing_list($ing_list);	
 		
-		//echo $sql;
-		
-		$result = mysqli_query ($db, $sql) or die (mysqli_error($db));
+		$result = query($db, $sql);
 		
 		echo "<h2>Recipes with: ".strtolower($Thesaurus[$_GET['cat']]['T'])."</h2>";
 		

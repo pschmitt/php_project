@@ -24,6 +24,19 @@
                 FROM ".$tables["Recipes"].
                 " WHERE title LIKE '%".mysqli_real_escape_string($db, $title)."%'";
     }
+    
+    function recipes_by_ing_list ($ing_list) {
+         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
+            die("No DB connection !");
+        $db = $GLOBALS['db'];
+        $tables = $GLOBALS['tables'];
+
+        return "SELECT DISTINCT *
+				FROM ".$tables['Recipes']." AS R, "
+                      .$tables['Recipes_ln_Ingredients']." AS ln, "
+                      .$tables['Ingredients']." AS i
+				WHERE R.id=ln.id_recipe AND ln.id_ingredient=i.id AND i.name IN ('".$ing_list."')";
+    }
 
     function recipe_by_id($id) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
@@ -33,7 +46,7 @@
 
         return "SELECT title, preparation
                 FROM ".$tables['Recipes']." AS R
-                WHERE R.id=".$id; 
+                WHERE R.id=".mysqli_real_escape_string($db, $id); 
     }
     
     function ingredients_by_recipe_id($id) {   
@@ -43,7 +56,9 @@
         $tables = $GLOBALS['tables'];
 
         return "SELECT name 
-                FROM Ingredients as i, Recipes as R, Recipes_ln_Ingredients as ln
-                WHERE i.id=ln.id_ingredient AND ln.id_recipe=R.id AND R.id=".$id;
+                FROM ".$tables['Ingredients']." as i, "
+                     .$tables['Recipes']." as R, "
+                     .$tables['Recipes_ln_Ingredients']." as ln
+                WHERE i.id=ln.id_ingredient AND ln.id_recipe=R.id AND R.id=".mysqli_real_escape_string($db, $id);
     }
 ?>
