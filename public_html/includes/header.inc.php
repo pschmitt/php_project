@@ -3,11 +3,11 @@
     <img src="images/se-connecter.png" alt="Se connecter" />
         <p>
             <label>Login
-                <input type="text" name="login" id="login" value="<?php echo isset($_POST['login']) ? $_POST['login']."OK" : null ?>" required />
+                <input type="text" name="login" id="login" value="<?php echo isset($_POST['login']) ? $_POST['login'] : null ?>" required />
             </label>
             <br />
             <label>Mot de passe
-                <input type="password" name="password" id="password" required />
+                <input type="password" name="passwd" id="passwd" required />
             </label>
             <br />
             <!-- <a id="submit" href="#"> -->
