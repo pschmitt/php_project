@@ -62,7 +62,7 @@ if (isset($_GET['recipe_id'])) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			//print_r($row);
 			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
-			echo "<dd><strong>Matching ingredients</strong>: ".$row['name']."</dd><br />\n\n";
+			echo "<dd><strong>Matching ingredients</strong>: ".ucwords($row['name'])."</dd><br />\n\n";
 		}
 		echo "</dl>\n";
 	}
