@@ -36,7 +36,7 @@
         <select name="birth_year" id="birth_year">
             <option value="default" selected="selected"></option>
             <?php
-                for ($year = 1901; $year < 2012; $year++) {
+                for ($year = 2010; $year >= 1901; $year--) {
                     echo "<option value=".$year.">\n\t".$year."\n</option>\n";
                 }
             ?>
@@ -64,7 +64,7 @@
         <input type="email" name="email" id="email" placeholder="xxx@yyy.com" /> <!-- type="email" -->
     </p>
 	<p>
-		<h6>les données précedées de * sont obligatoires</h6>
+		<span><strong>Les données précedées de * sont obligatoires.</strong></span>
 	</p>
     <p>
         <input type="submit" value="Envoyer" id="submit_" disabled="disabled"/>
