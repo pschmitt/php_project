@@ -329,9 +329,23 @@ a:hover {
     font-weight: normal;
 	margin-bottom: 0.5em;
 }
+
+#principal h3 {
+    color: #ea8931;
+    font-size: 1.5em;
+    font-weight: normal;
+	margin-bottom: 0.5em;
+    margin-top: 1em;
+}
+
 #principal p {
     line-height: 16px;
     padding: 0 0 20px;
+}
+
+#principal ul {
+    list-style-type: disc;
+    margin-left: 50px;
 }
 
 /* Registration - form
@@ -346,6 +360,11 @@ a:hover {
 #registration label {
     width: 150px;
     float: left;
+}
+
+.available {
+    background: '#90EE90';
+    color: 'red';
 }
 
 /* search form
