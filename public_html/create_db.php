@@ -81,11 +81,11 @@
         // create TABLE (ingredients)
         $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Ingredients"]." (
                 id INT NOT NULL AUTO_INCREMENT,
-                name VARCHAR(30) NOT NULL,
+                name VARCHAR(40) NOT NULL,
                 qualifiant varchar(30) NOT NULL,
                 reste varchar(20) NOT NULL,
                 unit varchar(20) DEFAULT NULL,
-                quantity int(11) DEFAULT NULL,
+                quantity varchar(6) DEFAULT NULL,
                 parenthese text,
                 PRIMARY KEY (id)
                 )";
@@ -122,32 +122,32 @@
         query($db, $sql);
         printf("Done: TABLE %s succesfully created.\n", $tables["Users"]);
 
-        // create TABLE (baskets)
-        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Baskets"]." (
+        // create TABLE (Carts)
+        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Carts"]." (
                 id INT AUTO_INCREMENT,
                 titre varchar(50) NOT NULL,
                 PRIMARY KEY (id)
                 )";
         query($db, $sql);
-        printf("Done: TABLE %s succesfully created.\n", $tables["Baskets"]);
+        printf("Done: TABLE %s succesfully created.\n", $tables["Carts"]);
 
-        // create TABLE (link users<->baskets)
-        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Users_ln_Baskets"]." (
+        // create TABLE (link users<->carts)
+        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Users_ln_Carts"]." (
                 id_user INT NOT NULL,
-                id_basket INT NOT NULL,
-                PRIMARY KEY (id_user, id_basket)
+                id_cart INT NOT NULL,
+                PRIMARY KEY (id_user, id_cart)
                 )";
         query($db, $sql);
-        printf("Done: TABLE %s succesfully created.\n", $tables["Users_ln_Baskets"]);
+        printf("Done: TABLE %s succesfully created.\n", $tables["Users_ln_Carts"]);
 
-        // create TABLE (link baskets<->recipes)
-        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Baskets_ln_Recipes"]." (
-                id_basket INT NOT NULL,
+        // create TABLE (link carts<->recipes)
+        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Carts_ln_Recipes"]." (
+                id_cart INT NOT NULL,
                 id_recipes INT NOT NULL,
-                PRIMARY KEY (id_basket, id_recipes)
+                PRIMARY KEY (id_cart, id_recipes)
                 )";
         query($db, $sql);
-        printf("Done: TABLE %s succesfully created.\n", $tables["Baskets_ln_Recipes"]);
+        printf("Done: TABLE %s succesfully created.\n", $tables["Carts_ln_Recipes"]);
 
         function store($sxml_array) {
             $db = $GLOBALS['db'];
