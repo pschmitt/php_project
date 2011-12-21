@@ -23,13 +23,13 @@
 	unset($server, $hostname);
 	
 
-	$tables = array("Baskets" => "Baskets",
-                    "Baskets_ln_Recipes" => "Baskets_ln_Recipes",
+	$tables = array("Carts" => "Carts",
+                    "Carts_ln_Recipes" => "Carts_ln_Recipes",
                     "Ingredients" => "Ingredients",
                     "Recipes" => "Recipes",
                     "Recipes_ln_Ingredients" => "Recipes_ln_Ingredients",
                     "Users" => "Users",
-                    "Users_ln_Baskets" => "Users_ln_Baskets");
+                    "Users_ln_Carts" => "Users_ln_Carts");
     
 	// credentials array, useful for passing to functions
     $credentials = array("db_host" => $db_host, "db_name" => $db_name, "db_user" => $db_user, "db_password" => $db_password, "tables" => $tables);

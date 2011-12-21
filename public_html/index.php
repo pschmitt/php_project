@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	//include("./data/Fathers.php"); // À remplacer par Thesaurus.php quand il aura les champs Pères
+    session_start();
+
     $thesaurus_file = "./data/Thesaurus_updated.php";
     file_exists($thesaurus_file) or die ('N\'allez pas trop vite : créez d\'abord une
                                           <a href="./create_db.php">base de données</a> !');
@@ -50,6 +50,7 @@
             <?php
 				include("ariane.inc.php");
                 $PAGES = array("login"		=> "login.php",
+                               "logout"     => "logout.php",
                                "register"	=> "register.php",
                                "registered"	=> "registered.php",
                                "basket"		=> "basket.php",

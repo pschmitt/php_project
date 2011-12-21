@@ -35,6 +35,9 @@
 			$sql = substr($sql, 0, - 2).")".$values.")";
 		    
 			query($db, $sql);
+
+            // TODO create Basket !
+
 			mysqli_close($db);
 			
 		}		
