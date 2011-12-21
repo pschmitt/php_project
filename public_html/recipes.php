@@ -111,6 +111,9 @@ if (isset($_GET['recipe_id'])) {
 		}
 		echo "</dl>\n";
 		
+		// Le code suivant résout le problème d'affiche des recettes avec un seul ingrédient, mais
+		// pose des problèmes pour l'affichage par page... Il faudrait vraiment trouver une requête SQL
+		// qui aurait le même effet...
 		foreach($recipe_temp_table as $id_recipe => $recipe_array) {
 			foreach($recipe_array as $recipe_title => $ing_array) {
 				echo '<dt><a href="index.php?p=recipes&recipe_id='.$id_recipe.'">'.$recipe_title.'</a></dt>'."\n";
