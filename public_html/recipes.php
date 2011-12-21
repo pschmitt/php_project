@@ -99,10 +99,32 @@ if (isset($_GET['recipe_id'])) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			//print_r($row);
 			
-			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id_recipe'].'">'.$row['title'].'</a></dt>'."\n";
-			echo "<dd><strong>Matching ingredients</strong>: ".$row['name']."</dd><br />\n\n";
+			//$recipe_temp_table[$row['title']][] = $row['name'];
+			$recipe_temp_table[$row['id_recipe']][$row['title']][] = $row['name'];
+			
+			//print_r($recipe_temp_table);
+			
+			//echo "<br /><br />";
+			
+			//echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id_recipe'].'">'.$row['title'].'</a></dt>'."\n";
+			//echo "<dd><strong>Matching ingredients</strong>: ".ucfirst($row['name'])."</dd><br />\n\n";
 		}
 		echo "</dl>\n";
+		
+		foreach($recipe_temp_table as $id_recipe => $recipe_array) {
+			foreach($recipe_array as $recipe_title => $ing_array) {
+				echo '<dt><a href="index.php?p=recipes&recipe_id='.$id_recipe.'">'.$recipe_title.'</a></dt>'."\n";
+				echo "<dd><strong>Matching ingredients</strong>: ";
+				foreach($ing_array as $ing) {
+					if (strlen($ing) != 0) {
+						$ings[] = ucfirst($ing);
+					}
+				}
+				echo implode(", ", $ings);
+				$ings = array();
+				echo "</dd><br />\n\n";
+			}
+		}
 		
 		//--- suite pagination
 		echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
