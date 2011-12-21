@@ -50,6 +50,7 @@
             <?php
 				include("ariane.inc.php");
                 $PAGES = array("login"		=> "login.php",
+                               "logout"     => "logout.php",
                                "register"	=> "register.php",
                                "registered"	=> "registered.php",
                                "basket"		=> "basket.php",

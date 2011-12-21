@@ -1,4 +1,5 @@
 <header>
+    <?php if (!isset($_SESSION['logged_in'])) { ?>
     <form id="login_form" name="login_form" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=login" ?>"> <!-- action="javascript:alert('success!');"--> 
     <img src="images/se-connecter.png" alt="Se connecter" />
         <p>
@@ -27,6 +28,14 @@
         });
     </script>
     
+    <?php } else {  ?>
+        <p>
+            Hi, <?php echo $_SESSION['username']."(".$_SESSION['nbcon'].")"; ?> !
+            <a href="<?php echo $_SERVER['PHP_SELF']."?p=logout"; ?>">
+                logout
+            </a>
+        </p>
+    <?php } ?>
     <div class="logo">
         <h1>
             <a title="JeNeSaisPasCuisiner.com" href="<?php echo $_SERVER['PHP_SELF'].'?p=home'; ?>"/>JeNeSaisPasCuisiner.com</a>

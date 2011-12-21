@@ -19,17 +19,20 @@
         if (mysqli_num_rows($res)) {
             printf("Welcome, %s !", $username);
             // TODO start/resume session
-            if(!isset($_SESSION['username']) || $_SESSION['username'] != $username) {
+            $_SESSION['user_id'] = 3;
+            $_SESSION['username'] = $username;
+            $_SESSION['logged_in'] = true;
+            /*if(!isset($_SESSION['username']) || $_SESSION['username'] != $username) {
                 echo "<br/>BREAKPOINT</br>";
                 $old_session_name = session_name($username);
                 $_SESSION['username'] = $username;
-            }
-            /*if (!isset($_SESSION['test']))
-                $_SESSION['test'] = 1;
+            }*/
+            if (!isset($_SESSION['test']))
+                $_SESSION['nbcon'] = 1;
             else
-                $_SESSION['test']++;*/
+                $_SESSION['nbcon']++;
             printf("\n<br/><br/><strong>var:</strong> %d\n<br/><br/>",  $_SESSION['test']);
-            print_r($_SESSION);
+            //print_r($_SESSION);
         } else
             printf("Wrong username or password !\n");
         mysqli_free_result($res);
@@ -38,15 +41,5 @@
 
     if (isset($_POST['login'],  $_POST['passwd'])) 
         check_login($_POST['login'], $_POST['passwd']);
-
-    // DEBUG
-    if (isset($_GET['logout'])) {
-        session_destroy();
-    }
-    echo session_id();
 ?>
-<p>
-    <a href="<?php $_SERVER['PHP_SELF']."&logout"?>">
-        LOGOUT
-    </a>
-</p>
+

@@ -121,7 +121,8 @@
                 )";
         query($db, $sql);
         printf("Done: TABLE %s succesfully created.\n", $tables["Users"]);
-
+        
+        // TODO REMOVE ?
         // create TABLE (Carts)
         $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Carts"]." (
                 id INT AUTO_INCREMENT,
