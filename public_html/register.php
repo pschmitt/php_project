@@ -1,5 +1,5 @@
 <h2>S'enregistrer</h2>
-<form id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>">
+<form name ="registration" id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=registered" ?>" onSubmit="return verif()">
     <p>
         <label for="name">Nom: </label>
         <input type="text" name="name" id="name" placeholder="Votre nom" />
@@ -163,5 +163,40 @@
         $("#password").keyup(check_passwd);
         $("#password_confirmation").keyup(check_passwd);
      });
+//------------------------Verification du champ de saisi E-Mail en Javascript-------------------------------	 
+	
+/*
+*cette fonction verifie si une adresse mail donnée est bel et bien une adresse vaile
+*la fonction retourne true si le paramètre mail est une adresse mail valide et false sinon 
+*/
+
+function verifMail(mail){
+	var reg = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/
+	if(reg.test(mail)){
+		return true;
+	}
+	return false;	
+}// fin de la fonction  verifMail
+
+/*
+ cette fonction teste si les élements d'un formulaire ont été bien saisis ou pas
+  elle retourne true si bien saisi ou false et un message d'erreur sinon
+*/
+function verif(){
+	var mail = document.forms["registration"].elements["email"].value;
+	var message = "";
+	
+	if(mail.length != 0){
+		testMail = verifMail(mail);
+		if(!testMail){
+			message += "adresse mail incorrecte\n";
+		}
+	}
+	if(message.length != 0 ){
+		alert("Erreur:\n"+message);
+		return false;
+	}
+	return true;
+} // fin de la fonction verif	 
 </script>
 
