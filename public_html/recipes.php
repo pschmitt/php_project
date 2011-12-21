@@ -65,17 +65,63 @@ if (isset($_GET['recipe_id'])) {
 		
 		$sql = recipes_by_ing_list($ing_list);	
 		
+		//--frantz-- $result = query($db, $sql);
 		$result = query($db, $sql);
+		//----- debut de la pagination-----
+		$sql_Limit = $sql;
+		$messagesParPage = 15; //Nous allons afficher 5 messages par page.
+		$total = mysqli_num_rows($result);
+		//Nous allons maintenant compter le nombre de pages.
+		$nombreDePages = ceil($total / $messagesParPage);
+		if(isset($_GET['page'])) // Si la variable $_GET['page'] existe...
+		{	
+			$pageActuelle = intval($_GET['page']);
+
+			if($pageActuelle > $nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
+			{
+				$pageActuelle = $nombreDePages;
+			}
+		}
+		else // Sinon
+		{
+			$pageActuelle = 1; // La page actuelle est la n°1    
+		}
+		$premiereEntree = ($pageActuelle - 1) * $messagesParPage; // On calcul la première entrée à lire
+		// La requête sql pour récupérer les messages de la page actuelle.
+		$sql_Limit .= ' LIMIT '.$premiereEntree.', '.$messagesParPage.'';
+		$result = query($db, $sql_Limit);
+
+		//----- suite pagination-----
 		
 		echo "<h2>Recipes with: ".strtolower($Thesaurus[$_GET['cat']]['T'])."</h2>";
 		
 		echo "<dl>\n";
 		while ($row = mysqli_fetch_assoc($result)) {
 			//print_r($row);
+			
 			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id_recipe'].'">'.$row['title'].'</a></dt>'."\n";
-			echo "<dd><strong>Matching ingredients</strong>: ".ucwords($row['name'])."</dd><br />\n\n";
+			echo "<dd><strong>Matching ingredients</strong>: ".$row['name']."</dd><br />\n\n";
 		}
 		echo "</dl>\n";
+		
+		//--- suite pagination
+		echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
+		for($page = 1; $page <= $nombreDePages; $page++) 
+		{
+			//On va faire notre condition
+			if($page == $pageActuelle) //Si il s'agit de la page actuelle...
+			{
+			 echo ' [ '.$page.' ] '; 
+			}	
+			else //Sinon...
+			{
+			  //echo ' <a href="index.php?p=recipes&page='.$i.'">'.$i.'</a> ';
+			  echo ' <a href="'.$_SERVER['PHP_SELF'].'?p=recipes&cat='.$Thesaurus[$_GET['cat']]['N'].'&page='.$page.'">'.$page.'</a> ';
+			}
+		}
+		echo '</p>';
+		
+		//--- suite pagination
 	}
 }
 ?>
