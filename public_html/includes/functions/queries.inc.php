@@ -1,4 +1,9 @@
 <?php
+
+    /**
+      * retourne la requête SQL qui permet d'obtenir les récettes contenant un ingrédient donné
+      * utilé par: recherche avancée
+      */
     function recipe_by_ing ($ingredient) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
@@ -14,6 +19,10 @@
                 AND i.name LIKE '%".mysqli_real_escape_string($db, $ingredient)."%'";
     }
     
+    /**
+      * retourne la requête SQL qui permet d'obtenir la/les récette(s) qui ont un certain titre
+      * utilisé par: recherche avancée
+      */
     function recipe_by_title($title) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
@@ -25,6 +34,10 @@
                 " WHERE title LIKE '%".mysqli_real_escape_string($db, $title)."%'";
     }
     
+    /**
+      *  retourne la requête SQL qui permet d'obtenir les récettes contenant LES ingrédients donnés
+      *  utilisé par: recipes.php (affichage des récettes)
+      */
     function recipes_by_ing_list ($ing_list) {
          if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
@@ -38,6 +51,10 @@
 				WHERE R.id=ln.id_recipe AND ln.id_ingredient=i.id AND i.name IN ('".$ing_list."')";
     }
 
+    /**
+      * retourne la requête SQL qui permet d'obtenir le titre et la marche à suivre d'une recette 
+      * utilisé par: results.php (affichage d'une recette)
+      */
     function recipe_by_id($id) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
@@ -49,6 +66,10 @@
                 WHERE R.id=".mysqli_real_escape_string($db, $id); 
     }
     
+    /**
+      * retourne la requête SQL qui permet d'obtenir les ingrédients contenus dans une recette
+      * utilisé par: recipes.php (affichage d'une recette)
+      */
     function ingredients_by_recipe_id($id) {   
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
@@ -64,6 +85,10 @@
                       AND R.id=".mysqli_real_escape_string($db, $id);
     }
 
+    /**
+      * retourne la requête SQL qui permet d'ajouter une recette aux favoris
+      * utilisé par: recipes.php (affichage d'une recette)
+      */
     function add_to_bookmarks($user_id, $bookmark_id) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
