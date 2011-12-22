@@ -17,10 +17,7 @@
                     <a href="'.$_SERVER['PHP_SELF'].'?p=recipes&recipe_id=%s">
                         %s
                     </a>
-                    -
-                    <a id="%s" class="rm_bookmark" href="#" >
-                        supprimer
-                    </a>
+                    <img src="images/delete.png" alt="supprimer" title="supprimer" height="16" width="16" id="%s" class="rm_bookmark" />
                 </li>
                 ', $row['id'], $row['title'], $row['id']);
     }
