@@ -1,4 +1,5 @@
 <?php
+require_once("includes/functions/functions.inc.php");
 require_once("includes/functions/mysqli.inc.php");
 require_once("includes/functions/queries.inc.php");
 if (isset($_GET['recipe_id'])) {
@@ -106,27 +107,9 @@ if (isset($_GET['recipe_id'])) {
 			//print_r($recipe_temp_table);
 			
 			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
-			echo "<dd><strong>Preparation </strong>: ".substr($row['preparation'], 0, 256)." [...]"."</dd><br />\n\n";
+			echo "<dd><strong>Preparation </strong>: ".substr(capitalize_sentence($row['preparation']), 0, 256)." [...]"."</dd><br />\n\n";
 		}
 		echo "</dl>\n";
-		
-		// Le code suivant résout le problème d'affiche des recettes avec un seul ingrédient, mais
-		// pose des problèmes pour l'affichage par page... Il faudrait vraiment trouver une requête SQL
-		// qui aurait le même effet...
-		/*foreach($recipe_temp_table as $id_recipe => $recipe_array) {
-			foreach($recipe_array as $recipe_title => $ing_array) {
-				echo '<dt><a href="index.php?p=recipes&recipe_id='.$id_recipe.'">'.$recipe_title.'</a></dt>'."\n";
-				echo "<dd><strong>Matching ingredients</strong>: ";
-				foreach($ing_array as $ing) {
-					if (strlen($ing) != 0) {
-						$ings[] = ucfirst($ing);
-					}
-				}
-				echo implode(", ", $ings);
-				$ings = array();
-				echo "</dd><br />\n\n";
-			}
-		}*/
 		
 		//--- suite pagination
 		echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
