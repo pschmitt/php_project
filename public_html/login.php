@@ -21,6 +21,7 @@
             $_SESSION['user_id'] = $id['id'];
             $_SESSION['username'] = $username;
             $_SESSION['logged_in'] = true;
+            $_SESSION['referer'] = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         } else
             printf("Wrong username or password !\n");
         mysqli_free_result($res);
@@ -32,4 +33,4 @@
     mysqli_close($db);
 ?>
 
-redirecting to homepage ...
+redirecting to last visited page ...

@@ -7,7 +7,7 @@
     </p>
     <p>
         <label for="ingredient">... par ingredient: </label>
-        <input type="text" name="ingredient" value="<?php echo isset($_POST['recipe_title']) ? $_POST['ingredient'] : null ?>"/>
+        <input type="text" name="ingredient" value="<?php echo isset($_POST['ingredient']) ? $_POST['ingredient'] : null ?>"/>
     </p>
     <input type="submit" value="Rechercher" />
 </form>
@@ -15,11 +15,11 @@
 <?php
     require_once("includes/functions/mysqli.inc.php");
     require_once("includes/functions/queries.inc.php");
+    $db = db_con();
     
     if ((isset($_POST['recipe_title'])) && (isset($_POST['ingredient'])) && !(empty($_POST['recipe_title']))
         || !(empty($_POST['ingredient']))) {
         echo '<h3 id="result_title">Résultats</h3>';
-        $db = db_con();
     }
 
     if ((isset($_POST['recipe_title'], $_POST['ingredient']))

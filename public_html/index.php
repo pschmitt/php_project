@@ -29,15 +29,20 @@
 <?php
     if (isset($_GET['p'])) {
         switch($_GET['p']) {
-            case "login":
             case "logout":
+?>
+<meta http-equiv="refresh" content="3;URL=index.php"> 
+<?php
+                break;
+            case "login":
             case "registered":
                 ?>
-<meta http-equiv="refresh" content="10;URL=index.php">                    
+<meta http-equiv="refresh" content="3;URL=<?php echo $_SESSION['referer']; ?>">                    
                 <?php
                 break;
         }
     }
+    $_SESSION['referer'] = $_SERVER['REQUEST_URI'];
 ?>
 <title>JeNeSaisPasCuisiner.com | <?php get_title(); ?></title>
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
