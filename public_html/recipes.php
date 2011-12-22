@@ -145,7 +145,17 @@ mysqli_close($db);
 ?>
 
 <script>
-    $("#bookmark").click(function() {
+    var add_icon = "images/heart.png";
+    var rm_icon = "images/heart_del.png";
+    var add_title = "add to bookmarks";
+    var rm_title = "remove from bookmarks";
+    var added_txt = "bookmarked !";
+    var added_failed_txt = "coudn't bookmark ..!";
+    var rm_txt = "removed from bookmarks !";
+    var rm_failed_txt = "couldn't remove bookmark..!";
+
+
+    function add_bookmark() {
         $.ajax({
             type: "POST",
             url: "includes/functions/bookmark.php",
@@ -153,15 +163,60 @@ mysqli_close($db);
             success: function(server_response) {
                 $("#result").ajaxComplete(function(event, request) {
                     if (server_response == '0') {
-                        $("#result").html("added to bookmarks!");
-                        $("#bookmark").attr('src', 'images/heart_del.png');
-                        $("#bookmark").attr('title', 'remove from bookmarks');
+                        $("#result").html(added_txt);
+                        $("#result").show("fast");
+                        $("#bookmark").attr('src', rm_icon);
+                        $("#bookmark").attr('title', rm_title);
                     } else {
-                        $("#result").html("couldn't add to BMs");
+                        $("#result").html(added_failed_txt);
                     }
                     $("#result").fadeOut(3000);
                 });
             }
         });
+    };
+    
+    function rm_bookmark() {
+        $.ajax({
+            type: "POST",
+            url: "includes/functions/rm_bookmark.php",
+            data: { recipe_id: <?php echo isset($_GET['recipe_id']) ? $_GET['recipe_id'] : '-1'; ?>, user_id: <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '-1'; ?> },
+            success: function(server_response) {
+                $("#result").ajaxComplete(function(event, request) {
+                    if (server_response == '0') {
+                        $("#result").html(rm_txt);
+                        $("#result").show("fast");
+                        $("#bookmark").attr('src', add_icon);
+                        $("#bookmark").attr('title', add_title);
+                    } else {
+                        $("#result").html(rm_failed_txt);
+                    }
+                    $("#result").fadeOut(3000);
+                });
+            }
+        });
+    };
+    
+    $(document).ready(function() {
+         $.ajax({
+            type: "POST",
+            url: "includes/functions/is_bookmarked.php",
+            data: { recipe_id: <?php echo isset($_GET['recipe_id']) ? $_GET['recipe_id'] : '-1'; ?>, user_id: <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '-1'; ?> },
+            success: function(server_response) {
+                $("#result").ajaxComplete(function(event, request) {
+                    if (server_response == '0') {
+                        $("#bookmark").attr('src', 'images/heart_del.png');
+                        $("#bookmark").attr('title', 'remove from bookmarks');
+                    }
+                });
+            }
+        });
+    });
+    $("#bookmark").click(function() {
+        if ($("#bookmark").attr('src') == "images/heart.png") {
+            add_bookmark();
+        } else {
+            rm_bookmark();
+        }
     });
 </script>

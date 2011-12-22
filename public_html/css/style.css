@@ -389,11 +389,11 @@ a:hover {
 
 #favs #bookmark {
     position: absolute;
-    top: 210px;
+    top: 225px;
     right: 350px;
 }
 
 #favs #result {
     float:right;
-    margin-top: -80px;
+    margin-top: -70px;
 }
