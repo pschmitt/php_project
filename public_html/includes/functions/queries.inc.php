@@ -121,7 +121,7 @@
         
         return "SELECT id, title
                 FROM ".$tables['Recipes']." as R, "
-                .$tables['Carts_ln_Recipes']." as ln 
-                WHERE R.id=ln.id_recipe AND ln.id_user='".mysqli_real_escape_string($db, $user_id)."'";
+                .$tables['Carts']." as C 
+                WHERE R.id=C.id_recipe AND C.id_user='".mysqli_real_escape_string($db, $user_id)."'";
     }
 ?>

@@ -122,27 +122,8 @@
         query($db, $sql);
         printf("Done: TABLE %s succesfully created.\n", $tables["Users"]);
         
-        // TODO REMOVE ?
-        // create TABLE (Carts)
-        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Carts"]." (
-                id INT AUTO_INCREMENT,
-                titre varchar(50) NOT NULL,
-                PRIMARY KEY (id)
-                )";
-        query($db, $sql);
-        printf("Done: TABLE %s succesfully created.\n", $tables["Carts"]);
-
-        // create TABLE (link users<->carts)
-        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Users_ln_Carts"]." (
-                id_user INT NOT NULL,
-                id_cart INT NOT NULL,
-                PRIMARY KEY (id_user, id_cart)
-                )";
-        query($db, $sql);
-        printf("Done: TABLE %s succesfully created.\n", $tables["Users_ln_Carts"]);
-
         // create TABLE (link carts<->recipes)
-        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Carts_ln_Recipes"]." (
+        $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Carts"]." (
                 id_user INT NOT NULL,
                 id_recipe INT NOT NULL,
                 PRIMARY KEY (id_user, id_recipe)
