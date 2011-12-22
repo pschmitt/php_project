@@ -143,9 +143,9 @@
 
         // create TABLE (link carts<->recipes)
         $sql = "CREATE TABLE IF NOT EXISTS ".$tables["Carts_ln_Recipes"]." (
-                id_cart INT NOT NULL,
-                id_recipes INT NOT NULL,
-                PRIMARY KEY (id_cart, id_recipes)
+                id_user INT NOT NULL,
+                id_recipe INT NOT NULL,
+                PRIMARY KEY (id_user, id_recipe)
                 )";
         query($db, $sql);
         printf("Done: TABLE %s succesfully created.\n", $tables["Carts_ln_Recipes"]);

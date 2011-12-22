@@ -89,15 +89,15 @@
       * retourne la requête SQL qui permet d'ajouter une recette aux favoris
       * utilisé par: recipes.php (affichage d'une recette)
       */
-    function add_to_bookmarks($user_id, $bookmark_id) {
+    function add_to_bookmarks($user_id, $recipe_id) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "INSERT INTO ".$tables['Users_ln_Carts'].
+        return "INSERT INTO ".$tables['Carts_ln_Recipes'].
                " VALUES (".mysqli_real_escape_string($db, $user_id).
-               ", ".mysqli_real_escape_string($db, $bookmark_id).")";
+               ", ".mysqli_real_escape_string($db, $recipe_id).")";
     }
 
     /**
@@ -111,5 +111,17 @@
         $tables = $GLOBALS['tables'];
 
         return "SELECT id FROM ".$tables['Users']." WHERE username='".mysqli_real_escape_string($db, $username)."' AND password='".mysqli_real_escape_string($db, sha1($password))."'";
+    }
+
+    function get_favorites($user_id) {
+         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
+            die("No DB connection !");
+        $db = $GLOBALS['db'];
+        $tables = $GLOBALS['tables'];
+        
+        return "SELECT id, title
+                FROM ".$tables['Recipes']." as R, "
+                .$tables['Carts_ln_Recipes']." as ln 
+                WHERE R.id=ln.id_recipe AND ln.id_user='".mysqli_real_escape_string($db, $user_id)."'";
     }
 ?>

@@ -12,7 +12,7 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "INSERT INTO ".$tables['Users_ln_Carts'].
+        return "INSERT INTO ".$tables['Carts_ln_Recipes'].
                " VALUES (".mysqli_real_escape_string($db, $user_id).
                ", ".mysqli_real_escape_string($db, $bookmark_id).")";
     }
