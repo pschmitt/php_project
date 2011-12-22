@@ -1,4 +1,5 @@
 <?php
+require_once("includes/functions/functions.inc.php");
 require_once("includes/functions/mysqli.inc.php");
 require_once("includes/functions/queries.inc.php");
 
@@ -29,6 +30,7 @@ if (isset($_GET['recipe_id'])) {
         <span id="result"></span>
     </div>
     <?php
+    printf("<h2>%s</h2>\n<h3>Ingredients</h3>\n<ul>\n", $recipe['title']);
     foreach ($recipe['ing'] as $ing)
         printf("\t<li>%s</li>\n", $ing);
     printf("</ul>\n<h3>Preparation</h3>\n%s\n", $recipe['preparation']);
@@ -79,7 +81,7 @@ if (isset($_GET['recipe_id'])) {
 		$result = query($db, $sql);
 		//----- debut de la pagination-----
 		$sql_Limit = $sql;
-		$messagesParPage = 15; //Nous allons afficher 5 messages par page.
+		$messagesParPage = 15; //Nous allons afficher 15 messages par page.
 		$total = mysqli_num_rows($result);
 		//Nous allons maintenant compter le nombre de pages.
 		$nombreDePages = ceil($total / $messagesParPage);
@@ -105,39 +107,20 @@ if (isset($_GET['recipe_id'])) {
 		
 		echo "<h2>Recipes with: ".strtolower($Thesaurus[$_GET['cat']]['T'])."</h2>";
 		
+		//echo $sql_Limit;
+		
 		echo "<dl>\n";
 		while ($row = mysqli_fetch_assoc($result)) {
 			//print_r($row);
 			
-			//$recipe_temp_table[$row['title']][] = $row['name'];
-			$recipe_temp_table[$row['id_recipe']][$row['title']][] = $row['name'];
+			//$recipe_temp_table[$row['id_recipe']][$row['title']][] = $row['name'];
 			
 			//print_r($recipe_temp_table);
 			
-			//echo "<br /><br />";
-			
-			//echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id_recipe'].'">'.$row['title'].'</a></dt>'."\n";
-			//echo "<dd><strong>Matching ingredients</strong>: ".ucfirst($row['name'])."</dd><br />\n\n";
+			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
+			echo "<dd><strong>Preparation </strong>: ".substr(capitalize_sentence($row['preparation']), 0, 256)." [...]"."</dd><br />\n\n";
 		}
 		echo "</dl>\n";
-		
-		// Le code suivant résout le problème d'affiche des recettes avec un seul ingrédient, mais
-		// pose des problèmes pour l'affichage par page... Il faudrait vraiment trouver une requête SQL
-		// qui aurait le même effet...
-		foreach($recipe_temp_table as $id_recipe => $recipe_array) {
-			foreach($recipe_array as $recipe_title => $ing_array) {
-				echo '<dt><a href="index.php?p=recipes&recipe_id='.$id_recipe.'">'.$recipe_title.'</a></dt>'."\n";
-				echo "<dd><strong>Matching ingredients</strong>: ";
-				foreach($ing_array as $ing) {
-					if (strlen($ing) != 0) {
-						$ings[] = ucfirst($ing);
-					}
-				}
-				echo implode(", ", $ings);
-				$ings = array();
-				echo "</dd><br />\n\n";
-			}
-		}
 		
 		//--- suite pagination
 		echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages

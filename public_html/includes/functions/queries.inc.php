@@ -36,7 +36,7 @@
     
     /**
       *  retourne la requête SQL qui permet d'obtenir les récettes contenant LES ingrédients donnés
-      *  utilisé par: recipes.php (affichage des récettes)
+      *  utilisé par: recipes.php (affichage des recettes)
       */
     function recipes_by_ing_list ($ing_list) {
          if (!isset($GLOBALS['db'], $GLOBALS['tables']))
@@ -44,7 +44,7 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT *
+        return "SELECT DISTINCT R.id, R.title, R.preparation
 				FROM ".$tables['Recipes']." AS R, "
                       .$tables['Recipes_ln_Ingredients']." AS ln, "
                       .$tables['Ingredients']." AS i
