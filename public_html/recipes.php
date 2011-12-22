@@ -69,7 +69,7 @@ if (isset($_GET['recipe_id'])) {
 		$result = query($db, $sql);
 		//----- debut de la pagination-----
 		$sql_Limit = $sql;
-		$messagesParPage = 15; //Nous allons afficher 5 messages par page.
+		$messagesParPage = 15; //Nous allons afficher 15 messages par page.
 		$total = mysqli_num_rows($result);
 		//Nous allons maintenant compter le nombre de pages.
 		$nombreDePages = ceil($total / $messagesParPage);
@@ -95,26 +95,25 @@ if (isset($_GET['recipe_id'])) {
 		
 		echo "<h2>Recipes with: ".strtolower($Thesaurus[$_GET['cat']]['T'])."</h2>";
 		
+		//echo $sql_Limit;
+		
 		echo "<dl>\n";
 		while ($row = mysqli_fetch_assoc($result)) {
 			//print_r($row);
 			
-			//$recipe_temp_table[$row['title']][] = $row['name'];
-			$recipe_temp_table[$row['id_recipe']][$row['title']][] = $row['name'];
+			//$recipe_temp_table[$row['id_recipe']][$row['title']][] = $row['name'];
 			
 			//print_r($recipe_temp_table);
 			
-			//echo "<br /><br />";
-			
-			//echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id_recipe'].'">'.$row['title'].'</a></dt>'."\n";
-			//echo "<dd><strong>Matching ingredients</strong>: ".ucfirst($row['name'])."</dd><br />\n\n";
+			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
+			echo "<dd><strong>Preparation </strong>: ".substr($row['preparation'], 0, 256)." [...]"."</dd><br />\n\n";
 		}
 		echo "</dl>\n";
 		
 		// Le code suivant résout le problème d'affiche des recettes avec un seul ingrédient, mais
 		// pose des problèmes pour l'affichage par page... Il faudrait vraiment trouver une requête SQL
 		// qui aurait le même effet...
-		foreach($recipe_temp_table as $id_recipe => $recipe_array) {
+		/*foreach($recipe_temp_table as $id_recipe => $recipe_array) {
 			foreach($recipe_array as $recipe_title => $ing_array) {
 				echo '<dt><a href="index.php?p=recipes&recipe_id='.$id_recipe.'">'.$recipe_title.'</a></dt>'."\n";
 				echo "<dd><strong>Matching ingredients</strong>: ";
@@ -127,7 +126,7 @@ if (isset($_GET['recipe_id'])) {
 				$ings = array();
 				echo "</dd><br />\n\n";
 			}
-		}
+		}*/
 		
 		//--- suite pagination
 		echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
