@@ -16,8 +16,8 @@
     
     if ($hostname === "laxlinux-cl") {
         $db_name = "JeNeSaisPasCuisiner";
-		$db_user = "silly";
-		$db_password = "none";
+        $db_user = "silly";
+        $db_password = "none";
     }
 
 	unset($server, $hostname);
