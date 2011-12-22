@@ -385,3 +385,14 @@ a:hover {
    margin-bottom: 0.5em; 
    margin-top: 2em;
 }
+
+#favs #bookmark {
+    position: absolute;
+    top: 210px;
+    right: 350px;
+}
+
+#favs #result {
+    float:right;
+    margin-top: -80px;
+}

@@ -1,13 +1,5 @@
 <?php
-    isset($_GET['recipe_id'], $_GET['user_id']) or die ("Incomplete POST data received");
-    //require_once("includes/functions/mysqli.inc.php");
-    //require_once("includes/functions/queries.inc.php");
-
-    /*$db = db_con();
-    
-    $sql = add_to_bookmarks($_GET['user_id'], $_GET['recipe_id']);
-    query($db, $sql);*/
-
+    isset($_POST['recipe_id'], $_POST['user_id']) or die ("Incomplete POST data received");
     $passwd_file = realpath('../../../.login/DB_credentials.php');
     require_once($passwd_file);
 
@@ -25,10 +17,10 @@
                ", ".mysqli_real_escape_string($db, $bookmark_id).")";
     }
 
-    $sql = add_to_bookmarks($_GET['user_id'], $_GET['recipe_id']);
+    $sql = add_to_bookmarks($_POST['user_id'], $_POST['recipe_id']);
     mysqli_query($db, $sql);
+    mysqli_close($db);
     
     echo '0';
 
-    mysqli_close($db);
 ?>

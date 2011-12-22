@@ -1,11 +1,13 @@
 <?php
 require_once("includes/functions/mysqli.inc.php");
 require_once("includes/functions/queries.inc.php");
+
+$db = db_con();
+
 if (isset($_GET['recipe_id'])) {
 	// Si un id de recette est défini, on affiche le titre, les ingrédients et la préparation
 	// correspondant à l'id de cette recette.
 	
-    $db = db_con();
     $sql = recipe_by_id($_GET['recipe_id']);
     $res = query($db, $sql);
     $recipe = mysqli_fetch_assoc($res);
@@ -16,18 +18,25 @@ if (isset($_GET['recipe_id'])) {
         $recipe['ing'][] = $row['name'];
     }
     mysqli_free_result($res);
-    printf("<h2>%s</h2>\n<h3>Ingredients</h3>\n<ul>\n", $recipe['title']);
-    printf('<span id="bookmark" href="">>>>add to bookmarks<<<<</span>');
+    printf('<h2>%s</h2>
+            <h3>Ingredients</h3>
+                <ul>
+           ', $recipe['title']);
+    ?>
+    <div id="favs">
+        <img id="bookmark" src="images/heart.png" height="32" width="32" alt="heart" title="ajouter aux favoris"/>
+        <br/>
+        <span id="result"></span>
+    </div>
+    <?php
     foreach ($recipe['ing'] as $ing)
         printf("\t<li>%s</li>\n", $ing);
     printf("</ul>\n<h3>Preparation</h3>\n%s\n", $recipe['preparation']);
-    mysqli_close($db);
 
 } else if (isset($_GET['cat'])) {
 	// Sinon, si une catégorie est définie, cela signifie qu'on a cliqué dans le menu et on affiche
 	// donc le titre de toutes les recettes contenant au moins un des ingrédients.
 	
-	$db = db_con();
 	$ing_list = array();
 	if (isset($Thesaurus[$_GET['cat']])) {
 		// Construction de la requête SQL
@@ -135,7 +144,7 @@ if (isset($_GET['recipe_id'])) {
 		for($page = 1; $page <= $nombreDePages; $page++) 
 		{
 			//On va faire notre condition
-			if($page == $pageActuelle) //Si il s'agit de la page actuelle...
+			if ($page == $pageActuelle) //Si il s'agit de la page actuelle...
 			{
 			 echo ' [ '.$page.' ] '; 
 			}	
@@ -150,22 +159,25 @@ if (isset($_GET['recipe_id'])) {
 		//--- suite pagination
 	}
 }
+mysqli_close($db);
 ?>
-<span id="result"></span>
 
 <script>
     $("#bookmark").click(function() {
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "includes/functions/bookmark.php",
-            data: { recipe_id: <?php echo $_GET['recipe_id']?>, user_id: <?php echo $_SESSION['user_id']?> },
+            data: { recipe_id: <?php echo isset($_GET['recipe_id']) ? $_GET['recipe_id'] : '-1'; ?>, user_id: <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '-1'; ?> },
             success: function(server_response) {
                 $("#result").ajaxComplete(function(event, request) {
                     if (server_response == '0') {
-                        $("#result").html = "added !";
+                        $("#result").html("added to bookmarks!");
+                        $("#bookmark").attr('src', 'images/heart_del.png');
+                        $("#bookmark").attr('title', 'remove from bookmarks');
                     } else {
-                        $("#result").html = "ohohoh..";
+                        $("#result").html("couldn't add to BMs");
                     }
+                    $("#result").fadeOut(3000);
                 });
             }
         });
