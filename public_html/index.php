@@ -28,10 +28,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <?php
     if (isset($_GET['p'])) {
-        if ($_GET['p'] == "login" || $_GET['p'] == "logout") {
+        switch($_GET['p']) {
+            case "login":
+            case "logout":
+            case "registered":
                 ?>
 <meta http-equiv="refresh" content="10;URL=index.php">                    
                 <?php
+                break;
         }
     }
 ?>

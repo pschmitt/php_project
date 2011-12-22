@@ -35,8 +35,10 @@
 			$sql = substr($sql, 0, - 2).")".$values.")";
 		    
 			query($db, $sql);
-
-            // TODO create Basket !
+            
+            $_SESSION['user_id'] = mysqli_insert_id($db);
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['logged_in'] = true;
 
 			mysqli_close($db);
 			
