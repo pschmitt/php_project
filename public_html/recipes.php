@@ -17,6 +17,7 @@ if (isset($_GET['recipe_id'])) {
     }
     mysqli_free_result($res);
     printf("<h2>%s</h2>\n<h3>Ingredients</h3>\n<ul>\n", $recipe['title']);
+    printf('<span id="bookmark" href="">>>>add to bookmarks<<<<</span>');
     foreach ($recipe['ing'] as $ing)
         printf("\t<li>%s</li>\n", $ing);
     printf("</ul>\n<h3>Preparation</h3>\n%s\n", $recipe['preparation']);
@@ -149,3 +150,23 @@ if (isset($_GET['recipe_id'])) {
 	}
 }
 ?>
+<span id="result"></span>
+
+<script>
+    $("#bookmark").click(function() {
+        $.ajax({
+            type: "GET",
+            url: "includes/functions/bookmark.php",
+            data: { recipe_id: <?php echo $_GET['recipe_id']?>, user_id: <?php echo $_SESSION['user_id']?> },
+            success: function(server_response) {
+                $("#result").ajaxComplete(function(event, request) {
+                    if (server_response == '0') {
+                        $("#result").html = "added !";
+                    } else {
+                        $("#result").html = "ohohoh..";
+                    }
+                });
+            }
+        });
+    });
+</script>
