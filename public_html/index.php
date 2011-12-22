@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     $thesaurus_file = "./data/Thesaurus_updated.php";
     file_exists($thesaurus_file) or die ('N\'allez pas trop vite : créez d\'abord une
                                           <a href="./create_db.php">base de données</a> !');
@@ -51,6 +50,8 @@
 				include("ariane.inc.php");
                 $PAGES = array("login"		=> "login.php",
                                "logout"     => "logout.php",
+							   "update"		=> "update.php",
+							   "updated"	=> "updated.php",
                                "register"	=> "register.php",
                                "registered"	=> "registered.php",
                                "basket"		=> "basket.php",

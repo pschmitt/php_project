@@ -34,7 +34,11 @@
             <a href="<?php echo $_SERVER['PHP_SELF']."?p=logout"; ?>">
                 logout
             </a>
-        </p>
+			|
+			<a href="<?php echo $_SERVER['PHP_SELF']."?p=update"; ?>">
+				modifier mon compte
+			</a>
+		</p>
     <?php } ?>
     <div class="logo">
         <h1>
