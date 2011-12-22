@@ -30,7 +30,6 @@ if (isset($_GET['recipe_id'])) {
         <span id="result"></span>
     </div>
     <?php
-    printf("<h2>%s</h2>\n<h3>Ingredients</h3>\n<ul>\n", $recipe['title']);
     foreach ($recipe['ing'] as $ing)
         printf("\t<li>%s</li>\n", $ing);
     printf("</ul>\n<h3>Preparation</h3>\n%s\n", $recipe['preparation']);

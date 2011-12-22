@@ -29,15 +29,19 @@
     </script>
     
     <?php } else {  ?>
-        <p>
-            Hi, <?php echo $_SESSION['username']."(".$_SESSION['nbcon'].")"; ?> !
+        <p id="hello">
+            Hi, <?php echo $_SESSION['username']; ?> !
+            <br/>
             <a href="<?php echo $_SERVER['PHP_SELF']."?p=logout"; ?>">
                 logout
             </a>
-			|
+			| 
 			<a href="<?php echo $_SERVER['PHP_SELF']."?p=update"; ?>">
 				modifier mon compte
 			</a>
+            | <a href="<?php echo $_SERVER['PHP_SELF']."?p=favs"; ?>">
+                <img src="images/star.png" alt="bookmarks" title="bookmarks" height="16" width="16" />
+              </a>
 		</p>
     <?php } ?>
     <div class="logo">

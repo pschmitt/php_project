@@ -120,7 +120,8 @@ header {
 	margin: 54px;
 	max-width: 100%;
 }
-#login_form {
+
+#login_form , #hello {
     text-align: right;
 	padding: 20px;
 	background-color: #000;

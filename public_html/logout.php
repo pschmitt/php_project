@@ -2,3 +2,5 @@
 <?php
     session_destroy();
 ?>
+
+redirecting to homepage ...

@@ -4,7 +4,7 @@
     file_exists($thesaurus_file) or die ('N\'allez pas trop vite : créez d\'abord une
                                           <a href="./create_db.php">base de données</a> !');
     require_once("./data/Thesaurus_updated.php");
-
+    
 	/**
 	 * get_title() permet d'avoir un titre dynamique dans la balise <title>.
 	 * Author: Mathieu Morainville
@@ -26,6 +26,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<?php
+    if (isset($_GET['p'])) {
+        if ($_GET['p'] == "login" || $_GET['p'] == "logout") {
+                ?>
+<meta http-equiv="refresh" content="10;URL=index.php">                    
+                <?php
+        }
+    }
+?>
 <title>JeNeSaisPasCuisiner.com | <?php get_title(); ?></title>
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 <!--[if lt IE 9]>
@@ -54,7 +63,7 @@
 							   "updated"	=> "updated.php",
                                "register"	=> "register.php",
                                "registered"	=> "registered.php",
-                               "basket"		=> "basket.php",
+                               "favs"		=> "favs.php",
                                "search"		=> "search.php",
 							   "recipes"	=> "recipes.php");
                 # is the requested url correct? No? _> load home

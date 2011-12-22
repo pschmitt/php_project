@@ -99,4 +99,17 @@
                " VALUES (".mysqli_real_escape_string($db, $user_id).
                ", ".mysqli_real_escape_string($db, $bookmark_id).")";
     }
+
+    /**
+      * retourne la requête SQL qui permet d'ajouter une recette aux favoris
+      * utilisé par: login.php
+      */
+    function get_uid($username, $password) {
+        if (!isset($GLOBALS['db'], $GLOBALS['tables']))
+            die("No DB connection !");
+        $db = $GLOBALS['db'];
+        $tables = $GLOBALS['tables'];
+
+        return "SELECT id FROM ".$tables['Users']." WHERE username='".mysqli_real_escape_string($db, $username)."' AND password='".mysqli_real_escape_string($db, sha1($password))."'";
+    }
 ?>
