@@ -1,6 +1,6 @@
 <h2>Update</h2>
-<form name ="registration" id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=updated" ?>" onSubmit="return verif()">
-    <p>
+<form name ="registration" id="registration" method="post" action="<?php echo $_SERVER['PHP_SELF']."?p=updated" ?>" onSubmit="return verif()">  
+	<p>
         <label for="name">Nom: </label>
         <input type="text" name="name" id="name" placeholder="Votre nom" />
     </p>
@@ -9,20 +9,25 @@
         <input type="text" name="first_name" id="first_name" placeholder="Votre pr&eacute;nom" />
     </p>
     <p>
-        <label for="username">Pseudo *: </label>
-        <input type="text" name="username" id="username" title="Pseudo" placeholder="Votre pseudo" required />
+        <label for="username">Pseudo: </label>
+        <input type="text" name="username" id="username" title="Pseudo" placeholder="Votre pseudo" />
         <span id="availability_status"></span>
     </p>
     <p>
         <label for="password">Ancien mot de passe*: </label>
         <input type="password" name="password" title="mot de passe" id="password" required />
         <span id="password_length"></span>
-    </p>
-    <p>
-        <label for="password_confirmation">Nouveau mot de passe*: </label>
+ 
+	<p>
+        <label for="new_password">Nouveau mot de passe*: </label>
         <input type="password" name="new_password" title="nouveau mot de passe" id="new_password" required />
-        <span id="password_correct"></span>
+        <span id="new_password_length"></span>
     </p>
+	<p>
+		<label for="password_confirmation">Confirmation *: </label>
+        <input type="password" name="password_confirmation" title="confirmation mot de passe" id="password_confirmation" required />
+        <span id="password_correct"></span>
+	</p>	
     <p>
         <label for="gender">Vous &ecirc;tes: </label>
         <select name="gender" id="gender">
@@ -63,7 +68,6 @@
         <label for="email">Adresse email: </label>
         <input type="email" name="email" id="email" placeholder="xxx@yyy.com" /> <!-- type="email" -->
     </p>
-	<p>
 		<h6>les donn&eacute;es pr&eacute;ced&eacute;es de * sont obligatoires</h6>
 	</p>
     <p>
@@ -76,6 +80,9 @@
 <script>
      $(document).ready(function(){
         var username_correct = false;
+        //--
+		var old_pwd_correct = false;
+		//--
         var passwd_correct = false;
         var default_color = $("#username").css('background-color');
 
@@ -90,7 +97,7 @@
         });
         
         function allow_submit() {
-            if (username_correct && passwd_correct) 
+            if (username_correct && passwd_correct && old_pwd_correct) 
                 $("#submit_").removeAttr('disabled');
             else 
                 $("#submit_").attr('disabled', 'disabled');
@@ -98,8 +105,10 @@
 
         function check_passwd() {
             var passwd = $("#password").val();//Get the value in the username textbox
+            var new_passwd = $("#new_password").val();//Get the value in the username textbox
             var passwdConf = $("#password_confirmation").val();//Get the value in the username textbox
             var length = false;
+            var length_new_pwd = false;
             var equals = false;
 
             if (passwd.length < 6) {
@@ -109,7 +118,18 @@
                 $("#password_length").html('');
                 length = true;
             }
-            if (passwd === passwdConf) { 
+			if (new_passwd.length < 6) {
+                $("#new_password_length").html('Password too short');
+				//--
+                length_new_pwd = false;
+				//..
+            } else {
+                $("#new_password_length").html('');
+				//--
+                length_new_pwd = true;
+				//--
+            }
+            if (new_passwd === passwdConf) { 
                 $("#password_correct").html('');
                 $("#password").css('background-color', '#90EE90');
                 $("#password_confirmation").css('background-color', '#90EE90');
@@ -120,7 +140,7 @@
                 $("#password_confirmation").css('background-color', '#FF4500');
                 equals = false;
             }
-            if (length && equals) {
+            if (length && equals && length_new_pwd) {
                 passwd_correct = true;
             } else {
                 passwd_correct = false;
@@ -132,6 +152,9 @@
         $("#username").keyup(function() { //if theres a change in the username textbox
             $("#username").css('background-color', default_color);
             var username = $("#username").val();//Get the value in the username textbox
+			//--
+            var password = $("#password").val();//Get the value in the password textbox
+			//--
             if (username.length > 3) { //if the lenght greater than 3 characters
                 $("#availability_status").html('Checking availability...');
                 $.ajax({  //Make the Ajax Request
@@ -156,11 +179,38 @@
                 $("#availability_status").html('Username too short');
                 username_correct = false;
             }
+			//--
+			if (password.length > 5) { //if the lenght greater than 5 characters
+                $("#new_password_length").html('Checking availability...');
+                $.ajax({  //Make the Ajax Request
+                    type: "POST",
+                    url: "includes/functions/check_username_password.php",  //file name
+                    data: "password="+ password,  //data
+                    success: function(server_response) {
+                        $("#password_length").ajaxComplete(function(event, request){
+                            if (server_response == '0') { 
+                                $("#password_length").html('Available'); //je dois supprimer cette ligne
+                                $("#password").css('background-color', '#90EE90');
+                                old_pwd_correct = true;
+                            } else if (server_response == '1') { //if it returns "1"
+                                $("#password_length").html('Wrong password');
+                                $("#password").css('background-color', '#FF4500');
+                                old_pwd_correct = false;
+                            }
+                        });
+                    }
+                });
+            } else {
+                $("#password_length").html('Password too short');
+                old_pwd_correct = false;
+            }
+			//--
             allow_submit();
             return false;
         });
 
         $("#password").keyup(check_passwd);
+        $("#new_password").keyup(check_passwd);
         $("#password_confirmation").keyup(check_passwd);
      });
 </script>
