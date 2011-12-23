@@ -14,7 +14,7 @@ JeNeSaisPasCuisiner.com
 
 =item Refuser l'acces (rediriger vers l'accueil) a update.php etc. si l'utilisateur n'est pas logge
 
-=item Permettre aux utilisateurs non-enregistres d'ajouter des recettes à leurs favoris (cookies)
+=item Permettre aux utilisateurs non-enregistres d'ajouter des recettes a leurs favoris (cookies)
 
 =item Proteger l'acces a create_db.php (htpasswd)
 
