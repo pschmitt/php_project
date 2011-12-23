@@ -6,17 +6,17 @@ JeNeSaisPasCuisiner.com
 
 =over
 
-=item Séparer le code PHP de l'HTML
+=item Separer le code PHP de l'HTML
 
-=item Améloirer la recherche
+=item Ameloirer la recherche
 
-=item Afficher des liens vers les recettes trouvées
+=item Afficher des liens vers les recettes trouvees
 
-=item Refuser l'accès (rediriger vers l'accueil) à update.php etc. si l'utilisateur n'est pas loggé
+=item Refuser l'acces (rediriger vers l'accueil) a update.php etc. si l'utilisateur n'est pas logge
 
-=item Permettre aux utilisateurs non-enregistrés d'ajouter des recettes à leurs favoris (cookies)
+=item Permettre aux utilisateurs non-enregistres d'ajouter des recettes à leurs favoris (cookies)
 
-=item Protéger l'accès à create_db.php (htpasswd)
+=item Proteger l'acces a create_db.php (htpasswd)
 
 =item Faire fonctionner les scripts AJAX sous IE
 
