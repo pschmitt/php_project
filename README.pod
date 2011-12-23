@@ -2,6 +2,32 @@
 
 JeNeSaisPasCuisiner.com
 
+=head2 TODO
+
+=over
+
+=item Séparer le code PHP de l'HTML
+
+=item Améloirer la recherche
+
+=item Afficher des liens vers les recettes trouvées
+
+=item Refuser l'accès (rediriger vers l'accueil) à update.php etc. si l'utilisateur n'est pas loggé
+
+=item Permettre aux utilisateurs non-enregistrés d'ajouter des recettes à leurs favoris (cookies)
+
+=item Protéger l'accès à create_db.php (htpasswd)
+
+=item Faire fonctionner les scripts AJAX sous IE
+
+=item Enregistrer les MDP avec sha1(MDP + constante)
+
+=item Mettre en place un utilisateur admin (?)
+
+=item Changer les icones (?)
+
+=back
+
 =head2 Lien utiles
 
 L<https://docs.google.com/document/d/1v_Kp8v4nXDSY1FR1ShEt-KJmGB1aNIwKFGr5SzAJYcc/edit?invite=CM3-pbAO>
