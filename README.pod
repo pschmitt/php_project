@@ -6,7 +6,7 @@ JeNeSaisPasCuisiner.com
 
 =over
 
-=item Séparer le code PHP de l'HTML
+=item S&eacute;parer le code PHP de l'HTML
 
 =item Améloirer la recherche
 
