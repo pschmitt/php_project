@@ -10,7 +10,7 @@
     </p>
     <p>
         <label for="username">Pseudo: </label>
-        <input type="text" name="username" id="username" title="Pseudo" placeholder="Votre pseudo" />
+        <input type="text" name="username" id="username" title="Pseudo" value="<?php echo $_SESSION['username']; ?>" />
         <span id="availability_status"></span>
     </p>
     <p>
