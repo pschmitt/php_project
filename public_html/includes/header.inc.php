@@ -56,12 +56,6 @@
             <!-- premier niveau -->
             <li><a href="<?php echo $_SERVER['PHP_SELF'].'?p=home'; ?>">Accueil</a></li>
 			
-			<li><a href="<?php echo $_SERVER['PHP_SELF']; ?>">Ingrédients</a>
-				<?php
-					//include("thesaurus.inc.php");
-				?>
-			</li>
-			
             <li><a href="<?php echo $_SERVER['PHP_SELF'].'?p=search'; ?>">Recherche avancée</a></li>
         </ul>
     </nav>

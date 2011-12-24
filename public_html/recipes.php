@@ -107,36 +107,42 @@ if (isset($_GET['recipe_id'])) {
 		echo "<h2>Recipes with: ".strtolower($Thesaurus[$_GET['cat']]['T'])."</h2>";
 		
 		//echo $sql_Limit;
-		
-		echo "<dl>\n";
-		while ($row = mysqli_fetch_assoc($result)) {
-			//print_r($row);
-			
-			//$recipe_temp_table[$row['id_recipe']][$row['title']][] = $row['name'];
-			
-			//print_r($recipe_temp_table);
-			
-			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
-			echo "<dd><strong>Preparation </strong>: ".substr(capitalize_sentence($row['preparation']), 0, 256)." [...]"."</dd><br />\n\n";
-		}
-		echo "</dl>\n";
-		
-		//--- suite pagination
-		echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
-		for($page = 1; $page <= $nombreDePages; $page++) 
-		{
-			//On va faire notre condition
-			if ($page == $pageActuelle) //Si il s'agit de la page actuelle...
-			{
-			 echo ' [ '.$page.' ] '; 
-			}	
-			else //Sinon...
-			{
-			  //echo ' <a href="index.php?p=recipes&page='.$i.'">'.$i.'</a> ';
-			  echo ' <a href="'.$_SERVER['PHP_SELF'].'?p=recipes&cat='.$Thesaurus[$_GET['cat']]['N'].'&page='.$page.'">'.$page.'</a> ';
+
+		$row = mysqli_fetch_assoc($result);
+		if($row) {
+			echo "<dl>\n";
+			while ($row = mysqli_fetch_assoc($result)) {
+				//print_r($row);
+				
+				//$recipe_temp_table[$row['id_recipe']][$row['title']][] = $row['name'];
+				
+				//print_r($recipe_temp_table);
+				
+				echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
+				echo "<dd><strong>Preparation </strong>: ".substr(capitalize_sentence($row['preparation']), 0, 256)." [...]"."</dd><br />\n\n";
 			}
+			echo "</dl>\n";
+			
+			//--- suite pagination
+			echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
+			for($page = 1; $page <= $nombreDePages; $page++) 
+			{
+				//On va faire notre condition
+				if ($page == $pageActuelle) //Si il s'agit de la page actuelle...
+				{
+				 echo ' [ '.$page.' ] '; 
+				}	
+				else //Sinon...
+				{
+				  //echo ' <a href="index.php?p=recipes&page='.$i.'">'.$i.'</a> ';
+				  echo ' <a href="'.$_SERVER['PHP_SELF'].'?p=recipes&cat='.$Thesaurus[$_GET['cat']]['N'].'&page='.$page.'">'.$page.'</a> ';
+				}
+			}
+			echo '</p>';
+		} // fin if($row)
+		else {
+			echo "<p>Désolé, mais il n'y a pas de recettes dans cette catégorie.</p>";
 		}
-		echo '</p>';
 		
 		//--- suite pagination
 	}
