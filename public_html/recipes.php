@@ -19,20 +19,20 @@ if (isset($_GET['recipe_id'])) {
         $recipe['ing'][] = $row['name'];
     }
     mysqli_free_result($res);
-    printf('<h2>%s</h2>
-            <h3>Ingredients</h3>
-                <ul>
-           ', $recipe['title']);
+    printf('<h2>%s</h2>', $recipe['title']);
     ?>
     <div id="favs">
         <img id="bookmark" src="images/heart.png" height="32" width="32" alt="heart" title="ajouter aux favoris"/>
-        <br/>
+        <br />
         <span id="result"></span>
     </div>
     <?php
+	echo '<div class="entry-content">'."
+	<h3>Ingredients</h3>
+	<ul>\n";
     foreach ($recipe['ing'] as $ing)
-        printf("\t<li>%s</li>\n", $ing);
-    printf("</ul>\n<h3>Preparation</h3>\n%s\n", $recipe['preparation']);
+        printf("\t\t<li>%s</li>\n", ucfirst($ing));
+    printf("\t</ul>\n\t<h3>Preparation</h3>\n\t<p>%s</p>\n\t</div>", capitalize_sentence($recipe['preparation']));
 
 } else if (isset($_GET['cat'])) {
 	// Sinon, si une catégorie est définie, cela signifie qu'on a cliqué dans le menu et on affiche

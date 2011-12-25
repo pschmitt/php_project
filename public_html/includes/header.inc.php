@@ -11,13 +11,8 @@
                 <input type="password" name="passwd" id="passwd" required />
             </label>
             <br />
-			<a id="submit" onclick="$(this).parents('form:first').submit();" href="#">
-                Connexion
-            </a>
-            |
-            <a href="<?php echo $_SERVER['PHP_SELF'].'?p=register'; ?>">
-                S'enregister
-            </a>
+			<a id="submit" onclick="$(this).parents('form:first').submit();" href="#">Connexion</a> |
+            <a href="<?php echo $_SERVER['PHP_SELF'].'?p=register'; ?>">S'enregister</a>
         </p>
     </form>
     <script>
