@@ -1,8 +1,29 @@
 <?php
 
+	/**
+      * retourne la requête SQL qui permet d'obtenir les récettes contenant un ingrédient donné et
+	  * un titre donné
+      * utilisé par: recherche avancée
+      */
+    function recipe_by_title_and_ing ($title, $ingredient) {
+        if (!isset($GLOBALS['db'], $GLOBALS['tables']))
+            die("No DB connection !");
+        $db = $GLOBALS['db'];
+        $tables = $GLOBALS['tables'];
+
+        return "SELECT R.id, title
+                FROM ".$tables["Recipes"]." AS R, "
+                      .$tables["Recipes_ln_Ingredients"]." AS ln, "
+                      .$tables["Ingredients"]." AS i
+                WHERE R.id=ln.id_recipe
+                AND ln.id_ingredient=i.id
+                AND i.name LIKE '%".mysqli_real_escape_string($db, $ingredient)."%'
+				AND R.title LIKE '%".mysqli_real_escape_string($db, $title)."%'";
+    }
+	
     /**
       * retourne la requête SQL qui permet d'obtenir les récettes contenant un ingrédient donné
-      * utilé par: recherche avancée
+      * utilisé par: recherche avancée
       */
     function recipe_by_ing ($ingredient) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
@@ -10,7 +31,7 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT id, title
+        return "SELECT R.id, title
                 FROM ".$tables["Recipes"]." AS R, "
                       .$tables["Recipes_ln_Ingredients"]." AS ln, "
                       .$tables["Ingredients"]." AS i

@@ -25,9 +25,11 @@
     if ((isset($_POST['recipe_title'], $_POST['ingredient']))
         && !(empty($_POST['recipe_title']))
         && !(empty($_POST['ingredient']))) {
-        echo "Both are set";
-        echo $_POST['recipe_title']."\n";
-        echo $_POST['ingredient'];
+		
+		$sql = recipe_by_title_and_ing($_POST['recipe_title'], $_POST['ingredient']);
+        $res = query($db, $sql);
+		
+        echo "Voici les recettes comprenant '".$_POST['recipe_title']."' dans le titre et '".$_POST['ingredient']."' dans les ingrédients.<br />\n";
     } else if ((isset($_POST['recipe_title']))
         && !(empty($_POST['recipe_title']))) {
         $sql = recipe_by_title($_POST['recipe_title']);
