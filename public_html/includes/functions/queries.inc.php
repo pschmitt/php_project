@@ -10,7 +10,7 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT title
+        return "SELECT id, title
                 FROM ".$tables["Recipes"]." AS R, "
                       .$tables["Recipes_ln_Ingredients"]." AS ln, "
                       .$tables["Ingredients"]." AS i
@@ -29,7 +29,7 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT title
+        return "SELECT id, title
                 FROM ".$tables["Recipes"].
                 " WHERE title LIKE '%".mysqli_real_escape_string($db, $title)."%'";
     }

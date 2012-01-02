@@ -38,9 +38,12 @@
         $res = query($db, $sql);
     }
     if (isset($sql, $res)) {
+		echo "<dl>\n";
         while ($row = mysqli_fetch_assoc($res)) {
-            printf("%s<br/>\n", $row["title"]);
+			echo '<dt><a href="index.php?p=recipes&recipe_id='.$row['id'].'">'.$row['title'].'</a></dt>'."\n";
+            //printf("%s<br/>\n", $row["title"]);
         }
+		echo "</dl>\n";
         mysqli_free_result($res);
     }
     if (isset($db))
