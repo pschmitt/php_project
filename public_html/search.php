@@ -21,13 +21,15 @@
         || !(empty($_POST['ingredient']))) {
         echo '<h3 id="result_title">Résultats</h3>';
     }
-
+	
     if ((isset($_POST['recipe_title'], $_POST['ingredient']))
         && !(empty($_POST['recipe_title']))
         && !(empty($_POST['ingredient']))) {
 		
 		$sql = recipe_by_title_and_ing($_POST['recipe_title'], $_POST['ingredient']);
         $res = query($db, $sql);
+		
+		echo $sql;
 		
         echo "Voici les recettes comprenant '".$_POST['recipe_title']."' dans le titre et '".$_POST['ingredient']."' dans les ingrédients.<br />\n";
     } else if ((isset($_POST['recipe_title']))
