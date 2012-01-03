@@ -1,8 +1,77 @@
 <?php
 
+	// Fonction qui concatène les ingrédients séparés par 'ou' pour utiliser dans une requête.
+	// @param ing_list la liste d'ingrédients séparée donnée par le champ 'recipe_title'
+	function concat_title_or($ing_list) {
+		$ing_tab = explode(" or ", strtolower($ing_list));
+		$query = '';
+		foreach ($ing_tab as $ing) {
+			$query .= "' OR R.title LIKE '%".$ing."%";
+		}
+		return $query;
+	}
+	
+	// Fonction qui concatène les ingrédients séparés par 'and' pour utiliser dans une requête.
+	// @param ing_list la liste d'ingrédients séparée donnée par le champ 'recipe_title'
+	function concat_title_and($ing_list) {
+		$ing_tab = explode(" and ", strtolower($ing_list));
+		$query = "%";
+		foreach ($ing_tab as $ing) {
+			$query .= "%' AND R.title LIKE '%".$ing;
+		}
+		$query .= "%";
+		return $query;
+	}
+	
+	// Fonction qui concatène les ingrédients séparés par 'ou' pour utiliser dans une requête.
+	// @param ing_list la liste d'ingrédients séparée donnée par le champ 'ingredient'
+	function concat_ing_or($ing_list) {
+		$ing_tab = explode(" or ", strtolower($ing_list));
+		$query = '';
+		foreach ($ing_tab as $ing) {
+			$query .= "' OR i.name LIKE '%".$ing."%";
+		}
+		return $query;
+	}
+	
+	// Fonction qui concatène les ingrédients séparés par 'and' pour utiliser dans une requête.
+	// @param ing_list la liste d'ingrédients séparée donnée par le champ 'ingredient'
+	function concat_ing_and($ing_list) {
+		$ing_tab = explode(" and ", strtolower($ing_list));
+		if ($ing_tab != null) {
+		$query = "%";
+		foreach ($ing_tab as $ing) {
+			$query .= "%' AND i.name LIKE '%".$ing;
+		}
+		$query .= "%";
+		}
+		return $query;
+	}
+
+	/**
+      * retourne la requête SQL qui permet d'obtenir les récettes contenant un ingrédient donné et
+	  * un titre donné
+      * utilisé par: recherche avancée
+      */
+    function recipe_by_title_and_ing ($title, $ingredient) {
+        if (!isset($GLOBALS['db'], $GLOBALS['tables']))
+            die("No DB connection !");
+        $db = $GLOBALS['db'];
+        $tables = $GLOBALS['tables'];
+
+        return "SELECT DISTINCT R.id, title
+                FROM ".$tables["Recipes"]." AS R, "
+                      .$tables["Recipes_ln_Ingredients"]." AS ln, "
+                      .$tables["Ingredients"]." AS i
+                WHERE R.id=ln.id_recipe
+                AND ln.id_ingredient=i.id
+                AND (i.name LIKE '".concat_ing_or($ingredient)."')
+				AND (R.title LIKE '".concat_title_or($title)."')";
+    }
+	
     /**
       * retourne la requête SQL qui permet d'obtenir les récettes contenant un ingrédient donné
-      * utilé par: recherche avancée
+      * utilisé par: recherche avancée
       */
     function recipe_by_ing ($ingredient) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
@@ -10,13 +79,13 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT title
+        return "SELECT DISTINCT R.id, title
                 FROM ".$tables["Recipes"]." AS R, "
                       .$tables["Recipes_ln_Ingredients"]." AS ln, "
                       .$tables["Ingredients"]." AS i
                 WHERE R.id=ln.id_recipe
                 AND ln.id_ingredient=i.id
-                AND i.name LIKE '%".mysqli_real_escape_string($db, $ingredient)."%'";
+                AND (i.name LIKE '".concat_ing_or($ingredient)."')";
     }
     
     /**
@@ -29,9 +98,9 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT title
+        return "SELECT DISTINCT R.id, title
                 FROM ".$tables["Recipes"].
-                " WHERE title LIKE '%".mysqli_real_escape_string($db, $title)."%'";
+                " WHERE (title LIKE '%".concat_title_or($title)."')";
     }
     
     /**
