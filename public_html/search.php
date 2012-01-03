@@ -6,7 +6,7 @@
         <input type="text" name="recipe_title" value="<?php echo isset($_POST['recipe_title']) ? $_POST['recipe_title'] : null ?>"/>
     </p>
     <p>
-        <label for="ingredient">... par ingredient: </label>
+        <label for="ingredient">... par ingrédient: </label>
         <input type="text" name="ingredient" value="<?php echo isset($_POST['ingredient']) ? $_POST['ingredient'] : null ?>"/>
     </p>
     <input type="submit" value="Rechercher" />

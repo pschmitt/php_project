@@ -169,6 +169,7 @@
             $recipe_sql = substr($recipe_sql, 0, -2);
             $ing_sql    = substr($ing_sql   , 0, -2);
             $r2i_sql    = substr($r2i_sql   , 0, -2);
+            echo $r2i_sql."\n\n";
 
             // exec queries
             query($db, $recipe_sql);
