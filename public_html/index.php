@@ -29,13 +29,13 @@
 <?php
     if (isset($_GET['p'])) {
         switch($_GET['p']) {
+            case "registered":
             case "logout":
 ?>
 <meta http-equiv="refresh" content="3;URL=index.php"> 
 <?php
                 break;
             case "login":
-            case "registered":
                 ?>
 <meta http-equiv="refresh" content="3;URL=<?php echo $_SESSION['referer']; ?>">                    
                 <?php
