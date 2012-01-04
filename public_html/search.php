@@ -60,7 +60,6 @@
 			echo "<p>Pas de résultats !</p>";
 		}
     }
-    echo $sql;
     if (isset($db))
         mysqli_close($db);
 ?>
