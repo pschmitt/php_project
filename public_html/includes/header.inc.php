@@ -52,6 +52,8 @@
             <li><a href="<?php echo $_SERVER['PHP_SELF'].'?p=home'; ?>">Accueil</a></li>
 			
             <li><a href="<?php echo $_SERVER['PHP_SELF'].'?p=search'; ?>">Recherche avancée</a></li>
+			
+			<li><a href="<?php echo $_SERVER['PHP_SELF'].'?p=favs'; ?>">Mon panier</a></li>
         </ul>
     </nav>
     <!-- end mainnav -->

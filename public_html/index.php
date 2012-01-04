@@ -61,7 +61,7 @@
     <div id="centre">
         <?php
             include("navigation.inc.php");
-            include("search.inc.php");
+            //include("search.inc.php");
         ?>
         <div id="principal">
             <?php
