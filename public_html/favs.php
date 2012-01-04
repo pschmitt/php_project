@@ -25,6 +25,23 @@
     </ul>
 <?php
         mysqli_close($db);
+    } elseif (isset($_SESSION['favs'])){
+        $db = db_con();
+        $ids = "";
+        foreach($_SESSION['favs'] as $index => $fav) {
+            $ids .= $fav."','";
+        }
+        $sql = recipe_by_ids(substr($ids,0,-3));
+        $res = query($db, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            printf('<li>
+                    <a href="'.$_SERVER['PHP_SELF'].'?p=recipes&recipe_id=%s">
+                        %s
+                    </a>
+                    <img src="images/delete.png" alt="supprimer" title="supprimer" height="16" width="16" id="%s" class="rm_bookmark" />
+                </li>
+                ', $row['id'], $row['title'], $row['id']);
+        }
     }
 ?>
 

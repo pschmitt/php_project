@@ -2,6 +2,7 @@
 
 <?php
     require_once("functions/mysqli.inc.php");
+    require_once("functions/queries.inc.php");
 
     if (isset($_POST['username'], $_POST['password'])) {
         printf("Bienvenue sur JeNeSaisPasCuisiner.com, ".$_POST['username'].".\n<br/>\n
@@ -39,6 +40,12 @@
             $_SESSION['user_id'] = mysqli_insert_id($db);
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['logged_in'] = true;
+            
+            if(isset($_SESSION['favs'])) {
+                $sql = bulk_add_to_bookmarks($_SESSION['user_id'], $_SESSION['favs']);
+                echo $sql;
+                query($db, $sql);
+            }
 
 			mysqli_close($db);
 			

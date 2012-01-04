@@ -160,7 +160,6 @@ mysqli_close($db);
     var rm_txt = "removed from bookmarks !";
     var rm_failed_txt = "couldn't remove bookmark..!";
 
-
     function add_bookmark() {
         $.ajax({
             type: "POST",

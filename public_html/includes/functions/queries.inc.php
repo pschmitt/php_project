@@ -6,7 +6,7 @@
 		$ing_tab = explode(" or ", strtolower($ing_list));
 		$query = '';
 		foreach ($ing_tab as $ing) {
-			$query .= "' OR R.title LIKE '%".$ing."%";
+			$query .= "' OR title LIKE '%".$ing."%";
 		}
 		return $query;
 	}
@@ -98,9 +98,9 @@
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "SELECT DISTINCT R.id, title
+        return "SELECT DISTINCT id, title
                 FROM ".$tables["Recipes"].
-                " WHERE (title LIKE '%".concat_title_or($title)."')";
+                " WHERE (title LIKE '".concat_title_or($title)."')";
     }
     
     /**
@@ -136,6 +136,22 @@
     }
     
     /**
+      * retourne la requête SQL qui permet d'obtenir le titre et la marche à suivre d'une recette 
+      * utilisé par: results.php (affichage d'une recette)
+      */
+    function recipe_by_ids($ids) {
+        if (!isset($GLOBALS['db'], $GLOBALS['tables']))
+            die("No DB connection !");
+        $db = $GLOBALS['db'];
+        $tables = $GLOBALS['tables'];
+
+        return "SELECT id, title
+                FROM ".$tables['Recipes']." AS R
+                WHERE R.id IN ('".$ids."')"; 
+    }
+    
+
+    /**
       * retourne la requête SQL qui permet d'obtenir les ingrédients contenus dans une recette
       * utilisé par: recipes.php (affichage d'une recette)
       */
@@ -158,13 +174,28 @@
       * retourne la requête SQL qui permet d'ajouter une recette aux favoris
       * utilisé par: recipes.php (affichage d'une recette)
       */
-    function add_to_bookmarks($user_id, $recipe_id) {
+    function bulk_add_to_bookmarks($user_id, $recipe_ids) {
         if (!isset($GLOBALS['db'], $GLOBALS['tables']))
             die("No DB connection !");
         $db = $GLOBALS['db'];
         $tables = $GLOBALS['tables'];
 
-        return "INSERT INTO ".$tables['Carts_ln_Recipes'].
+        $sql = "INSERT INTO ".$tables['Carts'].
+               " VALUES ";
+
+        foreach ($recipe_ids as $fav) {
+            $sql .= "('".$user_id."','".$fav."'),";
+        }
+        return substr($sql, 0, -1);
+    }
+
+    function add_to_bookmarks($user_id, $recipe_id) {
+        if (!isset($GLOBALS['db'], $GLOBALS['tables']))
+            die("No DB connection !");
+        $db = $GLOBALS['db'];
+        $tables = $GLOBALS['tables'];
+        
+        return "INSERT INTO ".$tables['Carts'].
                " VALUES (".mysqli_real_escape_string($db, $user_id).
                ", ".mysqli_real_escape_string($db, $recipe_id).")";
     }
